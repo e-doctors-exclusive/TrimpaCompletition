@@ -15,7 +15,6 @@ const Navbar=()=>{
             <li>Sign in</li>
             <li className='Sign-up'>Sign up</li>
           </ul>
-  
         </div>
     </div>
   )
