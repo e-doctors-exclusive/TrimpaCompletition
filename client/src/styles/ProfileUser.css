@@ -12,8 +12,8 @@
 .plane-seat-selection-inner {
   position: absolute;
   top: calc(50% - 1297.5px);
-  left: calc(50% - 360px);
-  width: 132.75rem;
+  left: calc(50% - 695px);
+  width: 170.75rem;
   height: 162.22rem;
 }
 .plane-seat-selection-child1,
@@ -70,10 +70,10 @@
 }
 .business {
   position: absolute;
-  top: calc(50% - 868.5px);
-  left: calc(50% - 100px);
+  top: calc(50% - 900px);
+  left: calc(50% - 80px);
   border-radius: 8px;
-  width: 12.5rem;
+  width: 10rem;
   overflow: hidden;
   flex-direction: column;
   justify-content: flex-start;
@@ -126,7 +126,7 @@
   overflow: hidden;
 }
 .economy {
-  top: calc(50% - 540.5px);
+  top: calc(50% - 580.5px);
   left: calc(50% - 100px);
   border-radius: 8px;
   background-color: #fff;
