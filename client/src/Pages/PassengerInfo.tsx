@@ -141,7 +141,7 @@ function PassengerInfo() {
             </div>
             <button>Select seats</button>
           </div>
-          <img src={BagIllustration} alt="" />
+          <img id="illustration" src={BagIllustration} alt="" />
         </div>
       </div>
     </div>
