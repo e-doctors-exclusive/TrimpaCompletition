@@ -16,12 +16,12 @@ connection
   .catch(() => console.log("connection rejected"));
 
 const User = require("../model/user.model")(connection, DataTypes);
-
+const Flights = require("../model/flights")(connection, DataTypes);
 
 
 const db ={}
 db.User = User;
-
+db.Flights = Flights;
 
 
 
