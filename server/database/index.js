@@ -15,7 +15,7 @@ connection
   .then(() => console.log("connection established"))
   .catch(() => console.log("connection rejected"));
 
-const User = require("../models/user.model")(connection, DataTypes);
+const User = require("../model/user.model")(connection, DataTypes);
 
 
 
