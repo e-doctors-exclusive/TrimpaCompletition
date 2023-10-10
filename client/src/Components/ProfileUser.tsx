@@ -2,7 +2,6 @@ import React from 'react'
 import "../styles/ProfileUser.css"
 export const ProfileUser = () => {
   return (
-    <div>
     <div className="tripma">
       <div className="plane-seat-selection">
         <img
@@ -438,26 +437,26 @@ export const ProfileUser = () => {
                 <div className="divider" />
               </div>
               <div className="flight-info">
-                <div className="time-data">
-                  <span>Feb 25</span>
-                  <span className="span">{` | `}</span>
-                  <span>7:00AM</span>
+                <div className="flight-info-inactive">
+                  <div className="time-data">
+                    <span>Feb 25</span>
+                    <span className="span">{` | `}</span>
+                    <span>7:00AM</span>
+                  </div>
+                  <div className="direction">Departing</div>
                 </div>
-                <div className="direction">Departing</div>
+                <img className="chevron-icon" alt="" src="/chevron.svg" />
               </div>
               <div className="flight-info-divider-dark">
                 <div className="divider" />
               </div>
               <div className="flight-info1">
-                <div className="flight-info-inactive">
-                  <div className="time-data">
-                    <span>Mar 21</span>
-                    <span className="span">{` | `}</span>
-                    <span>12:15PM</span>
-                  </div>
-                  <div className="direction">Arriving</div>
+                <div className="time-data">
+                  <span>Mar 21</span>
+                  <span className="span">{` | `}</span>
+                  <span>12:15PM</span>
                 </div>
-                <img className="chevron-icon" alt="" src="/chevron.svg" />
+                <div className="direction">Arriving</div>
               </div>
             </div>
           </div>
@@ -645,7 +644,6 @@ export const ProfileUser = () => {
         </div>
       </div>
       <img className="desktop-basic-icon" alt="" src="/desktop-basic.svg" />
-    </div>
     </div>
   )
 }
