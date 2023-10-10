@@ -6,6 +6,7 @@ import PassengerInfo from "./Pages/PassengerInfo";
 import LandingPage from "./Pages/LandingPage";
 import ProfileUser from "./Pages/ProfileUser";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 function App() {
