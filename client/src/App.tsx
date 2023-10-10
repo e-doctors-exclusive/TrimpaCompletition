@@ -4,7 +4,6 @@ import { fetchData,addData } from './store/test'
 import type { RootState,AppDispatch } from './store/index'
 
 
-
 function App() {
 
   return (
