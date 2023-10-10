@@ -1,0 +1,17 @@
+@media (min-width: 1025px) {
+    .h-custom-2 {
+      height: 100%;
+      }
+    }
+    .Landing{
+        overflow: hidden;
+    }
+    .Landing img {
+        height: 100vh; /* Ensure the image takes up the full height of the container */
+        object-fit: cover !important;
+        object-position: center top;
+    
+      } 
+
+
+  
