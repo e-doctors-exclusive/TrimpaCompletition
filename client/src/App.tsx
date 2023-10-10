@@ -5,17 +5,19 @@ import type { RootState,AppDispatch } from './store/index'
 import PassengerInfo from './Pages/PassengerInfo';
 import LandingPage from "./Pages/LandingPage"
 import ProfileUser from './Pages/ProfileUser';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   
   return (
-    <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="userprofile" element={<ProfileUser />}></Route>
-        <Route path="passangerinfo" element={<PassengerInfo />}></Route>
-    </Routes>
+    <Router>
+        <Routes>
+        <Route path="/" element={<LandingPage />} />
+          <Route path="userprofile" element={<ProfileUser />} />
+          <Route path="passangerinfo" element={<PassengerInfo />} />
+        </Routes>
+    </Router>
   );
 }
 
