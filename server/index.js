@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors')
 const app = express();
 const port = 1128; // You can choose any available port
-const axios = require('axios');
 const userRoutes = require("./router/user.routes.js")
 require("./database/index.js")
 app.use(express.json());
+app.use(cors())
 // Define a route
 
 
