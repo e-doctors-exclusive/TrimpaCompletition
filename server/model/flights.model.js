@@ -1,30 +1,27 @@
 const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   const Flights = sequelize.define("Flights",
-    {destOut: {
+    {destFrom: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
-      destIn: {
+      destTo: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
-      dateOut: {
+      dateFrom: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: false
       },
-      dateIN: {
+      dateTo: {
         type: DataTypes.DATE,
-        allowNull: false,
+        allowNull: false
       },
       price: {
         type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      availableSeats: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
+        allowNull: false
+      }
+      
     }
 );
   return Flights;
