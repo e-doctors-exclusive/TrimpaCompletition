@@ -29,7 +29,8 @@ db.User = User;
 db.Flights = Flights;
 db.Admin  = Admin
 db.Reservation  = Reservation
-db.Payments = Paymentsdb.Seats = Seats
+db.Payments = Payments
+db.Seats = Seats
 db.Seats = Seats
 
 module.exports = db
