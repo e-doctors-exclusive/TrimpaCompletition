@@ -7,6 +7,7 @@ import LandingPage from "./Pages/LandingPage"
 import ProfileUser from './Pages/ProfileUser';
 import { Routes, Route } from "react-router-dom";
 import SignUp from './Pages/SignUp';
+// import ClientProfil from './Pages/ClientProfil';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/userprofile" element={<ProfileUser />}></Route>
         <Route path="/PassengerInfo" element={<PassengerInfo />}></Route>
         <Route path='/signUp' element={<SignUp/>}></Route>
+        * Example: toFraction(3.0) === '3/1'
     </Routes>
   );
 }

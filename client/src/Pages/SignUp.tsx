@@ -65,7 +65,7 @@ const SignUp = () => {
         <span className="title">Sign In </span> 
         <span className="subtitle"> Tripma is totally free to use. Sign up using your email  <br />address or phone number below to get started.</span>
         <div className="form-container1">
-        <input type="text" className="input1" placeholder="Name" />
+        <input type="text" className="input1" placeholder="UserName" />
           <input type="text" className="input1" placeholder="Email or Phone number" />
           <input type="password" className="input1" placeholder="Password" />
         </div>
@@ -89,28 +89,7 @@ const SignUp = () => {
             <div className="description">or</div>
             <div className="divider" />
           </div >
-         
-          <div>
-            <div className="google">
-              <img  src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png" alt="google_icon" width={12} height={12}/>
-              <span style={{color: "#605DEC"}}>Continue With Google</span>
-              <span style={{color: "#fff"}}>3dr</span>
-
-            </div>
-            <div className="google">
-              <img  src="https://www.svgrepo.com/show/69341/apple-logo.svg" alt="google_icon" width={12} height={12}/>
-              <span style={{color: "#605DEC"}}>Continue With Apple </span>
-              <span style={{color: "#fff"}}>3dr</span>
-
-            </div>
-            <div className="google">
-              <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/640px-Facebook_icon_2013.svg.png" alt="google_icon" width={12} height={12}/>
-              <span style={{color: "#605DEC"}}>Continue With Facebook</span>
-              <span style={{color: "#fff"}}>3dr</span>
-
-            </div>
         
-          </div>
           </form>
 
         </div>
