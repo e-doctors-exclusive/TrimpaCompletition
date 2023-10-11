@@ -1,7 +1,6 @@
 import "../styles/ClientProfil.css";
 import React from "react";
 import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
 import Avatar from "../Assets/avatar.jpeg"
 
 const ProfileUser: React.FC = () => {
@@ -53,7 +52,6 @@ const ProfileUser: React.FC = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
     </>
   );
 };
