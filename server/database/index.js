@@ -12,14 +12,14 @@ connection
   .catch(() => console.log("connection rejected"));
 
 const User = require("../model/user.model")(connection, DataTypes);
-const Flights = require("../model/flights")(connection, DataTypes);
+const Flights = require("../model/flights.model")(connection, DataTypes);
 const Admin = require("../model/admin")(connection,DataTypes)
 
 
-connection
-  .sync({ alter: true, force: true })
-  .then(() => console.log("tables created"))
-  .catch(() => console.log("error creating tables"));
+// connection
+//   .sync({ alter: true, force: true })
+//   .then(() => console.log("tables created"))
+//   .catch(() => console.log("error creating tables"));
 
 
 const db ={}
