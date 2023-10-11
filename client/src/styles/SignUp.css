@@ -151,3 +151,19 @@ color: #CBD4E6;
   align-items: center ;
   font-family: Nunito Sans;
 }
+
+.userName {
+  display: flex;
+  gap: 1rem;
+
+
+}
+.userName img {
+  width: 15px;
+  height: 16px;
+}
+.userName input {
+  border : solid 1.2px #605DEC;
+  height: 35px;
+
+}
