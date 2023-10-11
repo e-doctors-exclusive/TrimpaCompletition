@@ -21,6 +21,7 @@ module.exports.createSecretToken = (id) => {
       if(!user){
         return res.status(201).json({message:'Incorrect password or email' }) 
       }
+      
     
       const auth = await bcrypt.compare(password,user.password)
       if (!auth) {
