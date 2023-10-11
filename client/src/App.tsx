@@ -29,7 +29,6 @@ function App() {
 
         
         
-        <Route path="/PlaneBooking" element={<PlaneBooking />}></Route>
       </Routes>
       {/* <Footer /> */}
     </div>
