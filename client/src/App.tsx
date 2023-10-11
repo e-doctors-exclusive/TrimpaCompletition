@@ -5,6 +5,7 @@ import type { RootState, AppDispatch } from "./store/index";
 import PassengerInfo from "./Pages/PassengerInfo";
 import LandingPage from "./Pages/LandingPage";
 import ProfileUser from "./Pages/ProfileUser";
+import PlaneBooking from "./Pages/PlaneBooking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 
