@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-rou
 import LandingPage from "./Components/LandingPage";
 import SideBar from "./Components/SideBar"
 import Home from "./Components/Home";
+import Users from "./Components/Users"; 
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage />}></Route>
       <Route path="/home" element={<Home />}></Route>
+      <Route path="/users" element={<Users />}></Route>
       </Routes>
     </BrowserRouter>
     </ProSidebarProvider>

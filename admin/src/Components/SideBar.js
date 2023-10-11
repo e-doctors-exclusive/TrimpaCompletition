@@ -8,6 +8,7 @@ import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { Link } from 'react-router-dom'
 import '../styles/SideBar.css'
 const SideBar = () => {
     const { collapseSidebar } = useProSidebar();
@@ -25,8 +26,12 @@ const SideBar = () => {
             {" "}
             <h2>Tripma DB</h2>
           </MenuItem>
-          <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
-          <MenuItem icon={<PeopleOutlinedIcon />}>Users</MenuItem>
+          <Link to="/home">
+            <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
+          </Link>
+          <Link to="/users">
+            <MenuItem icon={<PeopleOutlinedIcon />}>Users</MenuItem>
+          </Link>
           <MenuItem icon={<ConnectingAirportsOutlinedIcon />}>Flights</MenuItem>
           <MenuItem icon={<AirlinesOutlinedIcon />}>Airlines</MenuItem>
           <MenuItem icon={<AddCircleOutlinedIcon />}>Add a Brand</MenuItem>
