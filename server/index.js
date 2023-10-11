@@ -4,6 +4,8 @@ const app = express();
 const port = 1128; // You can choose any available port
 const userRoutes = require("./router/user.routes.js")
 const adminRoutes = require("./router/admin.router.js")
+
+const seatsRoutes = require("./router/seats.routes.js")
 const ReservationRoutes = require("./router/reservation.routes.js")
 
 const paymentRoutes = require("./router/payment.routes.js")
@@ -18,6 +20,9 @@ app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)
 
 app.use("/payment",paymentRoutes)
+
+app.use("/seats", seatsRoutes)
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
