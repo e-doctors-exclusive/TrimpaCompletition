@@ -8,6 +8,7 @@ import ProfileUser from "./Pages/ProfileUser";
 import PlaneBooking from "./Pages/PlaneBooking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
+import SignUp from "./Pages/SignUp";
 
 function App() {
   return (
@@ -19,6 +20,13 @@ function App() {
         
         
         <Route path="/planebooking" element={<PlaneBooking />}></Route>
+        <Route path="/SignUp" element={<SignUp />}></Route>
+
+
+        
+
+        
+        
       </Routes>
       <Footer />
     </div>
