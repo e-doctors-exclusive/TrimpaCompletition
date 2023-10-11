@@ -1,9 +1,21 @@
 import "../styles/PassengerInfo.css";
-import React from "react";
+import React, { useState } from "react";
 import BagIllustration from "../Assets/Illustration.png";
 import logoIllustration from "../Assets/logoIllustration.png";
 
-function PassengerInfo() {
+const PassengerInfo: React.FC = () => {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+
   return (
     <div className="container">
       <div className="main-container">
@@ -61,31 +73,37 @@ function PassengerInfo() {
               <div className="second">
                 <p id="title2">Checked bags</p>
                 <div className="inc-btns">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      d="M9 15H23C23.5523 15 24 15.4477 24 16C24 16.5523 23.5523 17 23 17L9 17C8.44772 17 8 16.5523 8 16C8 15.4477 8.44772 15 9 15Z"
-                      fill="#605DEC"
-                    />
-                  </svg>
-                  <p>1</p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      d="M15 15V9C15 8.44772 15.4477 8 16 8C16.5523 8 17 8.44772 17 9V15L23 15C23.5523 15 24 15.4477 24 16C24 16.5523 23.5523 17 23 17L17 17V23C17 23.5523 16.5523 24 16 24C15.4477 24 15 23.5523 15 23V17H9C8.44772 17 8 16.5523 8 16C8 15.4477 8.44772 15 9 15H15Z"
-                      fill="#605DEC"
-                    />
-                  </svg>
+                  <button>
+                    <svg
+                      onClick={handleDecrement}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M9 15H23C23.5523 15 24 15.4477 24 16C24 16.5523 23.5523 17 23 17L9 17C8.44772 17 8 16.5523 8 16C8 15.4477 8.44772 15 9 15Z"
+                        fill="#605DEC"
+                      />
+                    </svg>
+                  </button>
+                  <p>{count}</p>
+                  <button>
+                    <svg
+                      onClick={handleIncrement}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M15 15V9C15 8.44772 15.4477 8 16 8C16.5523 8 17 8.44772 17 9V15L23 15C23.5523 15 24 15.4477 24 16C24 16.5523 23.5523 17 23 17L17 17V23C17 23.5523 16.5523 24 16 24C15.4477 24 15 23.5523 15 23V17H9C8.44772 17 8 16.5523 8 16C8 15.4477 8.44772 15 9 15H15Z"
+                        fill="#605DEC"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -146,6 +164,17 @@ function PassengerInfo() {
       </div>
     </div>
   );
-}
+};
 
 export default PassengerInfo;
+
+// const PassengerInfo = () => {
+
+//   return (
+//     <div className="container">
+
+//     </div>
+//   );
+// }
+
+// export default PassengerInfo;
