@@ -10,14 +10,23 @@ import appleIcon                from "../Assets/icons/thirdPartyIcons/appleMac.s
 import facebookIcon             from "../Assets/icons/thirdPartyIcons/facebook.svg";
 
 const Navbar = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
+  const [isSignInModalOpen, setSignInModalOpen] = useState(false);
+  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
+  
+  const openSignInModal = () => {
+    setSignInModalOpen(true);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
+  const closeSignInModal = () => {
+    setSignInModalOpen(false);
+  };
+
+  const openSignUpModal = () => {
+    setSignUpModalOpen(true);
+  };
+
+  const closeSignUpModal = () => {
+    setSignUpModalOpen(false);
   };
 
   return (
@@ -30,14 +39,14 @@ const Navbar = () => {
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          <li onClick={openModal}>Sign in</li>
+          <li onClick={openSignInModal}>Sign in</li>
         </ul>
-        <button className="Sign-up" onClick={openModal}>
+        <button className="Sign-up"onClick={openSignUpModal}>
           Sign up
         </button>
       </div>
-      {/* <SignIn isOpen={isModalOpen} onClose={closeModal} />  */}
-      <SignUp isOpen={isModalOpen} onClose={closeModal}>
+      <SignIn isOpen={isSignInModalOpen} onClose={closeSignInModal} modalType="Sign In"/> 
+      <SignUp isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
         <form className="main_signUp_container">
           <div className="signUp_header">
             <div className="signUp_desc">
