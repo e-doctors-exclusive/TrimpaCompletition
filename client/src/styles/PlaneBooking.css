@@ -1,4 +1,4 @@
-.plane-seat-selection-child,
+/* .plane-seat-selection-child,
 .plane-seat-selection-item {
   position: absolute;
   top: calc(50% - 302.5px);
@@ -577,7 +577,6 @@
   height: 6rem;
 }
 .tripma {
-  /* position: relative; */
   background-color: #fff;
   width: 100%;
   height: 56.25rem;

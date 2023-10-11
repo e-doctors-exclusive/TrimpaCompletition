@@ -1,3 +1,34 @@
+/* Modal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  width: 568px;
+  height: 675px;
+  padding: 20px 40px 40px 40px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/*
 .form-box {
   max-width: 631px;
   background: #fff;
@@ -14,10 +45,10 @@
   flex-direction: column;
 padding: 40px;
   gap: 16px;
-}
+} */
 
 /*Form text*/
-.title {
+/* .title {
   font-weight: bold;
   font-size: 24px;
   font-family: Nunito Sans;
@@ -29,10 +60,10 @@ padding: 40px;
   font-size: 1rem;
   color: #7C8DB0;
   font-family: Nunito Sans;
-}
+} */
 
 /*Inputs box*/
-.form-container1 {
+/* .form-container1 {
   width: 100%;
 }
 
@@ -67,17 +98,12 @@ padding: 40px;
 .form-section a:hover {
   color: #005ce6;
   text-decoration: underline;
-}
+} */
 
 /*Button*/
 
-
-
-
-
-
 /* fig */
-.frame {
+/* .frame {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -166,4 +192,165 @@ color: #CBD4E6;
   border : solid 1.2px #605DEC;
   height: 35px;
 
+} */
+
+.main_signUp_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.signUp_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.third_party_auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#signUp_title {
+  color: var(--grey-600, #6e7491);
+  font-family: Nunito Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+#signUp {
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signUp_desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.labels > input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 46px;
+  width: 30.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--grey-300, #a1b0cc);
+  background: var(--True-White, #fff);
+  color: black;
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.labels > input::placeholder {
+  color: #7c8db0;
+}
+
+.term_conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.term_of_condition {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.term_of_condition > p {
+  color: var(--grey-600, #6e7491);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.term_of_condition > p > span {
+  color: var(--Purple-Blue, #605dec);
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.signUp_header > button {
+  background-color: #605dec;
+  border-radius: 4px;
+  border: none;
+  padding: 0.8rem 12.4rem;
+  color: white;
+  font-weight: 600;
+}
+
+.separation_line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--grey-400, #7c8db0);
+  font-family: Nunito Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.divider {
+  position: relative;
+  top: 1px;
+  height: 1px;
+  width: 14rem;
+  background-color: #cbd4e6;
+}
+
+.third_party_auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.third_party_btn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 9rem;
+  width: 30.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  background: var(--True-White, #fff);
+  box-shadow: 0px 12px 24px 0px rgba(27, 59, 119, 0.05),
+    0px 24px 60px 0px rgba(6, 47, 125, 0.05),
+    0px 2px 4px 0px rgba(7, 4, 146, 0.1);
+  border: 1px solid var(--Purple-Blue, #605dec);
 }
