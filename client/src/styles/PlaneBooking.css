@@ -1,4 +1,4 @@
-/* .plane-seat-selection-child,
+.plane-seat-selection-child,
 .plane-seat-selection-item {
   position: absolute;
   top: calc(50% - 302.5px);
@@ -210,15 +210,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.divider {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #6e7491;
-  width: 0.06rem;
-}
+
 .flight-info-divider-dark {
   position: relative;
   background-color: #27273f;
@@ -585,4 +577,4 @@
 }
 .tripma_container{
   position: relative;
-} */
+}
