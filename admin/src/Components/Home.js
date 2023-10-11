@@ -1,34 +1,28 @@
-import React from 'react'
-import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import '../styles/Home.css'
-const Home = () => {
-    const { collapseSidebar } = useProSidebar();
-    return (
-      <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
-        <Sidebar style={{ height: "100vh" }}>
-        <Menu>
-          <MenuItem
-            icon={<MenuOutlinedIcon />}
-            onClick={() => {
-              collapseSidebar();
-            }}
-            style={{ textAlign: "center" }}
-          >
-            {" "}
-            <h2>Tripma DB</h2>
-          </MenuItem>
-        </Menu>
-      </Sidebar>
-      </div>
-      
-    );
-}
+import React from 'react';
+import SideBar from './SideBar';
+import PieChartWithClick from './PieChartWithClick.js';
+import BasicArea from './BasicArea';
+import HorizontalBars from './HorizontalBars';
+import BarsDataset from './BarsDataset';
 
-export default Home
+const Home = () => {
+  return (
+    
+      <div style={{ display: 'flex' }}>
+        <SideBar />
+      <div style={{ flex: 1, marginLeft: '250px' }}>
+        <div style={{ display: 'flex' }}>
+          <PieChartWithClick />
+          <BasicArea />
+        </div>
+        <div style={{ display: 'flex' }}>
+          <HorizontalBars />
+          <BarsDataset />
+          {/* Add the fourth component here */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
