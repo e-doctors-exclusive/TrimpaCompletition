@@ -2,7 +2,9 @@ import React from 'react'
 
 function ProfileUser() {
   return (
-    <div>ProfileUser</div>
+    <div className='userProfile_container'>
+      
+    </div>
   )
 }
 
