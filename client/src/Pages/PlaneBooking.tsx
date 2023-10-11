@@ -16,7 +16,8 @@ import wordmark from "../Assets/tripmaBooking/Wordmark.png"
 import arrowRight from "../Assets/tripmaBooking/arrowRight.png"
 import ecoSeats from "../Assets/tripmaBooking/Economy Seats.png"
 import bussinesSeats from "../Assets/tripmaBooking/Business Seats.png"
-export const PlaneBooking = () => {
+
+const PlaneBooking = () => {
   return (
     <div className='tripma_container'>
       <div className="tripma">
@@ -676,3 +677,4 @@ export const PlaneBooking = () => {
     </div>
   )
 }
+export default PlaneBooking
