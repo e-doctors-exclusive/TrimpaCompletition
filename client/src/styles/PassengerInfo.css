@@ -286,7 +286,6 @@ input:focus {
 
 .second > .inc-btns > p {
   color: var(--grey-600, #6e7491);
-  /* Header H4 */
   font-family: Nunito Sans;
   font-size: 18px;
   font-style: normal;
