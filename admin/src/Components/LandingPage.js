@@ -23,7 +23,7 @@ function LandingPage() {
 
           <div className='d-flex flex-row ps-5 pt-5'>
           <MDBIcon fas icon="plane" />
-            <span className="h1 fw-bold mb-0">Trimpa</span>
+            <span className="h1 fw-bold mb-0">Tripma</span>
           </div>
 
           <div className='d-flex flex-column justify-content-center h-custom-2 w-75 pt-4'>

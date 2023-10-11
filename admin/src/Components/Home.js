@@ -22,7 +22,7 @@ const Home = () => {
             style={{ textAlign: "center" }}
           >
             {" "}
-            <h2>Trimpa DB</h2>
+            <h2>Tripma DB</h2>
           </MenuItem>
         </Menu>
       </Sidebar>
