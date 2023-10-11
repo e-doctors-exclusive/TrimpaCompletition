@@ -1,8 +1,10 @@
+import "../styles/landing.css";
 import React from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
-import "../styles/landing.css";
+
 function LandingPage() {
+
   return (
     <div>
       <TopHeader />
@@ -62,7 +64,7 @@ function LandingPage() {
                   </div>
                   <div className="price-land">$598</div>
                 </div>
-                <span>China’s most international city</span>
+                <span>China's most international city</span>
               </div>
             </div>
             <div className="land-card">
@@ -77,7 +79,7 @@ function LandingPage() {
                   </div>
                   <div className="price-land">$598</div>
                 </div>
-                <span>China’s most international city</span>
+                <span>China's most international city</span>
               </div>
             </div>
             <div className="land-card">
