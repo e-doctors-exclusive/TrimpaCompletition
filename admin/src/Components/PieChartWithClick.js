@@ -1,40 +1,64 @@
 import * as React from 'react';
-import { PieChart } from '@mui/x-charts/PieChart';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import {
+  ResponsiveChartContainer,
+  BarPlot,
+  LinePlot,
+  ChartsXAxis,
+  ChartsYAxis,
+  axisClasses,
+} from '@mui/x-charts';
 
-const data = [
-  { value: 5, label: 'A' },
-  { value: 10, label: 'B' },
-  { value: 15, label: 'C' },
-  { value: 20, label: 'D' },
-];
-
-const size = {
-  width: 400,
-  height: 200,
-};
-
-const StyledText = styled('text')(({ theme }) => ({
-  fill: theme.palette.text.primary,
-  textAnchor: 'middle',
-  dominantBaseline: 'central',
-  fontSize: 20,
-}));
-
-function PieCenterLabel({ children }) {
-  const { width, height, left, top } = useDrawingArea();
+export default function AxisWithComposition() {
   return (
-    <StyledText x={left + width / 2} y={top + height / 2}>
-      {children}
-    </StyledText>
-  );
-}
-
-export default function PieChartWithCenterLabel() {
-  return (
-    <PieChart series={[{ data, innerRadius: 80 }]} {...size}>
-      <PieCenterLabel>Airlines </PieCenterLabel>
-    </PieChart>
+    <Box sx={{ width: '100%', maxWidth: 600 }}>
+      <ResponsiveChartContainer
+        xAxis={[
+          {
+            scaleType: 'band',
+            data: ['Q1', 'Q2', 'Q3', 'Q4'],
+            id: 'quarters',
+            label: 'Quarters',
+          },
+        ]}
+        yAxis={[{ id: 'money' }, { id: 'quantities' }]}
+        series={[
+          {
+            type: 'line',
+            id: 'revenue',
+            yAxisKey: 'money',
+            data: [5645, 7542, 9135, 12221],
+          },
+          {
+            type: 'bar',
+            id: 'cookies',
+            yAxisKey: 'quantities',
+            data: [3205, 2542, 3135, 8374],
+          },
+          {
+            type: 'bar',
+            id: 'icecream',
+            yAxisKey: 'quantities',
+            data: [1645, 5542, 5146, 3735],
+          },
+        ]}
+        height={400}
+        margin={{ left: 70, right: 70 }}
+        sx={{
+          [`.${axisClasses.left} .${axisClasses.label}`]: {
+            transform: 'rotate(-90deg) translate(0px, -20px)',
+          },
+          [`.${axisClasses.right} .${axisClasses.label}`]: {
+            transform: 'rotate(90deg) translate(0px, -25px)',
+          },
+        }}
+      >
+        <BarPlot />
+        <LinePlot />
+        <ChartsXAxis axisId="quarters" label="2021 quarters" labelFontSize={18} />
+        <ChartsYAxis axisId="quantities" label="# units sold" />
+        <ChartsYAxis axisId="money" position="right" label="revenue" />
+      </ResponsiveChartContainer>
+    </Box>
   );
 }
