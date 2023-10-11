@@ -12,10 +12,10 @@ const SignUp = () => {
           <span className="title">Sign up for Tripma</span>
           <span className="subtitle"> Tripma is totally free to use. Sign up using your email  <br />address or phone number below to get started.</span>
           <div className="form-container1">
-            <input type="text" className="input1" placeholder="Email or Phone number" />
-            <input type="password" className="input1" placeholder="Password" />
+            <input type="text" className="inputt" placeholder="Email or Phone number" />
+            <input type="password" className="inputt" placeholder="Password" />
           </div>
-          <div className="check">
+          <div className="checky">
             <div className="checkboxes">
               <input type="checkbox" id="scales" name="scales" />
 
@@ -27,7 +27,7 @@ const SignUp = () => {
               <label >Send me the latest deal alerts</label>
             </div>
           </div>
-          <button className='btn'>Create account</button>
+          <button className='btn1'>Create account</button>
 
 
           <div className="frame">
@@ -72,21 +72,21 @@ const SignUp = () => {
           <div className="form-container1">
 
             <div className='userName'>
-              <img src={img} alt="user_icon" />
-            <input type="text" className="input1" placeholder="UserName" />
+              <img src={img} alt="user_icon"  />
+            <input type="text" className="inputt" placeholder="UserName" />
             </div>
 
             <div className='userName'>
               <img src={email} alt="email_icon" />
-            <input type="text" className="input1" placeholder="Email or Phone number" />
+            <input type="text" className="inputt" placeholder="Email or Phone number" />
             </div>
            <div className="userName">
             <img src={pass} alt="pass" />
-           <input type="password" className="input1" placeholder="Password" />
+           <input type="password" className="inputt" placeholder="Password" />
 
            </div>
           </div>
-          <div className="check">
+          <div className="checky">
             <div className="checkboxes">
               <input type="checkbox" id="scales" name="scales" />
 
@@ -98,7 +98,7 @@ const SignUp = () => {
               <label >Send me the latest deal alerts</label>
             </div>
           </div>
-          <button className='btn'>Sign In</button>
+          <button className='btn1'>Sign In</button>
 
         </form>
 
