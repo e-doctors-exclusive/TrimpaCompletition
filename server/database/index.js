@@ -15,11 +15,12 @@ const User = require("../model/user.model")(connection, DataTypes);
 const Flights = require("../model/flights")(connection, DataTypes);
 const Admin = require("../model/admin")(connection,DataTypes)
 
+const Seats = require("../model/seats.model")(connection,DataTypes)
 
-connection
-  .sync({ alter: true, force: true })
-  .then(() => console.log("tables created"))
-  .catch(() => console.log("error creating tables"));
+// connection
+//   .sync({ alter: true, force: true })
+//   .then(() => console.log("tables created"))
+//   .catch(() => console.log("error creating tables"));
 
 
 const db ={}
@@ -27,6 +28,7 @@ db.User = User;
 db.Flights = Flights;
 db.Admin  = Admin
 
+db.Seats = Seats
 
 
 module.exports = db
