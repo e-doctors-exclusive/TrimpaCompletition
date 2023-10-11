@@ -18,18 +18,19 @@ const Reservation = require("../model/reservation.model")(connection,DataTypes)
 const Payments = require("../model/payment.model")(connection,DataTypes)
 const Seats = require("../model/seats.model")(connection,DataTypes)
 
-// connection
-//   .sync({ alter: true, force: true })
-//   .then(() => console.log("tables created"))
-//   .catch(() => console.log("error creating tables"));
-
 
 const db ={}
 db.User = User;
 db.Flights = Flights;
 db.Admin  = Admin
 db.Reservation  = Reservation
-db.Payments = Paymentsdb.Seats = Seats
+db.Payments = Payments
+db.Seats = Seats
 db.Seats = Seats
 
 module.exports = db
+
+// connection
+//   .sync({ alter: true, force: true })
+//   .then(() => console.log("tables created"))
+//   .catch(() => console.log("error creating tables"));
