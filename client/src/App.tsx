@@ -9,6 +9,7 @@ import PlaneBooking from "./Pages/PlaneBooking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
 import SignUp from "./Pages/SignUp";
+import FactureBooking from "./Pages/FactureBooking";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         
         
         <Route path="/planebooking" element={<PlaneBooking />}></Route>
+        <Route path="/facture" element={<FactureBooking />}></Route>
         <Route path="/SignUp" element={<SignUp />}></Route>
 
 
@@ -28,7 +30,7 @@ function App() {
         
         
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

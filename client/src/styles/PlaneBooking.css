@@ -14,7 +14,7 @@
   top: calc(50% - 1297.5px);
   left: calc(50% - 695px);
   width: 170.75rem;
-  height: 162.22rem;
+  height: 135rem;
 }
 .plane-seat-selection-child1,
 .vector-icon {
@@ -140,10 +140,13 @@
   gap: 0.25rem;
 }
 .plane-seat-selection {
-  top: -9.06rem;
-  left: -53.31rem;
-  width: 151.63rem;
-  height: 185.31rem;
+  position: relative;
+  
+  top: -40vh;
+  left: -2.31rem; 
+  width: 90rem;
+  height: 50rem;
+  z-index: 1;
 }
 .border {
   align-self: stretch;
@@ -550,7 +553,7 @@
   align-items: flex-start;
 }
 .seat-selector {
-  position: fixed;
+  /* position: fixed; */
   height: 100%;
   top: 0;
   right: 0;
@@ -583,7 +586,12 @@
   font-size: 0.88rem;
   color: #7c8db0;
   font-family: "Nunito Sans";
+  display: flex;
 }
 .tripma_container{
   position: relative;
+  height: 100vh;
 }
+
+
+

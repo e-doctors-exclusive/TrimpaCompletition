@@ -1,0 +1,733 @@
+.my-trips {
+    color: #605dec;
+  }
+  
+  .find-events-and,
+  .thank-you-for-container,
+  .tripma-partners-with {
+    position: absolute;
+    top: 21.63rem;
+    left: 6rem;
+    display: inline-block;
+    width: 47.25rem;
+    color: #7c8db0;
+  }
+  
+  .find-events-and,
+  .tripma-partners-with {
+    top: 12.56rem;
+    left: 59rem;
+    width: 25rem;
+  }
+  
+  .find-events-and {
+    top: 120.31rem;
+  }
+  
+  .bon-voyage-sophia {
+    position: absolute;
+    top: 16rem;
+    left: 6rem;
+    font-size: 1.5rem;
+    color: #605dec;
+  }
+  
+  .find-unique-experiences-container,
+  .shop-hotels {
+    position: absolute;
+    top: 9.5rem;
+    left: 59rem;
+    font-size: 1.5rem;
+  }
+  
+  .find-unique-experiences-container {
+    top: 117.25rem;
+  }
+  .bottom {
+    align-self: stretch;
+    height: 4rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 7.5rem;
+    text-align: right;
+    font-size: 1.13rem;
+  }
+  
+  .confirmation-number-38102940 {
+    position: absolute;
+    top: 19.06rem;
+    left: 6rem;
+    font-weight: 600;
+  }
+  
+  .flight-summary {
+    position: absolute;
+    top: 29.81rem;
+    left: 6rem;
+    font-size: 1.5rem;
+  }
+  
+  .arriving-march-21st,
+  .departing-february-25th {
+    position: absolute;
+    top: 33.38rem;
+    left: 6rem;
+    font-weight: 600;
+  }
+  
+  .arriving-march-21st {
+    top: 45.06rem;
+  }
+  
+  .seat-4f-business,
+  .seat-9f-economy {
+    position: absolute;
+    top: 52.88rem;
+    left: 6rem;
+    font-size: 1rem;
+    color: #7c8db0;
+  }
+  
+  .seat-9f-economy {
+    top: 41.19rem;
+  }
+  
+  .image-25-icon {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .label-3-right {
+    flex: 1;
+    position: relative;
+    text-align: right;
+  }
+  
+  .data-row-primary {
+    align-self: stretch;
+    flex-direction: row;
+    gap: 2.13rem;
+  }
+  
+  .data-row-combined,
+  .data-row-primary,
+  .data-row-secondary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .data-row-secondary {
+    align-self: stretch;
+    flex-direction: row;
+    gap: 2.13rem;
+    color: #7c8db0;
+  }
+  
+  .data-row-combined {
+    flex: 1;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    gap: 0.25rem;
+  }
+  
+  .flight-data-row,
+  .flight-data-row1 {
+    position: absolute;
+    top: 35.94rem;
+    left: 6rem;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #cbd4e6;
+    box-sizing: border-box;
+    width: 47.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.25rem 1rem;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #27273f;
+  }
+  
+  .flight-data-row1 {
+    top: 47.63rem;
+  }
+  
+  .payment-method,
+  .price-breakdown {
+    position: absolute;
+    top: 57.75rem;
+    left: 6rem;
+    font-size: 1.5rem;
+  }
+  
+  .payment-method {
+    top: 82.13rem;
+  }
+  
+  .div {
+    position: relative;
+    text-align: right;
+  }
+  
+  .arriving-flight-parent,
+  .baggage-fees-parent,
+  .departing-flight-parent,
+  .seat-upgrade-business-parent,
+  .subtotal-parent,
+  .taxes-94-parent {
+    position: absolute;
+    top: 61.31rem;
+    left: 6rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .arriving-flight-parent,
+  .baggage-fees-parent,
+  .seat-upgrade-business-parent,
+  .subtotal-parent,
+  .taxes-94-parent {
+    top: 63.63rem;
+  }
+  
+  .baggage-fees-parent,
+  .seat-upgrade-business-parent,
+  .subtotal-parent,
+  .taxes-94-parent {
+    top: 65.94rem;
+  }
+  
+  .seat-upgrade-business-parent,
+  .subtotal-parent,
+  .taxes-94-parent {
+    top: 68.25rem;
+  }
+  
+  .subtotal-parent,
+  .taxes-94-parent {
+    top: 70.56rem;
+  }
+  
+  .taxes-94-parent {
+    top: 72.88rem;
+  }
+  
+  .frame-child {
+    align-self: stretch;
+    position: relative;
+    background-color: #cbd4e6;
+    height: 0.06rem;
+  }
+  
+  .amount-paid,
+  .div6 {
+    position: relative;
+    font-weight: 600;
+  }
+  
+  .amount-paid {
+    flex: 1;
+  }
+  
+  .div6 {
+    text-align: right;
+  }
+  
+  .amount-paid-parent,
+  .rectangle-parent {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .amount-paid-parent {
+    align-self: stretch;
+    flex-direction: row;
+    padding: 0.75rem 0;
+  }
+  
+  .rectangle-parent {
+    position: absolute;
+    top: 75.44rem;
+    left: 6rem;
+    width: 25rem;
+    flex-direction: column;
+    color: #36374a;
+  }
+  
+  .name {
+    position: absolute;
+    bottom: 3.38rem;
+    left: 1.5rem;
+    font-size: 1.13rem;
+    font-weight: 600;
+  }
+  
+  .span {
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+  
+  .span1 {
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-family: "Nunito Sans";
+  }
+  
+  .card-number,
+  .expiration-date {
+    position: absolute;
+    bottom: 1.5rem;
+  }
+  
+  .card-number {
+    left: 1.5rem;
+    font-family: Roboto;
+  }
+  
+  .expiration-date {
+    right: 1.5rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: right;
+  }
+  
+  .credit-card,
+  .logo-icon {
+    position: absolute;
+    top: 1.75rem;
+    left: 1.5rem;
+    width: 4.75rem;
+    height: 1.5rem;
+    overflow: hidden;
+  }
+  
+  .credit-card {
+    top: 85.69rem;
+    left: 6rem;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #eb568c, #ed5e76);
+    box-shadow: -4px -4px 16px rgba(0, 0, 0, 0.1) inset,
+      4px 4px 16px rgba(255, 255, 255, 0.2) inset;
+    width: 18.75rem;
+    height: 11.75rem;
+    font-size: 1rem;
+    color: #f6f6fe;
+  }
+  
+  .flight-route {
+    position: absolute;
+    top: 127.06rem;
+    left: 6rem;
+    font-size: 1.5rem;
+  }
+  
+  .map-child {
+    position: absolute;
+    top: 9.39rem;
+    left: 18.45rem;
+    width: 14.47rem;
+    height: 1.51rem;
+    opacity: 0.5;
+  }
+  
+  .map-item {
+    position: absolute;
+    top: 0.44rem;
+    left: 0;
+    width: 95rem;
+    height: 24.56rem;
+    object-fit: cover;
+  }
+  
+  .map-inner {
+    position: absolute;
+    top: 10.31rem;
+    left: 32.69rem;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #1513a0;
+    box-sizing: border-box;
+    width: 0.38rem;
+    height: 0.38rem;
+  }
+  
+  .ellipse-div,
+  .nrt,
+  .sfo {
+    position: absolute;
+    top: 10.69rem;
+  }
+  
+  .ellipse-div {
+    left: 18.31rem;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #1513a0;
+    box-sizing: border-box;
+    width: 0.38rem;
+    height: 0.38rem;
+  }
+  
+  .nrt,
+  .sfo {
+    left: 31.19rem;
+    line-height: 1rem;
+  }
+  
+  .nrt {
+    top: 11.06rem;
+    left: 18.5rem;
+  }
+  
+  .vector-icon {
+    position: absolute;
+    top: 8.74rem;
+    left: 27.16rem;
+    width: 1.63rem;
+    height: 1.5rem;
+  }
+  
+  .button,
+  .button1,
+  .map {
+    position: absolute;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .map {
+    top: 130.63rem;
+    left: 6rem;
+    background-color: #e9e8fc;
+    border: 1px solid #cbd4e6;
+    width: 47.25rem;
+    height: 25rem;
+    font-size: 0.75rem;
+    color: #1513a0;
+  }
+  
+  .button,
+  .button1 {
+    top: 110.25rem;
+    left: 66.44rem;
+    border: 1px solid #605dec;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.75rem 1.25rem;
+    color: #605dec;
+  }
+  
+  .button1 {
+    top: 171.19rem;
+    left: 65rem;
+  }
+  
+  .you-can-email {
+    position: absolute;
+    top: 104rem;
+    left: 6rem;
+    color: #7c8db0;
+    display: inline-block;
+    width: 42.63rem;
+  }
+  
+  .share-your-travel {
+    position: absolute;
+    top: 100.94rem;
+    left: 6rem;
+    font-size: 1.5rem;
+  }
+  
+  .button2,
+  .button3 {
+    position: absolute;
+    top: 120.56rem;
+    border-radius: 4px;
+    height: 3rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  
+  .button2 {
+    left: 6rem;
+  }
+  
+  .button3 {
+    left: 16.81rem;
+    padding: 0.75rem 1rem;
+    color: #605dec;
+  }
+  
+  .label4,
+  .money-price-cost {
+    position: relative;
+    height: 2rem;
+  }
+  
+  .money-price-cost {
+    border-radius: 4px;
+    width: 2rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: none;
+  }
+  
+  .label4 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .base-text-input,
+  .helper-text {
+    align-self: stretch;
+    border-radius: 4px;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .base-text-input {
+    background-color: #fff;
+    border: 1px solid #a1b0cc;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+  
+  .helper-text {
+    display: none;
+    align-items: center;
+    padding: 0.13rem 0.25rem;
+    font-size: 0.75rem;
+  }
+  
+  .text-input,
+  .text-input1,
+  .text-input2 {
+    position: absolute;
+    top: 107.06rem;
+    left: 6rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    color: #7c8db0;
+  }
+  
+  .text-input1,
+  .text-input2 {
+    top: 111.56rem;
+  }
+  
+  .text-input2 {
+    top: 116.06rem;
+  }
+  
+  .image-icon {
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .price {
+    position: relative;
+    font-weight: 600;
+    text-align: right;
+    display: inline-block;
+    width: 4.5rem;
+    flex-shrink: 0;
+  }
+  
+  .title-row {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .description {
+    align-self: stretch;
+    position: relative;
+    font-size: 1rem;
+    color: #7c8db0;
+  }
+  
+  .card-full-card,
+  .card-full-card1,
+  .card-full-card2,
+  .card-full-card4,
+  .card-full-card5,
+  .data {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .data {
+    align-self: stretch;
+    padding: 1rem 1.5rem;
+    gap: 0.25rem;
+  }
+  
+  .card-full-card,
+  .card-full-card1,
+  .card-full-card2,
+  .card-full-card4,
+  .card-full-card5 {
+    position: absolute;
+    top: 41.88rem;
+    left: 59rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(28, 5, 77, 0.1), 0 12px 32px rgba(0, 0, 0, 0.05);
+    width: 25rem;
+    height: 20.63rem;
+    overflow: hidden;
+  }
+  
+  .card-full-card1,
+  .card-full-card2,
+  .card-full-card4,
+  .card-full-card5 {
+    top: 19.25rem;
+  }
+  
+  .card-full-card2,
+  .card-full-card4,
+  .card-full-card5 {
+    top: 87.13rem;
+  }
+  
+  .card-full-card4,
+  .card-full-card5 {
+    top: 125.44rem;
+  }
+  
+  .card-full-card5 {
+    top: 148.06rem;
+  }
+  
+  .hotel-the-flag {
+    font-weight: 600;
+  }
+  
+  .span2 {
+    font-family: "Noto Sans JP";
+  }
+  
+  .card-full-card6 {
+    position: absolute;
+    top: 64.5rem;
+    left: 59rem;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(28, 5, 77, 0.1), 0 12px 32px rgba(0, 0, 0, 0.05);
+    width: 25rem;
+    height: 20.63rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .x-close-no {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .base-callout,
+  .success {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  
+  .base-callout {
+    border-radius: 8px;
+    background-color: #eafffb;
+    border: 1px solid #007b65;
+    align-items: center;
+    padding: 1rem 1rem 1rem 1.5rem;
+    gap: 0.25rem;
+  }
+  
+  .success {
+    position: absolute;
+    top: 9.5rem;
+    left: 6rem;
+    align-items: flex-start;
+    font-size: 1rem;
+    color: #007b65;
+  }
+  .tripma_tripmafacture {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    height: 180.75rem;
+    overflow: hidden;
+    text-align: left;
+    font-size: 1.13rem;
+    color: #6e7491;
+    font-family: "Nunito Sans";
+  }
+  .footer-header {
+    flex: 1;
+    position: relative;
+  }
+  
+  .btnEmail{
+    left: 6rem;
+    background-color: #605dec;
+    padding: 0.75rem 1.25rem;
+    color: #fafafa;
+    border: none;
+  }
+  .btnAddanother{
+    padding: 0.75rem 1rem;
+    color: #605dec;
+    background-color: white ;
+    border: none;
+  }
+  .btnAddanother:hover{
+    color: white;
+    background-color: #605dec;
+  }
