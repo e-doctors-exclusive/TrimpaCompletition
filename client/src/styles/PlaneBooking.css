@@ -1,4 +1,4 @@
-/* .plane-seat-selection-child,
+.plane-seat-selection-child,
 .plane-seat-selection-item {
   position: absolute;
   top: calc(50% - 302.5px);
@@ -553,7 +553,7 @@
   align-items: flex-start;
 }
 .seat-selector {
-  /* position: fixed; */
+  position: fixed; 
   height: 100%;
   top: 0;
   right: 0;

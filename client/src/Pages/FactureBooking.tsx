@@ -7,6 +7,9 @@ import visalogo from "../Assets/Facture/visa-logo.png"
 import hotel1 from "../Assets/Facture/imagehotel1.png"
 import hotel2 from "../Assets/Facture/imagehotel2.png"
 import hotel3 from "../Assets/Facture/imagehotel3.png"
+import hotel4 from "../Assets/Facture/imagehotel4.png"
+import experience1 from "../Assets/Facture/experience1.png"
+import experience2 from "../Assets/Facture/experience2.png"
 
 const FactureBooking = () => {
     return (
@@ -215,7 +218,7 @@ const FactureBooking = () => {
                     </div>
                 </div>
                 <div className="card-full-card2">
-                    <img className="image-icon" alt="" src="/image2@2x.png" />
+                    <img className="image-icon" alt="" src={hotel4} />
                     <div className="data">
                         <div className="title-row">
                             <div className="amount-paid">9 Hours Shinjuku</div>
@@ -227,7 +230,7 @@ const FactureBooking = () => {
                     </div>
                 </div>
                 <div className="card-full-card2">
-                    <img className="image-icon" alt="" src="./dqsd.png" />
+                    <img className="image-icon" alt="" src={hotel4} />
                     <div className="data">
                         <div className="title-row">
                             <div className="amount-paid">9 Hours Shinjuku</div>
@@ -239,7 +242,7 @@ const FactureBooking = () => {
                     </div>
                 </div>
                 <div className="card-full-card4">
-                    <img className="image-icon" alt="" src="/image3@2x.png" />
+                    <img className="image-icon" alt="" src={experience1} />
                     <div className="data">
                         <div className="title-row">
                             <div className="amount-paid">Nihon Kimono</div>
@@ -251,7 +254,7 @@ const FactureBooking = () => {
                     </div>
                 </div>
                 <div className="card-full-card5">
-                    <img className="image-icon" alt="" src="/image4@2x.png" />
+                    <img className="image-icon" alt="" src={experience2} />
                     <div className="data">
                         <div className="title-row">
                             <div className="amount-paid">teamLab Borderless</div>

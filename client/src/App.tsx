@@ -22,7 +22,7 @@ function App() {
         
         <Route path="/planebooking" element={<PlaneBooking />}></Route>
         <Route path="/facture" element={<FactureBooking />}></Route>
-        <Route path="/SignUp" element={<SignUp />}></Route>
+        {/* <Route path="/SignUp" element={<SignUp />}></Route> */}
 
 
         
