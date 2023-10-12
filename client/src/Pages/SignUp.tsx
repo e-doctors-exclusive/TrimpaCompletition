@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/SignUp.css'
 import img from '../image/user.png'
 import email from '../image/gmail.png'
 import pass from '../image/padlock.png'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [form , setForm] = useState({})
+
+
   return (
     <div>
       <div className="form-box">
