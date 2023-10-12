@@ -2,6 +2,7 @@ import "../styles/landing.css";
 import React from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
+import Footer from "../Components/Footer";
 
 function LandingPage() {
 
@@ -240,6 +241,7 @@ function LandingPage() {
             </div>  
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

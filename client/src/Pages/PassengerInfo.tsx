@@ -5,6 +5,19 @@ import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../Components/Navbar";
 
 const PassengerInfo: React.FC = () => {
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    suffix: '',
+    date: '',
+    email: '',
+    phoneNumber: '',
+    redressNumber: '',
+    knownTravelerNumber: ''
+  });
+
   const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
