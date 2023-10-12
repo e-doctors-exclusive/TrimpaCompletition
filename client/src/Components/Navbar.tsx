@@ -12,7 +12,7 @@ import facebookIcon             from "../Assets/icons/thirdPartyIcons/facebook.s
 const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
-
+  
   const openSignInModal = () => {
     setSignInModalOpen(true);
   };
@@ -62,7 +62,7 @@ const Navbar = () => {
               </p>
             </div>
             <div className="labels">
-              <input type="text" placeholder="Email or phone number" />
+              <input type="text" placeholder="Email or phone number" onChange={()=>{}}/>
               <input type="password" placeholder="Password" />
             </div>
             <div className="term_conditions">
