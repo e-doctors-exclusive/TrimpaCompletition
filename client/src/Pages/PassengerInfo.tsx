@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent } from "react";
 import BagIllustration from "../Assets/Illustration.png";
 import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 
 interface FormData {
   firstName: string;
@@ -273,6 +274,7 @@ const PassengerInfo: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

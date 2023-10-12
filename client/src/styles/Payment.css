@@ -1,0 +1,35 @@
+#flousi_icon {
+    width: 17px;
+}
+
+.payment_main_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:5rem 7rem;
+}
+
+.payment_main_container p {
+    margin: 0;
+}
+
+.payment_container {
+    width: inherit;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.payment_methods {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
