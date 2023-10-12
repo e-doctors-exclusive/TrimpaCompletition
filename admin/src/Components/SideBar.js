@@ -42,7 +42,9 @@ const SideBar = ({clicked,setClicked}) => {
           <Link to="/airlines">
           <MenuItem icon={<AirlinesOutlinedIcon />}>Airlines</MenuItem>
           </Link>
+          <Link to="/addairline">
           <MenuItem icon={<AddCircleOutlinedIcon />}>Add a Brand</MenuItem>
+          </Link>
           <MenuItem icon={<InboxOutlinedIcon />}>Inbox</MenuItem>
           <MenuItem icon={<LogoutIcon />}>Logout</MenuItem>
         </Menu>

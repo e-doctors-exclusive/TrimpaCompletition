@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import Users from "./Components/Users"; 
 import Flights from "./Components/Flights";
 import Airlines from "./Components/Airlines"
+import AddBrand from "./Components/AddBrand";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Route path="/users" element={<Users />}></Route>
       <Route path="/flights" element={<Flights />}></Route>
       <Route path="/airlines" element={<Airlines />}></Route>
+      <Route path="/addairline" element={<AddBrand />}></Route>
       </Routes>
     </BrowserRouter>
     </ProSidebarProvider>
