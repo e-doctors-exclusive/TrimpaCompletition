@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal-overlayy {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.modal-content {
+.modal-contentt {
   background: white;
   width: 568px;
   height: 675px;
