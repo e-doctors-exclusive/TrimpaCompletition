@@ -27,6 +27,7 @@
     "cloudinary": "^1.41.0",
     "cloudinary-react": "^1.8.1",
     "echarts": "^5.4.3",
+    "firebase": "^10.4.0",
     "framer-motion": "^10.16.4",
     "highcharts": "^11.1.0",
     "mdb-react-ui-kit": "^6.3.0",

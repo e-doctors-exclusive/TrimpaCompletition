@@ -8,6 +8,8 @@ import Users from "./Components/Users";
 import Flights from "./Components/Flights";
 import Airlines from "./Components/Airlines"
 import AddBrand from "./Components/AddBrand";
+import AddFlight from "./Components/AddFlight";
+import Chat from "./Components/Chat";
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
       <Route path="/flights" element={<Flights />}></Route>
       <Route path="/airlines" element={<Airlines />}></Route>
       <Route path="/addairline" element={<AddBrand />}></Route>
+      <Route path="/addflight" element={<AddFlight />}></Route>
+      <Route path="/inbox" element={<Chat />}></Route>
       </Routes>
     </BrowserRouter>
     </ProSidebarProvider>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import SideBar from './SideBar';
 const columns= [
@@ -44,10 +45,14 @@ const rows = [
 ];
 
 export default function Flights() {
+  const [clicked, setClicked] = useState(true);
   return (
     <div style={{ display: 'flex' }}>
-        <SideBar />
-    <div style={{ height: 400, width: '100%',flex: 1, marginLeft: '250px' }}>
+        <SideBar setClicked={setClicked} clicked={clicked}/>
+    <div style={{ height: 400, width: '100%',display: 'flex',
+          flexWrap: 'wrap',
+          flex: 1,
+          marginLeft: clicked ? '250px' : '70px',}}>
       <DataGrid
         rows={rows}
         columns={columns}

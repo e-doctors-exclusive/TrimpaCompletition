@@ -45,7 +45,12 @@ const SideBar = ({clicked,setClicked}) => {
           <Link to="/addairline">
           <MenuItem icon={<AddCircleOutlinedIcon />}>Add a Brand</MenuItem>
           </Link>
+          <Link to="/addflight">
+          <MenuItem icon={<AddCircleOutlinedIcon />}>Add a Flight</MenuItem>
+          </Link>
+          <Link to="/inbox">
           <MenuItem icon={<InboxOutlinedIcon />}>Inbox</MenuItem>
+          </Link>
           <MenuItem icon={<LogoutIcon />}>Logout</MenuItem>
         </Menu>
       </Sidebar>
