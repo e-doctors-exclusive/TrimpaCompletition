@@ -4,7 +4,7 @@ import React, { useState }      from "react";
 import logo                     from "../Components/Logo";
 import Logo                     from "../Components/Logo";
 import SignUp                   from "../Pages/SignUp";
-import SignIn                   from "../Pages/SignIn";
+import SignInModal              from "../Pages/SignIn";
 import googleIcon               from "../Assets/icons/thirdPartyIcons/color.svg";
 import appleIcon                from "../Assets/icons/thirdPartyIcons/appleMac.svg";
 import facebookIcon             from "../Assets/icons/thirdPartyIcons/facebook.svg";
@@ -12,7 +12,6 @@ import facebookIcon             from "../Assets/icons/thirdPartyIcons/facebook.s
 const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
-  const [form, setForm] = useState({phone:0, email:"", password:""});
   
   const openSignInModal = () => {
     setSignInModalOpen(true);
@@ -30,6 +29,11 @@ const Navbar = () => {
     setSignUpModalOpen(false);
   };
 
+  const handleSignIn = (email: string, password: string) => {
+    console.log('Sign-in attempt with email:', email, 'and password:', password);
+    // closeSignInModal();
+  };
+
   return (
     <div className="navbar">
       <div className="logo">
@@ -40,13 +44,13 @@ const Navbar = () => {
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          <li onClick={openSignInModal}>Sign in</li>
+          <li onClick={openSignInModal} >Sign in</li>
         </ul>
         <button className="Sign-up"onClick={openSignUpModal}>
           Sign up
         </button>
       </div>
-      <SignIn isOpen={isSignInModalOpen} onClose={closeSignInModal} modalType="Sign In"/> 
+
       <SignUp isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
         <form className="main_signUp_container">
           <div className="signUp_header">
@@ -96,6 +100,13 @@ const Navbar = () => {
           </div>
         </form>
       </SignUp>
+      <SignInModal
+        isOpen={isSignInModalOpen}
+        onClose={closeSignInModal}
+        title="Sign In"
+        description="Please enter your email and password to sign in."
+        onSignIn={handleSignIn}
+      />
     </div>
   );
 };
