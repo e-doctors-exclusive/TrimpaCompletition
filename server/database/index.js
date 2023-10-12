@@ -5,10 +5,6 @@ const connection = new Sequelize("flightapp", "root", "root", {
   host: "localhost",
 });
 
-// connection
-//   .sync({ alter: true, force: true })
-//   .then(() => console.log("tables created"))
-//   .catch(() => console.log("error creating tables"));
 
 connection
   .authenticate()
@@ -16,13 +12,25 @@ connection
   .catch(() => console.log("connection rejected"));
 
 const User = require("../model/user.model")(connection, DataTypes);
-const Flights = require("../model/flights")(connection, DataTypes);
+const Flights = require("../model/flights.model")(connection, DataTypes);
+const Admin = require("../model/admin")(connection,DataTypes)
+const Reservation = require("../model/reservation.model")(connection,DataTypes)
+const Payments = require("../model/payment.model")(connection,DataTypes)
+const Seats = require("../model/seats.model")(connection,DataTypes)
+
+// connection
+//   .sync({ alter: true, force: true })
+//   .then(() => console.log("tables created"))
+//   .catch(() => console.log("error creating tables"));
 
 
 const db ={}
 db.User = User;
 db.Flights = Flights;
-
-
+db.Admin  = Admin
+db.Reservation  = Reservation
+db.Payments = Payments
+db.Seats = Seats
+db.Seats = Seats
 
 module.exports = db

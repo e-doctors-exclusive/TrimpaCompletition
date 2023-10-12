@@ -210,15 +210,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.divider {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background-color: #6e7491;
-  width: 0.06rem;
-}
+
 .flight-info-divider-dark {
   position: relative;
   background-color: #27273f;
@@ -574,7 +566,6 @@
   height: 6rem;
 }
 .tripma {
-  /* position: relative; */
   background-color: #fff;
   width: 100%;
   height: 56.25rem;
