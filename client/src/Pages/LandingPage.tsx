@@ -1,10 +1,29 @@
 import "../styles/landing.css";
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
+import { useDispatch,useSelector } from "react-redux";
+import { fetchFlights } from "../store/flights";
+import {AppDispatch, RootState} from "../store/index"
 
 function LandingPage() {
-  return (
+const [destFrom,setDestFrom] = useState("")
+const [destTo,setDestTo] = useState("")
+const [dateFrom,setDateFrom] = useState(new Date(Date.now()))
+
+const dispatch:AppDispatch = useDispatch()
+const flights = useSelector((state:RootState)=>state.flights)
+
+const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const selectedDate = new Date(e.target.value);
+  setDateFrom(selectedDate);
+};
+  
+useEffect(()=>{
+dispatch(fetchFlights({destFrom,destTo,dateFrom}))
+},[])
+
+return (
     <div>
       <TopHeader />
       <Navbar />
@@ -17,20 +36,20 @@ function LandingPage() {
           <div className="landing-inputs">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
-              <select name="from" id="" placeholder="where are you going">
+              <select onChange={(e)=>setDestFrom(e.target.value)} name="from" id="" placeholder="where are you going">
                 <option value="">where are you going</option>
               </select>
             </div>
 
             <div className="landing-input">
               <i className="fa-solid fa-plane-arrival"></i>
-              <select name="from" id="" placeholder="where are you going">
-                <option value="">where are you comming</option>
+              <select onChange={(e)=>setDestTo(e.target.value)} name="from" id="" placeholder="where are you going">
+                <option   value="">where are you comming</option>
               </select>
             </div>
 
             <div className="landing-input">
-              <input type="date" placeholder="whene ?" />
+              <input onChange={()=>{handleDateChange}} type="date" placeholder="whene ?" />
             </div>
 
             <div className="landing-input">
