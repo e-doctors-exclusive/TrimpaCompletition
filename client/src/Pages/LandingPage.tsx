@@ -4,7 +4,6 @@ import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 
 function LandingPage() {
-
   return (
     <div>
       <TopHeader />
@@ -180,7 +179,7 @@ function LandingPage() {
             </div>
           </div>
           <div className="btn">
-            <button className='middle-btn'>Explore more stays</button>
+            <button className="middle-btn">Explore more stays</button>
           </div>
           <div className="landing-header" id="ratee">
             <h5>
@@ -189,7 +188,10 @@ function LandingPage() {
           </div>
           <div className="rating-section">
             <div className="one-rate">
-              <img src="https://s3-alpha-sig.figma.com/img/cdf8/4f78/a0d24ee8a2573ce39911ae32c42177d7?Expires=1698019200&Signature=q9WDaO5JWYsqCgWgOoCvPyi2wpo~AVBFNplR4l5aPb-eJC0jJCBvhEYS~TPzF7e3h21mqYBh0VWvAPbzaMGNuaxVjUvDhN4-OLFvCP~IVtOVn6yQnIqpKV8o~-G50ngui5iec9UE9Oj2-m8v3KvDdORjcH9Zttw20GmPfOjCdAXC0YR2Ji261nT0Zt91n-S8y3NiygL4XTGxch2XZySt4FzEjYC8ScrijC9XHxUGu80NUYG1xRp56k~EmyTOq5~Wr9QqUz8yJQI3~jeFRF8BexU-EfJ~zH8IO3XVMowtJCS7vI7ZriB~ba5NlwMEavsGhO9OC4Wh-KkuvuDBFv4GFg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" />
+              <img
+                src="https://s3-alpha-sig.figma.com/img/cdf8/4f78/a0d24ee8a2573ce39911ae32c42177d7?Expires=1698019200&Signature=q9WDaO5JWYsqCgWgOoCvPyi2wpo~AVBFNplR4l5aPb-eJC0jJCBvhEYS~TPzF7e3h21mqYBh0VWvAPbzaMGNuaxVjUvDhN4-OLFvCP~IVtOVn6yQnIqpKV8o~-G50ngui5iec9UE9Oj2-m8v3KvDdORjcH9Zttw20GmPfOjCdAXC0YR2Ji261nT0Zt91n-S8y3NiygL4XTGxch2XZySt4FzEjYC8ScrijC9XHxUGu80NUYG1xRp56k~EmyTOq5~Wr9QqUz8yJQI3~jeFRF8BexU-EfJ~zH8IO3XVMowtJCS7vI7ZriB~ba5NlwMEavsGhO9OC4Wh-KkuvuDBFv4GFg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                alt=""
+              />
               <div className="rate-info">
                 <span className="nameuser">Yifei Chen</span>
                 <span>Seoul, South Korea | April 2019</span>
@@ -200,12 +202,18 @@ function LandingPage() {
                   <i className="fa-solid fa-star"></i>
                 </div>
                 <p>
-                  What a great experience using Tripma! I booked all of my flights for my gap year through Tripma and never had any issues. When I had to cancel a flight because of an emergency, Tripma support helped me read more...
+                  What a great experience using Tripma! I booked all of my
+                  flights for my gap year through Tripma and never had any
+                  issues. When I had to cancel a flight because of an emergency,
+                  Tripma support helped me read more...
                 </p>
               </div>
             </div>
             <div className="one-rate">
-              <img src="https://s3-alpha-sig.figma.com/img/cdf8/4f78/a0d24ee8a2573ce39911ae32c42177d7?Expires=1698019200&Signature=q9WDaO5JWYsqCgWgOoCvPyi2wpo~AVBFNplR4l5aPb-eJC0jJCBvhEYS~TPzF7e3h21mqYBh0VWvAPbzaMGNuaxVjUvDhN4-OLFvCP~IVtOVn6yQnIqpKV8o~-G50ngui5iec9UE9Oj2-m8v3KvDdORjcH9Zttw20GmPfOjCdAXC0YR2Ji261nT0Zt91n-S8y3NiygL4XTGxch2XZySt4FzEjYC8ScrijC9XHxUGu80NUYG1xRp56k~EmyTOq5~Wr9QqUz8yJQI3~jeFRF8BexU-EfJ~zH8IO3XVMowtJCS7vI7ZriB~ba5NlwMEavsGhO9OC4Wh-KkuvuDBFv4GFg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" />
+              <img
+                src="https://s3-alpha-sig.figma.com/img/cdf8/4f78/a0d24ee8a2573ce39911ae32c42177d7?Expires=1698019200&Signature=q9WDaO5JWYsqCgWgOoCvPyi2wpo~AVBFNplR4l5aPb-eJC0jJCBvhEYS~TPzF7e3h21mqYBh0VWvAPbzaMGNuaxVjUvDhN4-OLFvCP~IVtOVn6yQnIqpKV8o~-G50ngui5iec9UE9Oj2-m8v3KvDdORjcH9Zttw20GmPfOjCdAXC0YR2Ji261nT0Zt91n-S8y3NiygL4XTGxch2XZySt4FzEjYC8ScrijC9XHxUGu80NUYG1xRp56k~EmyTOq5~Wr9QqUz8yJQI3~jeFRF8BexU-EfJ~zH8IO3XVMowtJCS7vI7ZriB~ba5NlwMEavsGhO9OC4Wh-KkuvuDBFv4GFg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                alt=""
+              />
               <div className="rate-info">
                 <span className="nameuser">Yifei Chen</span>
                 <span>Seoul, South Korea | April 2019</span>
@@ -216,12 +224,18 @@ function LandingPage() {
                   <i className="fa-solid fa-star"></i>
                 </div>
                 <p>
-                  What a great experience using Tripma! I booked all of my flights for my gap year through Tripma and never had any issues. When I had to cancel a flight because of an emergency, Tripma support helped me read more...
+                  What a great experience using Tripma! I booked all of my
+                  flights for my gap year through Tripma and never had any
+                  issues. When I had to cancel a flight because of an emergency,
+                  Tripma support helped me read more...
                 </p>
               </div>
             </div>
             <div className="one-rate">
-              <img src="https://s3-alpha-sig.figma.com/img/cdf8/4f78/a0d24ee8a2573ce39911ae32c42177d7?Expires=1698019200&Signature=q9WDaO5JWYsqCgWgOoCvPyi2wpo~AVBFNplR4l5aPb-eJC0jJCBvhEYS~TPzF7e3h21mqYBh0VWvAPbzaMGNuaxVjUvDhN4-OLFvCP~IVtOVn6yQnIqpKV8o~-G50ngui5iec9UE9Oj2-m8v3KvDdORjcH9Zttw20GmPfOjCdAXC0YR2Ji261nT0Zt91n-S8y3NiygL4XTGxch2XZySt4FzEjYC8ScrijC9XHxUGu80NUYG1xRp56k~EmyTOq5~Wr9QqUz8yJQI3~jeFRF8BexU-EfJ~zH8IO3XVMowtJCS7vI7ZriB~ba5NlwMEavsGhO9OC4Wh-KkuvuDBFv4GFg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" />
+              <img
+                src="https://s3-alpha-sig.figma.com/img/cdf8/4f78/a0d24ee8a2573ce39911ae32c42177d7?Expires=1698019200&Signature=q9WDaO5JWYsqCgWgOoCvPyi2wpo~AVBFNplR4l5aPb-eJC0jJCBvhEYS~TPzF7e3h21mqYBh0VWvAPbzaMGNuaxVjUvDhN4-OLFvCP~IVtOVn6yQnIqpKV8o~-G50ngui5iec9UE9Oj2-m8v3KvDdORjcH9Zttw20GmPfOjCdAXC0YR2Ji261nT0Zt91n-S8y3NiygL4XTGxch2XZySt4FzEjYC8ScrijC9XHxUGu80NUYG1xRp56k~EmyTOq5~Wr9QqUz8yJQI3~jeFRF8BexU-EfJ~zH8IO3XVMowtJCS7vI7ZriB~ba5NlwMEavsGhO9OC4Wh-KkuvuDBFv4GFg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                alt=""
+              />
               <div className="rate-info">
                 <span className="nameuser">Yifei Chen</span>
                 <span>Seoul, South Korea | April 2019</span>
@@ -232,11 +246,13 @@ function LandingPage() {
                   <i className="fa-solid fa-star"></i>
                 </div>
                 <p>
-                  What a great experience using Tripma! I booked all of my flights for my gap year through Tripma and never had any issues. When I had to cancel a flight because of an emergency, Tripma support helped me read more...
+                  What a great experience using Tripma! I booked all of my
+                  flights for my gap year through Tripma and never had any
+                  issues. When I had to cancel a flight because of an emergency,
+                  Tripma support helped me read more...
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
