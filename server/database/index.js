@@ -27,13 +27,13 @@ Flights.hasMany(Seats);
 Seats.belongsTo(Flights);
 
 Seats.hasOne(Reservation);
-Reservation.belongsTo(Seats);
-
+Reservation.hasOne(Seats);
+;
 Reservation.hasOne(Payments);
-Payments.belongsTo(Reservation);
+Payments.hasOne(Reservation);
 
 User.belongsToMany(Flights, { through: 'User_Flights' });
-
+Flights.belongsToMany(User, { through: 'User_Flights' });
 const db ={}
 db.User = User;
 db.Flights = Flights;
@@ -46,6 +46,6 @@ db.Seats = Seats
 module.exports = db
 
 // connection
-//   .sync({ alter: true, force: true })
+//   .sync({force: true })
 //   .then(() => console.log("tables created"))
 //   .catch(() => console.log("error creating tables"));
