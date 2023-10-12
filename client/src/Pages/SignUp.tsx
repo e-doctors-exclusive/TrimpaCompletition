@@ -1,4 +1,4 @@
-import "../styles/SignUp.css"
+// import "../styles/SignUp.css"
 import React, {ReactNode} from 'react'
 interface ModalProps {
   isOpen: boolean;
@@ -11,8 +11,8 @@ function SignUp({ isOpen, onClose, children }: ModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div className="modal-overlayy" onClick={onClose}>
+      <div className="modal-contentt" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>

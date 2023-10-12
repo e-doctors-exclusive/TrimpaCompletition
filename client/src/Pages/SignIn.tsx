@@ -1,25 +1,63 @@
-import React from "react";
+import "../styles/SignIn.css"
+import React, { useState } from 'react';
 
-interface SignInProps {
+interface SignInModalProps {
   isOpen: boolean;
   onClose: () => void;
-  modalType: 'Sign In' | 'Sign Up'; 
+  title: string;
+  description: string;
+  onSignIn: (email: string, password: string) => void;
 }
 
-const SignIn: React.FC<SignInProps> = ({ isOpen, onClose, modalType }) => {
-    if (!isOpen) {
-      return null;
-    }
+const SignInModal: React.FC<SignInModalProps> = ({
+  isOpen,
+  onClose,
+  title,
+  description,
+  onSignIn,
+}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   
-    return (
-      <div className="modal">
-        <div className="modal-content">
-        <h2>{modalType}</h2>
-          {/* Add your sign-in form and content here */}
-          <button onClick={onClose}>Close</button>
-        </div>
-      </div>
-    );
+
+  const handleSignIn = () => {
+    onSignIn(email, password);
+  };
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+  console.log(email);
+    }
   };
 
-export default SignIn;
+  const handleModalClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+  };
+
+  return (
+    <div className={`modal ${isOpen ? 'open' : ''}`} onClick={handleOverlayClick}>
+      <div className="modal-content" onClick={handleModalClick}>
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <div className="input-fields">
+          <input
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button onClick={handleSignIn}>Sign In</button>
+      </div>
+    </div>
+  );
+};
+
+export default SignInModal;
