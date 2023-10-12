@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { ProSidebarProvider } from "react-pro-sidebar";
+import { ProSidebarProvider } from "react-pro-sidebar";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from "./Components/LandingPage";
 import SideBar from "./Components/SideBar"
@@ -27,6 +28,7 @@ function App() {
       <Route path="/inbox" element={<Chat />}></Route>
       </Routes>
     </BrowserRouter>
+    </ProSidebarProvider>
     </ProSidebarProvider>
   );
 }
