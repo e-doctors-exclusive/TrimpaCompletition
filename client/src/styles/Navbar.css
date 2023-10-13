@@ -53,3 +53,8 @@
 .nav_right {
   display: flex;
 }
+
+#user-avatar{
+  width: 3rem;
+  height: 3rem;
+}
