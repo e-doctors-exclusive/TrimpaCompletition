@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ProSidebarProvider } from "react-pro-sidebar";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from "./Components/LandingPage";
@@ -16,6 +16,20 @@ import axios from "axios";
 
 
 function App() {
+const [brand,setBrand]= useState([])
+
+  const  fetch = ()=>{
+    axios.get("http://localhost:1128/brands/getAll")
+    .then((res) => {
+      console.log(res);
+      setBrand(res.data)
+      })
+  }
+
+  useEffect(() => {
+    fetch()
+    
+  }, []);
 
  
 
@@ -28,7 +42,7 @@ function App() {
       <Route path="/home" element={<Home />}></Route>
       <Route path="/users" element={<Users />}></Route>
       <Route path="/flights" element={<Flights />}></Route>
-      <Route path="/airlines" element={<Airlines />}></Route>
+      <Route path="/airlines" element={<Airlines brand={brand} />}></Route>
       <Route path="/addairline" element={<AddBrand />}></Route>
       <Route path="/addflight" element={<AddFlight />}></Route>
       <Route path="/inbox" element={<Chat />}></Route>

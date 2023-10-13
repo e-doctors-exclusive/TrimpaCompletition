@@ -8,7 +8,7 @@ const flightsRoutes = require("./router/flights.router.js")
 
 const seatsRoutes = require("./router/seats.routes.js")
 const ReservationRoutes = require("./router/reservation.routes.js")
-
+const brandsRoutes = require("./router/brandes.routes.js")
 const paymentRoutes = require("./router/payment.routes.js")
 require("./database/index.js")
 app.use(express.json());
@@ -21,6 +21,7 @@ app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)
 
 app.use("/payment",paymentRoutes)
+app.use("/brands", brandsRoutes )
 
 
 

@@ -2,10 +2,17 @@ import React, { useState } from 'react';
 import SideBar from './SideBar';
 import { CloudinaryContext, Image } from 'cloudinary-react';
 import '../styles/Add.css';
+import axios from 'axios';
 
 const AddBrand = () => {
   const [clicked, setClicked] = useState(true);
+
   const [imageUrl, setImageUrl] = useState('');
+  const [name, setName]=useState('');
+  const [description, setDescription]=useState('');
+  const [email, setEmail] = useState('');
+  
+  
 
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
@@ -22,6 +29,17 @@ const AddBrand = () => {
     const data = await response.json();
     setImageUrl(data.secure_url);
   };
+  
+
+
+   const addBrands = (body)=>{
+    axios.post('http://localhost:1128/brands/add', body)
+    .then(res => {
+        console.log('added');
+      })
+   }
+
+
 
   return (
     <div style={{ display: 'flex' }}>
@@ -52,16 +70,16 @@ const AddBrand = () => {
               accept="image/*"
               onChange={handleFileUpload}
             />
-            <input type="text" className="input" placeholder="Airline Name" />
-            <input type="email" className="input" placeholder="email" />
-            <label htmlFor="textarea">Airline Description</label>
+            <input type="text" className="input" placeholder="Airline Name" onChange={((e)=>{setName(e.target.value)})}/>
+            <input type="email" className="input" placeholder="email"  onChange={((e)=>{setEmail(e.target.value)})}/>
+            <label htmlFor="textarea" onChange={((e)=>{setDescription(e.target.value)})}>Airline Description</label>
             <textarea required="" cols="50" rows="10" id="textarea" name="textarea"></textarea>
-            <button>Add Airline</button>
+            <button onClick={(()=>{ addBrands( {name , description, email} )})}>Add Airline</button>
           </form>
         </CloudinaryContext>
       </div>
     </div>
-  );
+  );  
 };
 
 export default AddBrand;
