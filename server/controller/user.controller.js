@@ -69,3 +69,13 @@ module.exports.login = async (req, res) => {
     res.status(404).json({ message: "cannot login", e });
   }
 };
+
+
+module.exports.update = async (req, res) => {
+  try{
+    const user = await User.update({...req.body},{where:{id:req.params.id}});
+    res.json(user);
+  } catch (e) {
+    res.status(404).json({ message: "error updating" , e});
+  }
+}
