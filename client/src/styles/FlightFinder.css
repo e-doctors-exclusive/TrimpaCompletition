@@ -13,9 +13,49 @@
     background-color: aliceblue;
     width: 90%;
     height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4rem;
 }
 
 .flighFinder_info {
     background-color: blue;
-    height: 10rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.flighFinder_search {
+    width: 70%;
+    height: 60px;
+    background-color: chartreuse;
+}
+
+.flighFinder_search_filter {
+    width: 57%;
+    height: 53px;
+    background-color: chartreuse;
+}
+
+.flighFinded {
+    background-color: blue;
+    height: 747px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.flighs_finded_data {
+    background-color: brown;
+    height: 747px;
+    width: 63%;
+}
+
+.flighs_finded_pricing {
+    background-color: rgb(111, 79, 141);
+    height: 747px;
+    width: 33%;
 }
