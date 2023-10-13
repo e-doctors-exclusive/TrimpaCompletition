@@ -1,8 +1,5 @@
-import "../styles/SignIn.css"
-import React, { useState,useEffect } from 'react';
-import { useDispatch,useSelector } from "react-redux";
-import {AppDispatch, RootState} from "../store"
-
+import "../styles/SignIn.css";
+import React, { useState } from "react";
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -19,23 +16,20 @@ const SignInModal: React.FC<SignInModalProps> = ({
   description,
   onSignIn,
 }) => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  
-  const dispatch:AppDispatch = useDispatch()
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignIn = () => {
     onSignIn(email,password)  };
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
-  console.log(email);
+      // console.log(email);
     }
   };
 
   const handleModalClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
   };
 
 
@@ -45,7 +39,10 @@ const SignInModal: React.FC<SignInModalProps> = ({
 
 
   return (
-    <div className={`modal ${isOpen ? 'open' : ''}`} onClick={handleOverlayClick}>
+    <div
+      className={`modal ${isOpen ? "open" : ""}`}
+      onClick={handleOverlayClick}
+    >
       <div className="modal-content" onClick={handleModalClick}>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -63,7 +60,10 @@ const SignInModal: React.FC<SignInModalProps> = ({
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={handleSignIn}>Sign In</button>
+        <button onClick={()=>{
+          handleSignIn()
+          onClose()
+        }}>Sign In</button>
       </div>
     </div>
   );

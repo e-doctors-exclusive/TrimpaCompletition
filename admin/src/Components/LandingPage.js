@@ -10,7 +10,6 @@ import {
     MDBIcon,
     MDBInput
   } from 'mdb-react-ui-kit'
-  import img from '../images/img3.webp'
   import test1 from '../images/test1.jpg'
 function LandingPage() {
    
@@ -30,7 +29,7 @@ function LandingPage() {
 
             <h3 className="fw-normal mb-3 ps-5 pb-3" style={{letterSpacing: '1px'}}>Log in</h3>
 
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg"/>
+            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" />
             <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
 
             <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg'>Login</MDBBtn>

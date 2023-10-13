@@ -19,7 +19,6 @@ app.use(cors())
 app.use("/users", userRoutes)
 app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)
-
 app.use("/payment",paymentRoutes)
 
 
