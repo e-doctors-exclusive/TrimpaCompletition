@@ -3,6 +3,10 @@ import React,{useState,useEffect} from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
+import { useDispatch,useSelector } from "react-redux";
+import { fetchFlights } from "../store/flights";
+import {AppDispatch, RootState} from "../store"
+
 function LandingPage() {
 const [destFrom,setDestFrom] = useState("TUN")
 const [destTo,setDestTo] = useState("FR")
