@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
+import DatePickers from "../Components/DatePickers";
 
 function LandingPage() {
   return (
@@ -32,6 +33,7 @@ function LandingPage() {
 
             <div className="landing-input">
               <input type="date" placeholder="whene ?" />
+              {/* <DatePickers /> */}
             </div>
 
             <div className="landing-input">
