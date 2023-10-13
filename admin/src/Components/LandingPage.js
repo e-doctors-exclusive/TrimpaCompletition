@@ -52,7 +52,9 @@ function LandingPage() {
 
             <h3 className="fw-normal mb-3 ps-5 pb-3" style={{letterSpacing: '1px'}}>Log in</h3>
 
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" onChange={((e)=>{setEmail(e.target.value)})}/>
+            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" onChange={((e)=>{
+              console.log("this is email",e.target.value);
+              setEmail(e.target.value)})}/>
             <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg" onChange={((e)=>{setPassword(e.target.value)})}/>
 
             <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg' onClick={(()=>{handleLogin( {email,password})})}>Login</MDBBtn>

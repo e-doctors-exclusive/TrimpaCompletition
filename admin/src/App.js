@@ -12,24 +12,11 @@ import AddFlight from "./Components/AddFlight";
 import Chat from "./Components/Chat";
 
 
-import axios from "axios";
+
 
 
 function App() {
-const [brand,setBrand]= useState([])
 
-  const  fetch = ()=>{
-    axios.get("http://localhost:1128/brands/getAll")
-    .then((res) => {
-      console.log(res);
-      setBrand(res.data)
-      })
-  }
-
-  useEffect(() => {
-    fetch()
-    
-  }, []);
 
  
 
@@ -42,7 +29,7 @@ const [brand,setBrand]= useState([])
       <Route path="/home" element={<Home />}></Route>
       <Route path="/users" element={<Users />}></Route>
       <Route path="/flights" element={<Flights />}></Route>
-      <Route path="/airlines" element={<Airlines brand={brand} />}></Route>
+      <Route path="/airlines" element={<Airlines/>}></Route>
       <Route path="/addairline" element={<AddBrand />}></Route>
       <Route path="/addflight" element={<AddFlight />}></Route>
       <Route path="/inbox" element={<Chat />}></Route>
