@@ -70,6 +70,14 @@ module.exports.login = async (req, res) => {
   }
 };
 
+module.exports.getAll = async (req, res) => {
+  try {
+      const getAll = await User.findAll({})
+      res.status(200).send(getAll)
+  } catch (error) {
+      throw new Error(error)
+  }
+};
 
 module.exports.update = async (req, res) => {
   try{

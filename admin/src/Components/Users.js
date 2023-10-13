@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import SideBar from './SideBar';
 import Button from '@mui/material/Button';
+import axios from 'axios';
+
 const columns= [
-    
   { field: 'id', headerName: 'ID', width: 70 },
   {
-    field: 'fullName',
+    field: 'name',
     headerName: 'Full name',
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
@@ -41,20 +42,22 @@ const columns= [
   }
 ];
 
-const rows = [
-  { id: 1, fullName:'John Snow', email:'john@yahoo.fr', phone:'23456733' },
-  { id: 2, fullName:'Joe Tribiani', email:'john@yahoo.fr', phone:'23456733' },
-  { id: 3, fullName:'Harry Potter', email:'john@yahoo.fr', phone:'23456733'  },
-  { id: 4, fullName:'John Doe', email:'john@yahoo.fr', phone:'23456733'  },
-  { id: 5, fullName:'Jiji Hadid', email:'john@yahoo.fr', phone:'23456733'  },
-  { id: 6, fullName:'Mariah Curry', email:'john@yahoo.fr', phone:'23456733' },
-  { id: 7, fullName:'Bango ', email:'john@yahoo.fr', phone:'23456733'  },
-  { id: 8, fullName:'Leith Ayadi', email:'john@yahoo.fr', phone:'23456733'  },
-  { id: 9, fullName:'Aymen Makhlouf', email:'john@yahoo.fr', phone:'23456733' },
-];
-
 export default function Users() {
   const [clicked, setClicked] = useState(true);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:1128/users/getAll');
+        setRows(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchUsers();
+  }, []);
+
   return (
     <div style={{ display: 'flex' }}>
         <SideBar setClicked={setClicked} clicked={clicked} />
