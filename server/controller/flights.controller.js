@@ -1,5 +1,7 @@
 const { Flights } = require("../database/index.js")
 
+const { Op } = require("sequelize")
+
 module.exports.getFlights = async (req, res) => {
     try {
         const getAll = await Flights.findAll(({ 
@@ -20,6 +22,13 @@ module.exports.getAllFlights = async (req, res) => {
         throw new Error(error)
     }
 };
+
+
+
+
+
+
+
 
 
 
