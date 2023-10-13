@@ -69,3 +69,12 @@ module.exports.login = async (req, res) => {
     res.status(404).json({ message: "cannot login", e });
   }
 };
+
+module.exports.getAll = async (req, res) => {
+  try {
+      const getAll = await User.findAll({})
+      res.status(200).send(getAll)
+  } catch (error) {
+      throw new Error(error)
+  }
+};
