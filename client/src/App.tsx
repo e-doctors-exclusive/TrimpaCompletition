@@ -25,7 +25,7 @@ function App() {
         <Route path="/FlightFinder" element={<FlightFinder />}></Route>
       </Routes>
       <ToastContainer />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

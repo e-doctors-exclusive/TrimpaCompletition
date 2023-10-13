@@ -1,12 +1,27 @@
 import "../styles/landing.css";
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
-import DatePickers from "../Components/DatePickers";
-
 function LandingPage() {
-  return (
+const [destFrom,setDestFrom] = useState("TUN")
+const [destTo,setDestTo] = useState("FR")
+const [dateFrom,setDateFrom] = useState("")
+const dispatch:AppDispatch = useDispatch()
+const flights = useSelector((state:RootState)=>state.flights)
+console.log(flights);
+
+const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(e.target.value,'this is date')
+
+  setDateFrom(e.target.value);
+};
+  
+useEffect(()=>{
+
+},[])
+
+return (
     <div>
       <TopHeader />
       <Navbar />
@@ -19,21 +34,20 @@ function LandingPage() {
           <div className="landing-inputs">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
-              <select name="from" id="" placeholder="where are you going">
+              <select onChange={(e)=>setDestFrom(e.target.value)} name="from" id="" placeholder="where are you going">
                 <option value="">where are you going</option>
               </select>
             </div>
 
             <div className="landing-input">
               <i className="fa-solid fa-plane-arrival"></i>
-              <select name="from" id="" placeholder="where are you going">
-                <option value="">where are you comming</option>
+              <select onChange={(e)=>setDestTo(e.target.value)} name="from" id="" placeholder="where are you going">
+                <option   value="">where are you comming</option>
               </select>
             </div>
 
             <div className="landing-input">
               <input type="date" placeholder="whene ?" />
-              {/* <DatePickers /> */}
             </div>
 
             <div className="landing-input">
@@ -41,7 +55,9 @@ function LandingPage() {
               <input type="number" placeholder="Adults" />
             </div>
             <div>
-              <button className="landing-boutton">search</button>
+              <button className="landing-boutton" onClick={()=>{
+                dispatch(fetchFlights({destFrom,destTo,dateFrom}))
+              }}>search</button>
             </div>
           </div>
         </div>

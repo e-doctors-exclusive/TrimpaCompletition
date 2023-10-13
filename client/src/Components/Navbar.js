@@ -17,6 +17,8 @@ const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const  {loggedIn }  = useSelector(state => state.user );
+  // console.log(loggedIn);
   const [form, setForm] = useState({
     phomail: "",
     password: "",
@@ -56,7 +58,7 @@ const Navbar = () => {
       });
     }
     else{
-      toast.warnin("Agree to privacy policy",{
+      toast.warning("Agree to privacy policy",{
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -90,10 +92,11 @@ const Navbar = () => {
       await axios
         .post("http://localhost:1128/users/login", { email, password })
         .then((res) => {
-          console.log(res.data.user);
           dispatch(setUser({ user: res.data.user.dataValues }));
-          dispatch(setLoggedIn({ loggedIn: true, token: res.data.user.token }));
-          // console.log(user);
+          dispatch(setLoggedIn({ loggedIn: true, token: res.data.user.token }))
+          toast.success(`Welcome ${res.data.user.dataValues.email || res.data.user.dataValues.phone}`,{
+            position: "top-center"
+          })
         })
         .catch((e) => console.log(e));
     } else {
@@ -119,11 +122,11 @@ const Navbar = () => {
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          <li onClick={openSignInModal}>Sign in</li>
+          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : null}
         </ul>
-        <button className="Sign-up" onClick={openSignUpModal}>
+        {!loggedIn ? <button className="Sign-up" onClick={openSignUpModal}>
           Sign up
-        </button>
+        </button> : null}
       </div>
 
       <SignUp isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
