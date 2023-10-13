@@ -14,7 +14,7 @@ module.exports = (connection , DataTypes)=>{
         },
         password : {
             type : DataTypes.STRING,
-            required : true,
+            required : true
         },
         phone :{
             type : DataTypes.INTEGER,

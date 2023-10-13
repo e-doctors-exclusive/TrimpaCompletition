@@ -1,5 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
+
 const connection = new Sequelize("flightapp", "root", "root", {
   dialect: "mysql",
   host: "localhost",
@@ -17,11 +18,24 @@ const Admin = require("../model/admin")(connection,DataTypes)
 const Reservation = require("../model/reservation.model")(connection,DataTypes)
 const Payments = require("../model/payment.model")(connection,DataTypes)
 const Seats = require("../model/seats.model")(connection,DataTypes)
+const UserFligths = require("../model/UserFligths.modal")(connection)
 
-// connection
-//   .sync({ alter: true, force: true })
-//   .then(() => console.log("tables created"))
-//   .catch(() => console.log("error creating tables"));
+
+
+Flights.hasMany(Reservation);
+Reservation.belongsTo(Flights);
+
+Flights.hasMany(Seats);
+Seats.belongsTo(Flights);
+
+Seats.hasOne(Reservation);
+Reservation.hasOne(Seats);
+
+Reservation.hasOne(Payments);
+Payments.hasOne(Reservation);
+
+User.belongsToMany(Flights, { through: UserFligths });
+Flights.belongsToMany(User, { through: UserFligths });
 
 
 const db ={}
@@ -31,6 +45,11 @@ db.Admin  = Admin
 db.Reservation  = Reservation
 db.Payments = Payments
 db.Seats = Seats
-db.Seats = Seats
+
+// connection
+//   .sync({force: true })
+//   .then(() => console.log("tables created"))
+//   .catch((error) => {throw error;});
 
 module.exports = db
+
