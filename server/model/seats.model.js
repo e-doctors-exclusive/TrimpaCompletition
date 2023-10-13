@@ -1,24 +1,22 @@
-const {DataTypes} = require("sequelize")
+const { DataTypes } = require("sequelize");
 
-module.exports = (Sequelize)=>{
-    const Seats = Sequelize.define("Seats",
-    {
-        availble : {
-            type: DataTypes.BOOLEAN,
-            allowNull:false,
-        },
-        type : {
-            type: DataTypes.ENUM({
-                values: ['Business', 'Economic']
-              }),
-              allowNull:false
-        },
+module.exports = (Sequelize) => {
+  const Seats = Sequelize.define("Seats", {
+    availble: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    type: {
+      type: DataTypes.ENUM({
+        values: ["Business", "Economic"],
+      }),
+      allowNull: false,
+    },
 
-        name : {
-            type:DataTypes.STRING,
-            allowNull:false
-        }
-
-    })
-    return Seats
-}
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
+  return Seats;
+};

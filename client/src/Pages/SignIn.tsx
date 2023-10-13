@@ -1,5 +1,5 @@
-import "../styles/SignIn.css"
-import React, { useState } from 'react';
+import "../styles/SignIn.css";
+import React, { useState } from "react";
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -16,27 +16,33 @@ const SignInModal: React.FC<SignInModalProps> = ({
   description,
   onSignIn,
 }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignIn = () => {
-    onSignIn(email, password);
-  };
+    onSignIn(email,password)  };
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
-  console.log(email);
+      // console.log(email);
     }
   };
 
   const handleModalClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
   };
 
+
+  // useEffect(()=>{
+    
+  //   },[])
+
+
   return (
-    <div className={`modal ${isOpen ? 'open' : ''}`} onClick={handleOverlayClick}>
+    <div
+      className={`modal ${isOpen ? "open" : ""}`}
+      onClick={handleOverlayClick}
+    >
       <div className="modal-content" onClick={handleModalClick}>
         <h2>{title}</h2>
         <p>{description}</p>
@@ -54,7 +60,7 @@ const SignInModal: React.FC<SignInModalProps> = ({
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={handleSignIn}>Sign In</button>
+        <button className="signInbtn" onClick={handleSignIn}>Sign In</button>
       </div>
     </div>
   );
