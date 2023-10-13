@@ -1,26 +1,19 @@
-const { where } = require("sequelize");
-const { Flights, Seats } = require("../database/index.js");
+const { Flights } = require("../database/index.js")
 
 module.exports.getFlights = async (req, res) => {
-  try {
-    const getAll = await Flights.findAll(
-      ({ where: { destFrom: req.params.destFrom } },
-      { where: { destTo: req.params.destTo } },
-      { where: { dateFrom: req.params.dateFrom } })
-    );
-    res.status(200).send(getAll);
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-module.exports.getAllFlights = async (req, res) => {
     try {
-        const getAllFlights = await Flights.findAll({})
-        res.status(200).send(getAllFlights)
+        const getAll = await Flights.findAll(({ 
+            
+            where: { destFrom: {[Op.like]:req.params.destFrom},
+            destTo: {[Op.like]:req.params.destTo}  }, 
+            dateFrom: {[Op.like]:req.params.dateFrom}})) 
+        res.status(200).send(getAll)
     } catch (error) {
         throw new Error(error)
     }
 };
+
+
 
 module.exports.findOneFlight = async (req, res) => {
   try {
