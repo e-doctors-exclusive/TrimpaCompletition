@@ -34,9 +34,13 @@ const AddBrand = () => {
 
    const addBrands = (body)=>{
     axios.post('http://localhost:1128/brands/add', body)
-    .then(res => {
-        console.log('added');
-      })
+    .then((res)=>{
+      console.log("Successfully added brands");
+      setClicked(false);
+    })
+    .catch((err)=>{
+     console.log(err)
+    })
    }
 
 
@@ -74,7 +78,7 @@ const AddBrand = () => {
             <input type="email" className="input" placeholder="email"  onChange={((e)=>{setEmail(e.target.value)})}/>
             <label htmlFor="textarea" onChange={((e)=>{setDescription(e.target.value)})}>Airline Description</label>
             <textarea required="" cols="50" rows="10" id="textarea" name="textarea"></textarea>
-            <button onClick={(()=>{ addBrands( {name , description, email} )})}>Add Airline</button>
+            <button onClick={(()=>{ addBrands( {name:name , description:description, email:email} )})}>Add Airline</button>
           </form>
         </CloudinaryContext>
       </div>
