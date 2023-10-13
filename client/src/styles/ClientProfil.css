@@ -109,6 +109,7 @@
 
 .profile_img > button {
   background-color: transparent;
+  color: blue;
   padding: 0.4rem 2rem;
   border-radius: 8px;
   border: 2px solid rgb(137, 137, 255);
@@ -120,7 +121,7 @@
   border-radius: 6px;
   width: 100%;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
@@ -193,4 +194,139 @@
 
 .profile_information > button:hover {
   background-color: rgba(0, 0, 255, 0.753);
+}
+
+@media (min-width:  106rem) {
+  .profile_img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 23rem;
+  }
+
+  #avatar_title {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  
+  #avatar {
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+  }
+
+  .profile_information {
+    height: 76%;
+    border-radius: 6px;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.65rem;
+  }
+
+  .username_email input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .user_info input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > button {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    background-color: rgb(0, 0, 255);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (min-width: 110rem) {
+
+  .profile_img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 27rem;
+  }
+
+  #avatar_title {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  
+  #avatar {
+    height: 95px;
+    width: 95px;
+    border-radius: 50%;
+  }
+
+  .profile_information {
+    height: 76%;
+    border-radius: 6px;
+    width: 100%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.1rem;
+  }
+
+  .username_email input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .user_info input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(210, 210, 255);
+    transition: 0.3s;
+  }
+
+  .profile_information > button {
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: 8px;
+    color: white;
+    border: none;
+    background-color: rgb(0, 0, 255);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
 }
