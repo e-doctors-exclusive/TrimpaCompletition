@@ -14,6 +14,9 @@ const Home = () => {
     <SideBar setClicked={setClicked} clicked={clicked} />
     <div
       style={{
+        marginTop:'200px',
+        
+    
         display: 'flex',
         flexWrap: 'wrap',
         flex: 1,

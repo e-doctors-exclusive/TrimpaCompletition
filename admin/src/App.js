@@ -12,12 +12,19 @@ import AddFlight from "./Components/AddFlight";
 import Chat from "./Components/Chat";
 
 
+import axios from "axios";
+
+
 function App() {
+
+ 
+
+
   return (
     <ProSidebarProvider>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<LandingPage />}></Route>
+      <Route path="/" element={<LandingPage/>}></Route>
       <Route path="/home" element={<Home />}></Route>
       <Route path="/users" element={<Users />}></Route>
       <Route path="/flights" element={<Flights />}></Route>
