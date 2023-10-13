@@ -7,7 +7,6 @@ interface ModalProps {
 }
 
 function SignUp({ isOpen, onClose, children }: ModalProps) {
-  console.log(children);
   
   if (!isOpen) return null;
 
