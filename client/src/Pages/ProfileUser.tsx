@@ -1,9 +1,11 @@
 import "../styles/ClientProfil.css";
-import React from "react";
+import React ,{useState } from "react";
 import Navbar from "../Components/Navbar";
 import Avatar from "../Assets/avatar.jpeg"
 
 const ProfileUser: React.FC = () => {
+  const [form, setForm ] = useState({name:"",email:"",password:"",phone:"",adress:"",city:"",state:"",country:"",zip:0,image:""})
+
   return (
     <>
       <Navbar />
@@ -37,8 +39,8 @@ const ProfileUser: React.FC = () => {
             <div className="profile_information">
               <p>Change User Information here</p>
               <div className="username_email">
-                <input type="text" placeholder="username" />
-                <input type="text" placeholder="email" />
+                <input type="text" placeholder="username"  onChange={(e)=>{setForm({...form,name:e.target.value})}}/>
+                <input type="text" placeholder="email" onChange={(e)=>{setForm({...form,email:e.target.value})}}/>
               </div>
               <input type="text" placeholder="Adress*" />
               <div className="user_info">
