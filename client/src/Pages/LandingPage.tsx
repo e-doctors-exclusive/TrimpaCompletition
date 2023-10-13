@@ -1,41 +1,41 @@
 import "../styles/landing.css";
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllFlights, fetchFlights } from "../store/flights";
-import {AppDispatch, RootState} from "../store"
+import { AppDispatch, RootState } from "../store";
 
 function LandingPage() {
-const [destFrom,setDestFrom] = useState("TUN")
-const [destTo,setDestTo] = useState("FR")
-const [dateFrom,setDateFrom] = useState("")
+  const [destFrom, setDestFrom] = useState("TUN");
+  const [destTo, setDestTo] = useState("FR");
+  const [dateFrom, setDateFrom] = useState("");
 
-interface objTypeAll{
-  destFrom:string
-  destTo:string
-  dateFrom:Date
-  dateTo:Date
-  price:number
-}
+  interface objTypeAll {
+    destFrom: string;
+    destTo: string;
+    dateFrom: Date;
+    dateTo: Date;
+    price: number;
+  }
 
-const dispatch:AppDispatch = useDispatch()
-const flights = useSelector((state:RootState)=>state.flights)
-const allFlight = useSelector((state:{Flights:{allFlights:[]}})=>state.Flights.allFlights)
-console.log(flights);
+  const dispatch: AppDispatch = useDispatch();
+  const flights = useSelector((state: RootState) => state.flights);
+  // const allFlight = useSelector((state:{Flights:{allFlights:[]}})=>state.Flights.allFlights)
+  // console.log(flights);
 
-const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  console.log(e.target.value,'this is date')
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value, "this is date");
 
-  setDateFrom(e.target.value);
-};
-  
-useEffect(()=>{
-  dispatch(fetchAllFlights())
-},[])
+    setDateFrom(e.target.value);
+  };
 
-return (
+  useEffect(() => {
+    dispatch(fetchAllFlights());
+  }, []);
+
+  return (
     <div>
       <TopHeader />
       <Navbar />
@@ -48,15 +48,25 @@ return (
           <div className="landing-inputs">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
-              <select onChange={(e)=>setDestFrom(e.target.value)} name="from" id="" placeholder="where are you going">
+              <select
+                onChange={(e) => setDestFrom(e.target.value)}
+                name="from"
+                id=""
+                placeholder="where are you going"
+              >
                 <option value="">where are you going</option>
               </select>
             </div>
 
             <div className="landing-input">
               <i className="fa-solid fa-plane-arrival"></i>
-              <select onChange={(e)=>setDestTo(e.target.value)} name="from" id="" placeholder="where are you going">
-                <option   value="">where are you comming</option>
+              <select
+                onChange={(e) => setDestTo(e.target.value)}
+                name="from"
+                id=""
+                placeholder="where are you going"
+              >
+                <option value="">where are you comming</option>
               </select>
             </div>
 
@@ -69,9 +79,14 @@ return (
               <input type="number" placeholder="Adults" />
             </div>
             <div>
-              <button className="landing-boutton" onClick={()=>{
-                dispatch(fetchFlights({destFrom,destTo,dateFrom}))
-              }}>search</button>
+              <button
+                className="landing-boutton"
+                onClick={() => {
+                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }));
+                }}
+              >
+                search
+              </button>
             </div>
           </div>
         </div>

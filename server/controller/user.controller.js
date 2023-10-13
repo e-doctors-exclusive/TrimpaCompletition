@@ -49,7 +49,6 @@ module.exports.login = async (req, res) => {
           const Token = jwt.sign(
             {
               userId: user.id,
-              password: password,
             },
             "secret",
             { expiresIn: "24h" }
@@ -86,4 +85,35 @@ module.exports.update = async (req, res) => {
   } catch (e) {
     res.status(404).json({ message: "error updating" , e});
   }
+}
+
+
+  module.exports.getOne= async(req,res)=>{
+    let token 
+    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
+    try{
+// Get token fron header
+token= req.headers.authorization.split(" ")[1]
+
+//Verify token 
+const decoded= jwt.verify(token,"secret")
+console.log("hi decoded",decoded)
+//Get User from the token 
+const currentuser = await User.findByPk(decoded.userId)
+
+res.json(currentuser)
+
+}
+
+catch(error){
+    console.log(error)
+    res.status(401).json({message:"not authorized"})
+
+}    }
+
+if(!token){
+
+    res.status(401).json({message:"not authorized"})
+}
+
 }
