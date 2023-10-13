@@ -22,7 +22,7 @@ function App() {
         <Route path="/PlaneBooking" element={<PlaneBooking />}></Route>
       </Routes>
       <ToastContainer />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
