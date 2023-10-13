@@ -4,23 +4,25 @@ import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchFlights } from "../store/flights";
-import {AppDispatch, RootState} from "../store/index"
+import {AppDispatch, RootState} from "../store"
 
 function LandingPage() {
-const [destFrom,setDestFrom] = useState("")
-const [destTo,setDestTo] = useState("")
-const [dateFrom,setDateFrom] = useState(new Date(Date.now()))
+const [destFrom,setDestFrom] = useState("TUN")
+const [destTo,setDestTo] = useState("FR")
+const [dateFrom,setDateFrom] = useState("")
 
 const dispatch:AppDispatch = useDispatch()
 const flights = useSelector((state:RootState)=>state.flights)
+console.log(flights);
 
 const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const selectedDate = new Date(e.target.value);
-  setDateFrom(selectedDate);
+  console.log(e.target.value,'this is date')
+
+  setDateFrom(e.target.value);
 };
   
 useEffect(()=>{
-dispatch(fetchFlights({destFrom,destTo,dateFrom}))
+
 },[])
 
 return (
@@ -49,7 +51,9 @@ return (
             </div>
 
             <div className="landing-input">
-              <input onChange={()=>{handleDateChange}} type="date" placeholder="whene ?" />
+              <input onChange={(e)=>{
+                handleDateChange(e)
+                }} type="date" placeholder="whene ?" />
             </div>
 
             <div className="landing-input">
@@ -57,7 +61,9 @@ return (
               <input type="number" placeholder="Adults" />
             </div>
             <div>
-              <button className="landing-boutton">search</button>
+              <button className="landing-boutton" onClick={()=>{
+                dispatch(fetchFlights({destFrom,destTo,dateFrom}))
+              }}>search</button>
             </div>
           </div>
         </div>

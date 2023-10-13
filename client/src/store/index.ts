@@ -1,13 +1,13 @@
 import { configureStore} from "@reduxjs/toolkit"
 import FlightsSlice from "./flights"
-import flights from "./flights";
+import userLoginSlice from "./userSlicer"
 
-const store = configureStore({
+export const store = configureStore({
     reducer:{
-        flights:FlightsSlice
+        flights:FlightsSlice,
+        user : userLoginSlice
     }
 })
-console.log(flights);
 
 
 export type RootState = ReturnType<typeof store.getState>

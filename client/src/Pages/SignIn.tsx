@@ -1,5 +1,8 @@
 import "../styles/SignIn.css"
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useDispatch,useSelector } from "react-redux";
+import {AppDispatch, RootState} from "../store"
+
 
 interface SignInModalProps {
   isOpen: boolean;
@@ -16,14 +19,14 @@ const SignInModal: React.FC<SignInModalProps> = ({
   description,
   onSignIn,
 }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  
+  const dispatch:AppDispatch = useDispatch()
   
 
   const handleSignIn = () => {
-    onSignIn(email, password);
-  };
+    onSignIn(email,password)  };
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -34,6 +37,12 @@ const SignInModal: React.FC<SignInModalProps> = ({
   const handleModalClick = (e: React.MouseEvent) => {
     e.stopPropagation(); 
   };
+
+
+  // useEffect(()=>{
+    
+  //   },[])
+
 
   return (
     <div className={`modal ${isOpen ? 'open' : ''}`} onClick={handleOverlayClick}>
