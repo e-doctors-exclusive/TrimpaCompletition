@@ -8,6 +8,9 @@ import ProfileUser from "./Pages/ProfileUser";
 import PlaneBooking from "./Pages/PlaneBooking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   return (
@@ -18,6 +21,7 @@ function App() {
         <Route path="/PassengerInfo" element={<PassengerInfo />}></Route>
         <Route path="/PlaneBooking" element={<PlaneBooking />}></Route>
       </Routes>
+      <ToastContainer />
       {/* <Footer /> */}
     </div>
   );

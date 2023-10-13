@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface init {
+    user: string,
+    userToken : string,
+    loggedIn: boolean
+}
+
 const initialState = {
-    user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).user : null,
-    userToken : localStorage.getItem('userToken') ? JSON.parse(localStorage.getItem('userToken')).userToken : null,
-    loggedIn: localStorage.getItem('userToken') ? true : false,
+    user: "",
+    userToken :"" ,
+    loggedIn: false,
 }
 
 
@@ -12,10 +18,12 @@ export const userSlicer = createSlice({
     initialState,
     reducers: {
         setUser:  (state , action)=>{
-            state.user = action.payload
+            const {user} = action.payload;
+            state.user = user
+            localStorage.setItem('user', JSON.stringify(user))
         },
         logout: (state)=>{
-            state.user = null 
+            state.user = "" 
             state.loggedIn = false
             localStorage.removeItem('userToken')
             localStorage.removeItem('user')

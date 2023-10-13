@@ -1,6 +1,6 @@
 import "../styles/Navbar.css";
 import "../styles/SignUp.css";
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./Logo";
 import Logo from "./Logo";
 import SignUp from "../Pages/SignUp";
@@ -11,6 +11,7 @@ import facebookIcon from "../Assets/icons/thirdPartyIcons/facebook.svg";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, logout, setLoggedIn } from "../store/userSlicer";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
@@ -21,20 +22,51 @@ const Navbar = () => {
     password: "",
   });
   const [checks, setChecks] = useState({ c1: false, c2: false });
-  const { user } = useSelector((state) => {
-    return state.user;
-  });
-
   const handleCreate = async (form) => {
     // conso  le.log(form);
-    await axios
+    if(checks.c1) {
+      await axios
       .post("http://localhost:1128/users/signup", form)
       .then((result) => {
         console.log(result);
+        toast.success("Account created successfully", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        })
+        
       })
       .catch((err) => {
+        toast.error("User already exists", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
         console.log(err);
       });
+    }
+    else{
+      toast.warnin("Agree to privacy policy",{
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    }
   };
 
   const openSignInModal = () => {
@@ -58,10 +90,10 @@ const Navbar = () => {
       await axios
         .post("http://localhost:1128/users/login", { email, password })
         .then((res) => {
-          console.log(res.data.user.dataValues);
-          dispatch(setUser(res.data.user.dataValues))
-          dispatch(setLoggedIn({loggedIn: true, token:res.data.user.dataValues.token})); 
-          console.log(user);
+          console.log(res.data.user);
+          dispatch(setUser({ user: res.data.user.dataValues }));
+          dispatch(setLoggedIn({ loggedIn: true, token: res.data.user.token }));
+          // console.log(user);
         })
         .catch((e) => console.log(e));
     } else {
@@ -77,9 +109,6 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
-
-  },[user])
   return (
     <div className="navbar">
       <div className="logo">
