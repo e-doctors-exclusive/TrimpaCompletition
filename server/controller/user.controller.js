@@ -71,52 +71,47 @@ module.exports.login = async (req, res) => {
 
 module.exports.getAll = async (req, res) => {
   try {
-      const getAll = await User.findAll({})
-      res.status(200).send(getAll)
+    const getAll = await User.findAll({});
+    res.status(200).send(getAll);
   } catch (error) {
-      throw new Error(error)
+    throw new Error(error);
   }
 };
 
 module.exports.update = async (req, res) => {
-  try{
-    const user = await User.update({...req.body},{where:{id:req.params.id}});
+  try {
+    const user = await User.update(
+      { ...req.body },
+      { where: { id: req.params.id } }
+    );
     res.json(user);
   } catch (e) {
-    res.status(404).json({ message: "error updating" , e});
+    res.status(404).json({ message: "error updating", e });
   }
-}
+};
 
+module.exports.getOne = async (req, res) => {
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      token = req.headers.authorization.split(" ")[1];
+      const decoded = jwt.verify(token, "secret");
+      console.log("hi decoded", decoded);
+      const currentuser = await User.findByPk(decoded.userId);
 
-  module.exports.getOne= async(req,res)=>{
-    let token 
-    if(req.headers.authorization && req.headers.authorization.startsWith("Bearer")){
-    try{
-// Get token fron header
-token= req.headers.authorization.split(" ")[1]
+      res.json(currentuser);
+    } catch (error) {
+      console.log(error);
+      res.status(401).json({ message: "not authorized" });
+    }
+  }
 
-//Verify token 
-const decoded= jwt.verify(token,"secret")
-console.log("hi decoded",decoded)
-//Get User from the token 
-const currentuser = await User.findByPk(decoded.userId)
-
-res.json(currentuser)
-
-}
-
-catch(error){
-    console.log(error)
-    res.status(401).json({message:"not authorized"})
-
-}    }
-
-if(!token){
-
-    res.status(401).json({message:"not authorized"})
-}
-
-}
+  if (!token) {
+    res.status(401).json({ message: "not authorized" });
+  }
 };
 
 module.exports.deleted = async (req, res) => {
