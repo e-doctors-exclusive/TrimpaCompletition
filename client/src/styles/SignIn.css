@@ -53,7 +53,7 @@
   }
   
   /* Styles for the buttons */
-  button {
+  .signInbtn {
     background-color: #007BFF;
     color: #fff;
     padding: 10px 20px;
@@ -65,7 +65,7 @@
   }
   
   /* Styles for the close button */
-  button.close {
+  .signInbtn .close {
     background-color: #ccc;
   }
   
