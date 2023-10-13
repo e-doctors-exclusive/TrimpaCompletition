@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import { useDispatch,useSelector } from "react-redux";
-import { fetchFlights } from "../store/flights";
+import { fetchAllFlights, fetchFlights } from "../store/flights";
 import {AppDispatch, RootState} from "../store"
 
 function LandingPage() {
@@ -11,8 +11,17 @@ const [destFrom,setDestFrom] = useState("TUN")
 const [destTo,setDestTo] = useState("FR")
 const [dateFrom,setDateFrom] = useState("")
 
+interface objTypeAll{
+  destFrom:string
+  destTo:string
+  dateFrom:Date
+  dateTo:Date
+  price:number
+}
+
 const dispatch:AppDispatch = useDispatch()
 const flights = useSelector((state:RootState)=>state.flights)
+const allFlight = useSelector((state:{Flights:{allFlights:[]}})=>state.Flights.allFlights)
 console.log(flights);
 
 const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +31,7 @@ const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 };
   
 useEffect(()=>{
-
+  dispatch(fetchAllFlights())
 },[])
 
 return (

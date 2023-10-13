@@ -8,7 +8,7 @@ import ProfileUser from "./Pages/ProfileUser";
 import PlaneBooking from "./Pages/PlaneBooking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer";
-import { ToastContainer } from "react-toastify"
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
