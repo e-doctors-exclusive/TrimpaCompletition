@@ -7,16 +7,22 @@ interface objType{
 
 }
 
-
+interface objTypeAll{
+    destFrom:string
+    destTo:string
+    dateFrom:Date
+    dateTo:Date
+    price:number
+}
 
 export const fetchFlights = createAsyncThunk("/flights/destFrom/destTo/dateFrom",async(obj:objType)=>{
     const res = await axios.get(`http://localhost:1128/flights/getAll/${obj.destFrom}/${obj.destTo}/${obj.dateFrom}`)
-    console.log(res.data,"this is from store")
     return res.data
 })
 
-export const fetchAllFlights  = createAsyncThunk("/flights/getAll",async()=>{
+export const fetchAllFlights = createAsyncThunk("/flights/getAll",async()=>{
     const res = await axios.get("http://localhost:1128/flights/getAll")
+    
     return res.data
 })
 

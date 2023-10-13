@@ -19,6 +19,8 @@ const Reservation = require("../model/reservation.model")(connection,DataTypes)
 const Payments = require("../model/payment.model")(connection,DataTypes)
 const Seats = require("../model/seats.model")(connection,DataTypes)
 const UserFligths = require("../model/UserFligths.modal")(connection)
+const Brands = require("../model/brands.model")(connection,DataTypes)
+
 
 
 User.belongsToMany(Flights, { through: UserFligths });
@@ -37,6 +39,9 @@ Reservation.hasOne(Seats);
 Reservation.hasOne(Payments);
 Payments.belongsTo(Reservation);
 
+Brands.hasMany(Flights);
+Flights.belongsTo(Brands);
+
 
 const db ={}
 db.User = User;
@@ -45,6 +50,7 @@ db.Admin  = Admin
 db.Reservation  = Reservation
 db.Payments = Payments
 db.Seats = Seats
+db.Brands = Brands
 
 // connection
 //   .sync({force: true , alter : true })

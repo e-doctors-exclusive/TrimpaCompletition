@@ -8,9 +8,11 @@ import { fetchAllFlights, fetchFlights } from "../store/flights";
 import { AppDispatch, RootState } from "../store";
 
 function LandingPage() {
-  const [destFrom, setDestFrom] = useState("TUN");
-  const [destTo, setDestTo] = useState("FR");
+  const [destFrom, setDestFrom] = useState("");
+  const [destTo, setDestTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
+  // const [fromArr, setFrom] = useState<string[]>([]);
+  // // const [flights,setFlights] = useState<object>([]);
 
   interface objTypeAll {
     destFrom: string;
@@ -21,19 +23,30 @@ function LandingPage() {
   }
 
   const dispatch: AppDispatch = useDispatch();
-  const flights = useSelector((state: RootState) => state.flights);
-  // const allFlight = useSelector((state:{Flights:{allFlights:[]}})=>state.Flights.allFlights)
-  // console.log(flights);
 
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value, "this is date");
+  const flights = useSelector((state: RootState) => state.flights.Flights);
+// console.log(fligh  ts,"this is flights");
 
-    setDateFrom(e.target.value);
-  };
+
+  const allFlight: objTypeAll[] = useSelector(
+    (state: RootState) => state.flights.allFlights
+  );
+
 
   useEffect(() => {
     dispatch(fetchAllFlights());
   }, []);
+  
+  let a = allFlight.map((e:objTypeAll)=>(
+    e.destFrom
+    ))
+    let b = allFlight.map((e:objTypeAll)=>(
+      e.destTo
+      ))
+  let flight ={origin:[...new Set(a)],destination:[...new Set(b)]}
+  // console.log(flight.origin)
+      
+
 
   return (
     <div>
@@ -54,7 +67,10 @@ function LandingPage() {
                 id=""
                 placeholder="where are you going"
               >
-                <option value="">where are you going</option>
+                <option>where are you going</option>
+                {flight.origin.map((e) => (
+                  <option value={e}>{e}</option>
+                ))}
               </select>
             </div>
 
@@ -66,12 +82,19 @@ function LandingPage() {
                 id=""
                 placeholder="where are you going"
               >
-                <option value="">where are you comming</option>
+                <option>where are you going</option>
+                {flight.destination.map((e:any) => (
+                  <option value={e}>{e}</option>
+                ))}
               </select>
             </div>
 
             <div className="landing-input">
-              <input type="date" placeholder="whene ?" />
+              <input
+                onChange={(e) => setDateFrom(e.target.value)}
+                type="date"
+                placeholder="whene ?"
+              />
             </div>
 
             <div className="landing-input">
@@ -81,9 +104,9 @@ function LandingPage() {
             <div>
               <button
                 className="landing-boutton"
-                onClick={() => {
-                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }));
-                }}
+                onClick={() =>
+                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }))
+                }
               >
                 search
               </button>
