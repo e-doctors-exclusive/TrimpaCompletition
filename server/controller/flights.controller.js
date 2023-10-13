@@ -12,6 +12,14 @@ module.exports.getFlights = async (req, res) => {
         throw new Error(error)
     }
 };
+module.exports.getAllFlights = async (req, res) => {
+    try {
+        const getAll = await Flights.findAll({}) 
+        res.status(200).send(getAll)
+    } catch (error) {
+        throw new Error(error)
+    }
+};
 
 
 
