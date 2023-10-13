@@ -11,11 +11,15 @@ const FlightFinder: React.FC = () => {
             <div className="flighFinder_search_filter"></div>
           </div>
           <div className="flighFinded">
-            <div className=""></div>
-            <div className=""></div>
+            <div className="flighs_finded_data">
+              <div className="flight_data_container"></div>
+              <button className="show_flights">Show all flights</button>
+              <div className="trip_direction_map"></div>
+            </div>
+            <div className="flighs_finded_pricing"></div>
           </div>
         </div>
-        <div>
+        <div className="flight_suggestion">
           <div></div>
           <div></div>
         </div>
