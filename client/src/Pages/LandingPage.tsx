@@ -2,6 +2,7 @@ import "../styles/landing.css";
 import React,{useState,useEffect} from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
+import Footer from "../Components/Footer";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchAllFlights, fetchFlights } from "../store/flights";
 import {AppDispatch, RootState} from "../store"
@@ -60,9 +61,7 @@ return (
             </div>
 
             <div className="landing-input">
-              <input onChange={(e)=>{
-                handleDateChange(e)
-                }} type="date" placeholder="whene ?" />
+              <input type="date" placeholder="whene ?" />
             </div>
 
             <div className="landing-input">
@@ -290,6 +289,7 @@ return (
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

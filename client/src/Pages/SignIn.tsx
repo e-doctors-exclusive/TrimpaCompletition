@@ -60,7 +60,7 @@ const SignInModal: React.FC<SignInModalProps> = ({
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button onClick={()=>{
+        <button className="signInbtn" onClick={()=>{
           handleSignIn()
           onClose()
         }}>Sign In</button>

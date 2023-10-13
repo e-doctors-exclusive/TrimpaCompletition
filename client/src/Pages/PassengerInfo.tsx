@@ -1,10 +1,53 @@
 import "../styles/PassengerInfo.css";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import BagIllustration from "../Assets/Illustration.png";
 import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
+
+interface FormData {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  suffix: string;
+  date: string;
+  email: string;
+  phoneNumber: string;
+  redressNumber: string;
+  knownTravelerNumber: string;
+  sameAsPassenger1: boolean;
+}
 
 const PassengerInfo: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    suffix: "",
+    date: "",
+    email: "",
+    phoneNumber: "",
+    redressNumber: "",
+    knownTravelerNumber: "",
+    sameAsPassenger1: false,
+  });
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData, 
+      [name]: value, 
+    });
+  };
+
+  const handleCheckBox = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: checked, 
+    });
+  };
+
   const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
@@ -17,6 +60,11 @@ const PassengerInfo: React.FC = () => {
     }
   };
 
+  const handleLogState = () => {
+    console.log('handleLogState called');
+    console.log(formData);
+  };
+  
   return (
     <div>
       <Navbar />
@@ -34,23 +82,83 @@ const PassengerInfo: React.FC = () => {
             <div className="from1">
               <p>Passenger 1 (Adult)</p>
               <div className="form1-inputs">
-                <input type="text" placeholder="First name*" />
-                <input type="text" placeholder="Middle" />
-                <input type="text" placeholder="Last name*" />
-                <input type="text" placeholder="Suffix" />
-                <input id="flexBasis" type="date" placeholder="Date of birth" />
+                <input
+                  type="text"
+                  placeholder="First name*"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Middle"
+                  name="middleName"
+                  value={formData.middleName}
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Last name*"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Suffix"
+                  name="suffix"
+                  value={formData.suffix}
+                  onChange={handleInputChange}
+                />
+                <input
+                  id="flexBasis"
+                  type="date"
+                  placeholder="Date of birth"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div className="from2">
-              <input type="text" placeholder="Email address*" />
-              <input type="text" placeholder="Phone number*" />
-              <input type="text" placeholder="Redress number" />
-              <input type="text" placeholder="Known traveller number*" />
+              <input
+                type="text"
+                placeholder="Email address*"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                placeholder="Phone number*"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                placeholder="Redress number"
+                name="redressNumber"
+                value={formData.redressNumber}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                placeholder="Known traveller number*"
+                name="knownTravelerNumber"
+                value={formData.knownTravelerNumber}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form3">
               <p>Emergency contact information</p>
               <div className="check">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  name="sameAsPassenger1"
+                  checked={formData.sameAsPassenger1}
+                  onChange={handleCheckBox}
+                />
                 <p>Same as Passenger 1</p>
               </div>
               <div className="form4">
@@ -113,7 +221,7 @@ const PassengerInfo: React.FC = () => {
             </div>
             <div className="choice-btns">
               <button>Save and close</button>
-              <button id="larger">Select seats</button>
+              <button id="larger" onClick={handleLogState}>Select seats</button>
             </div>
           </div>
           <div className="trips">
@@ -166,6 +274,7 @@ const PassengerInfo: React.FC = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
