@@ -7,8 +7,7 @@ import LandingPage from "./Pages/LandingPage";
 import ProfileUser from "./Pages/ProfileUser";
 import PlaneBooking from "./Pages/PlaneBooking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./Components/Footer";
-
+import PlaneSection from "./Pages/PlaneSection";
 function App() {
   return (
     <div>
