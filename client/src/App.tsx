@@ -10,6 +10,9 @@ import PlaneBooking         from "./Pages/PlaneBooking";
 import Payment             from "./Pages/Payment";  
 import FlightFinder from "./Pages/FlightFinder";
 
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <div>
@@ -21,6 +24,7 @@ function App() {
         <Route path="/Payment" element={<Payment />}></Route>
         <Route path="/FlightFinder" element={<FlightFinder />}></Route>
       </Routes>
+      <ToastContainer />
       {/* <Footer /> */}
     </div>
   );

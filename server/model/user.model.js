@@ -2,6 +2,7 @@ module.exports = (connection , DataTypes)=>{
     const User = connection.define("User",{
         name:{
             type : DataTypes.STRING,
+            defaultValue : null
         },
         email : {
             type : DataTypes.STRING,
