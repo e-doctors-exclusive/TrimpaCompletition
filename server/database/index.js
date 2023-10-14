@@ -23,6 +23,9 @@ const Brands = require("../model/brands.model")(connection,DataTypes)
 
 
 
+User.belongsToMany(Flights, { through: UserFligths });
+Flights.belongsToMany(User, { through: UserFligths });
+
 
 Flights.hasMany(Reservation);
 Reservation.belongsTo(Flights);
@@ -34,10 +37,7 @@ Seats.hasOne(Reservation);
 Reservation.hasOne(Seats);
 
 Reservation.hasOne(Payments);
-Payments.hasOne(Reservation);
-
-User.belongsToMany(Flights, { through: UserFligths });
-Flights.belongsToMany(User, { through: UserFligths });
+Payments.belongsTo(Reservation);
 
 Brands.hasMany(Flights);
 Flights.belongsTo(Brands);
@@ -53,7 +53,7 @@ db.Seats = Seats
 db.Brands = Brands
 
 // connection
-//   .sync({force: true })
+//   .sync({force: true , alter : true })
 //   .then(() => console.log("tables created"))
 //   .catch((error) => {throw error;});
 
