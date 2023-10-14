@@ -1,6 +1,12 @@
 import "../styles/FlightFinder.css";
 import React from "react";
 import ArrowDownIcon from "../Assets/icons/chevron down.svg";
+import DatePickers from "../Components/DatePickers";
+import DepartIcon from "../Assets/icons/departure.svg";
+import ArrivalIcon from "../Assets/icons/arrival.svg";
+import CalendarIcon from "../Assets/icons/calendar.svg";
+import PersonIcon from "../Assets/icons/person solid.svg";
+import FlightData from "../Components/FlightData";
 
 const FlightFinder: React.FC = () => {
   return (
@@ -9,10 +15,21 @@ const FlightFinder: React.FC = () => {
         <div className="flighFinder_container">
           <div className="flighFinder_info">
             <ul className="flighFinder_search">
-              <li></li>
-              <li></li>
-              {/* calendar */}
-              {/* adult */}
+              <li>
+                <img src={DepartIcon} alt="" />
+                SFO
+              </li>
+              <li>
+                <img src={ArrivalIcon} alt="" />
+                NRT
+              </li>
+              <li>
+                <img src={CalendarIcon} alt="" />
+                Depart - Return
+              </li>
+              <li>
+                <img src={PersonIcon} alt="" />1 adult
+              </li>
               <button>Search</button>
             </ul>
             <div className="flighFinder_search_filter">
@@ -44,25 +61,20 @@ const FlightFinder: React.FC = () => {
           </div>
           <div className="flighFinded">
             <div className="flighs_finded_data">
+              <p>
+                Choose a <span>departing</span> flight
+              </p>
               <div className="flight_data_container">
                 {/* data li bech tmapi aliha */}
-                <div className="flight-data">
-                  <div>
-                    <p>16h 45m</p>
-                    <p>Huwaiian Airlines</p>
-                  </div>
-                  <div>
-                    <p>7:00AM - 4:15PM</p>
-                  </div>
-                  <div>
-                    <p>1 stop</p>
-                    <p>2h 45m in HNL</p>
-                  </div>
-                  <div>
-                    <p>$624</p>
-                    <p>round trip</p>
-                  </div>
-                </div>
+                <FlightData />
+                <FlightData />
+                <FlightData />
+                <FlightData />
+                <FlightData />
+                <FlightData />
+                <FlightData />
+                <FlightData />
+                <FlightData />
                 {/* data li bech tmapi aliha */}
               </div>
               {/* <button className="show_flights">Show all flights</button> */}
