@@ -251,9 +251,9 @@
 
 .date_picker_modal {
   position: absolute;
-  height: 60%;
+  height: 14%;
   width: 37%;
-  top: 56%;
+  top: 14%;
   left: 37%;
   transition: 0.3s;
 }
