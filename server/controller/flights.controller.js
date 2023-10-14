@@ -44,11 +44,34 @@ module.exports.findOneFlight = async (req, res) => {
 };
 
 module.exports.addFlight = async (req, res) => {
+  const {
+    destFrom,
+    destTo,
+    dateFrom,
+    timeFrom,
+    dateTo,
+    timeTo,
+    price,
+    brand,
+    numberOfSeats,
+  } = req.body;
+
   try {
-    const add = await Flights.create(req.body);
-    res.status(201).send(add);
+    const flight = await Flights.create({
+      destFrom,
+      destTo,
+      dateFrom,
+      departureTime: timeFrom,
+      dateTo,
+      arrivalTime: timeTo,
+      price,
+      brand,
+      numberOfSeats,
+    });
+    res.status(201).json(flight);
   } catch (error) {
-    throw new Error(error);
+    console.error(error);
+    res.status(500).json({ message: 'Error adding flight' });
   }
 };
 

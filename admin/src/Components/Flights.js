@@ -9,7 +9,9 @@ const columns = [
   { field: 'destFrom', headerName: 'From', width: 160 },
   { field: 'destTo', headerName: 'Destination', width: 160 },
   { field: 'dateFrom', headerName: 'Date From', width: 160 },
+  { field: 'departureTime', headerName: 'Departure', width: 160 },
   { field: 'dateTo', headerName: 'Date To', width: 160 },
+  { field: 'arrivalTime', headerName: 'Arrival', width: 160 },
   { field: 'price', headerName: 'Price', width: 160 },
 ];
 
@@ -21,7 +23,16 @@ export default function Flights() {
     const fetchFlights = async () => {
       try {
         const response = await axios.get('http://localhost:1128/flights/getAll');
-        setRows(response.data);
+        const flights = response.data.map((flight) => (
+          console.log(flight.departureTime),
+          {
+          ...flight,
+          dateFrom: new Date(flight.dateFrom).toLocaleDateString(),
+          timeFrom: new Date(flight.departureTime).toLocaleTimeString(),
+          dateTo: new Date(flight.dateTo).toLocaleDateString(),
+          timeTo: new Date(flight.arrivalTime).toLocaleTimeString(),
+        }));
+        setRows(flights);
       } catch (error) {
         console.error(error);
       }

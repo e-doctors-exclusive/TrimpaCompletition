@@ -12,7 +12,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, logout, setLoggedIn } from "../store/userSlicer";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);

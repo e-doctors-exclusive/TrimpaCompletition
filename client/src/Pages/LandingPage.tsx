@@ -4,10 +4,38 @@ import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllFlights, fetchFlights } from "../store/flights";
 import { AppDispatch, RootState } from "../store";
+import DatePickers from "../Components/DatePickers";
+import CalendarIcon from "../Assets/icons/calendar.svg";
+import { fetchAllFlights, fetchFlights } from "../store/flights";
 
 function LandingPage() {
+
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value, "this is date");
+
+    setDateFrom(e.target.value);
+  };
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [dateModalVisible, setDateModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleOpenDateModal = () => {
+    setDateModalVisible(!dateModalVisible);
+  };
+
+  const modalClass = dateModalVisible ? "date_picker_modal" : "hidden";
+
+
   const [destFrom, setDestFrom] = useState("");
   const [destTo, setDestTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
@@ -46,8 +74,6 @@ function LandingPage() {
   let flight ={origin:[...new Set(a)],destination:[...new Set(b)]}
   // console.log(flight.origin)
       
-
-
   return (
     <div>
       <TopHeader />
@@ -82,19 +108,27 @@ function LandingPage() {
                 id=""
                 placeholder="where are you going"
               >
-                <option>where are you going</option>
-                {flight.destination.map((e:any) => (
+                <option value="">where are you comming</option>
+                {flight.destination.map((e) => (
                   <option value={e}>{e}</option>
                 ))}
               </select>
             </div>
 
-            <div className="landing-input">
-              <input
-                onChange={(e) => setDateFrom(e.target.value)}
-                type="date"
-                placeholder="whene ?"
-              />
+            <div className="landing-input calendar_check">
+              <div className="date_data">
+                <img
+                  id="dateIcon"
+                  src={CalendarIcon}
+                  alt=""
+                  onClick={handleOpenDateModal}
+                />
+                <p>Depart - </p>
+                <p>Return</p>
+              </div>
+              <div className="date_picker_modal" id={modalClass}>
+                <DatePickers handleOpenDateModal={handleOpenDateModal} />
+              </div>
             </div>
 
             <div className="landing-input">
@@ -104,9 +138,9 @@ function LandingPage() {
             <div>
               <button
                 className="landing-boutton"
-                onClick={() =>
-                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }))
-                }
+                onClick={() => {
+                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }));
+                }}
               >
                 search
               </button>

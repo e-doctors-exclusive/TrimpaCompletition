@@ -234,3 +234,44 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+.date_data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date_data > p {
+  margin: 0;
+}
+
+.calendar_check {
+  padding-right: 6rem;
+}
+
+.date_picker_modal {
+  position: absolute;
+  height: 14%;
+  width: 37%;
+  top: 14%;
+  left: 37%;
+  transition: 0.3s;
+}
+
+#dateIcon {
+  border-radius: 25px;
+  transition: 0.4s;
+  cursor: pointer;
+  z-index: 0;
+}
+
+#dateIcon:hover {
+  background-color: #e7e7e7;
+}
+
+#hidden {
+  opacity: 0;
+  width: 0%;
+  /* height: 0%; */
+  z-index: -5;
+}
