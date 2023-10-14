@@ -17,6 +17,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.58",
     "axios": "^1.5.1",
+    "hooks": "^0.3.2",
     "date-fns": "^2.30.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",

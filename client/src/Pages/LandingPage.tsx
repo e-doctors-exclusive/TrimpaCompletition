@@ -4,26 +4,19 @@ import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchFlights } from "../store/flights";
 import { AppDispatch, RootState } from "../store";
 import DatePickers from "../Components/DatePickers";
 import CalendarIcon from "../Assets/icons/calendar.svg";
+import { fetchAllFlights, fetchFlights } from "../store/flights";
 
 function LandingPage() {
-  const [destFrom, setDestFrom] = useState("TUN");
-  const [destTo, setDestTo] = useState("FR");
-  const [dateFrom, setDateFrom] = useState("");
-  const dispatch: AppDispatch = useDispatch();
-  const flights = useSelector((state: RootState) => state.flights);
-  console.log(flights);
+
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value, "this is date");
 
     setDateFrom(e.target.value);
   };
-
-  useEffect(() => {}, []);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [dateModalVisible, setDateModalVisible] = useState(false);
@@ -42,6 +35,45 @@ function LandingPage() {
 
   const modalClass = dateModalVisible ? "date_picker_modal" : "hidden";
 
+
+  const [destFrom, setDestFrom] = useState("");
+  const [destTo, setDestTo] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  // const [fromArr, setFrom] = useState<string[]>([]);
+  // // const [flights,setFlights] = useState<object>([]);
+
+  interface objTypeAll {
+    destFrom: string;
+    destTo: string;
+    dateFrom: Date;
+    dateTo: Date;
+    price: number;
+  }
+
+  const dispatch: AppDispatch = useDispatch();
+
+  const flights = useSelector((state: RootState) => state.flights.Flights);
+// console.log(fligh  ts,"this is flights");
+
+
+  const allFlight: objTypeAll[] = useSelector(
+    (state: RootState) => state.flights.allFlights
+  );
+
+
+  useEffect(() => {
+    dispatch(fetchAllFlights());
+  }, []);
+  
+  let a = allFlight.map((e:objTypeAll)=>(
+    e.destFrom
+    ))
+    let b = allFlight.map((e:objTypeAll)=>(
+      e.destTo
+      ))
+  let flight ={origin:[...new Set(a)],destination:[...new Set(b)]}
+  // console.log(flight.origin)
+      
   return (
     <div>
       <TopHeader />
@@ -61,7 +93,10 @@ function LandingPage() {
                 id=""
                 placeholder="where are you going"
               >
-                <option value="">where are you going</option>
+                <option>where are you going</option>
+                {flight.origin.map((e) => (
+                  <option value={e}>{e}</option>
+                ))}
               </select>
             </div>
 
