@@ -12,6 +12,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, logout, setLoggedIn } from "../store/userSlicer";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
@@ -19,6 +20,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const  {loggedIn }  = useSelector(state => state.user );
   // console.log(loggedIn);
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     phomail: "",
     password: "",
@@ -111,7 +113,7 @@ const Navbar = () => {
         .catch((e) => console.log(e));
     }
   };
-
+  // console.log(JSON.parse(localStorage.getItem("user")).image);
   return (
     <div className="navbar">
       <div className="logo">
@@ -122,7 +124,7 @@ const Navbar = () => {
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : null}
+          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{navigate("/my-profile")}}><img id="user-avatar" src={JSON.parse(localStorage.getItem("user")).image}/></li>}
         </ul>
         {!loggedIn ? <button className="Sign-up" onClick={openSignUpModal}>
           Sign up

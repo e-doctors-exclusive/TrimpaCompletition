@@ -1,7 +1,8 @@
 // src/components/LandingPage.js
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/Landing.css'
+
+
 import {
     MDBBtn,
     MDBContainer,
@@ -11,8 +12,30 @@ import {
     MDBInput
   } from 'mdb-react-ui-kit'
   import test1 from '../images/test1.jpg'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 function LandingPage() {
-   
+
+  const [email,setEmail]=useState("")   
+  const [password,setPassword]=useState("")
+  const [alert, setAlert]=useState("")
+    const navigate = useNavigate()
+
+
+  const handleLogin = (body) => {
+    axios.post('http://localhost:1128/admin/signin', body )
+      .then((res) => {
+        console.log(res.data);
+        navigate("/home")
+      })
+      .catch((error) => {
+        setAlert("Verify your Password")
+    console.log(error);        
+      });
+  }
+
+
     return (
         <div className='Landing'>
         <MDBContainer fluid>
@@ -29,11 +52,13 @@ function LandingPage() {
 
             <h3 className="fw-normal mb-3 ps-5 pb-3" style={{letterSpacing: '1px'}}>Log in</h3>
 
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" />
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
+            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" onChange={((e)=>{
+              console.log("this is email",e.target.value);
+              setEmail(e.target.value)})}/>
+            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg" onChange={((e)=>{setPassword(e.target.value)})}/>
 
-            <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg'>Login</MDBBtn>
-
+            <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg' onClick={(()=>{handleLogin( {email,password})})}>Login</MDBBtn>
+            <p style={{color:"red", fontSize:"20px", display:"flex", justifyContent:"center"}}>{alert}</p>
           </div>
 
         </MDBCol>
