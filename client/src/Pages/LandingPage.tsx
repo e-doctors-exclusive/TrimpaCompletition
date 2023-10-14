@@ -1,31 +1,48 @@
 import "../styles/landing.css";
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchFlights } from "../store/flights";
-import {AppDispatch, RootState} from "../store"
+import { AppDispatch, RootState } from "../store";
+import DatePickers from "../Components/DatePickers";
+import CalendarIcon from "../Assets/icons/calendar.svg";
 
 function LandingPage() {
-const [destFrom,setDestFrom] = useState("TUN")
-const [destTo,setDestTo] = useState("FR")
-const [dateFrom,setDateFrom] = useState("")
-const dispatch:AppDispatch = useDispatch()
-const flights = useSelector((state:RootState)=>state.flights)
-console.log(flights);
+  const [destFrom, setDestFrom] = useState("TUN");
+  const [destTo, setDestTo] = useState("FR");
+  const [dateFrom, setDateFrom] = useState("");
+  const dispatch: AppDispatch = useDispatch();
+  const flights = useSelector((state: RootState) => state.flights);
+  console.log(flights);
 
-const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  console.log(e.target.value,'this is date')
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value, "this is date");
 
-  setDateFrom(e.target.value);
-};
-  
-useEffect(()=>{
+    setDateFrom(e.target.value);
+  };
 
-},[])
+  useEffect(() => {}, []);
 
-return (
+  const [modalVisible, setModalVisible] = useState(false);
+  const [dateModalVisible, setDateModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
+
+  const handleOpenDateModal = () => {
+    setDateModalVisible(!dateModalVisible);
+  };
+
+  const modalClass = dateModalVisible ? "date_picker_modal" : "hidden";
+
+  return (
     <div>
       <TopHeader />
       <Navbar />
@@ -38,20 +55,42 @@ return (
           <div className="landing-inputs">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
-              <select onChange={(e)=>setDestFrom(e.target.value)} name="from" id="" placeholder="where are you going">
+              <select
+                onChange={(e) => setDestFrom(e.target.value)}
+                name="from"
+                id=""
+                placeholder="where are you going"
+              >
                 <option value="">where are you going</option>
               </select>
             </div>
 
             <div className="landing-input">
               <i className="fa-solid fa-plane-arrival"></i>
-              <select onChange={(e)=>setDestTo(e.target.value)} name="from" id="" placeholder="where are you going">
-                <option   value="">where are you comming</option>
+              <select
+                onChange={(e) => setDestTo(e.target.value)}
+                name="from"
+                id=""
+                placeholder="where are you going"
+              >
+                <option value="">where are you comming</option>
               </select>
             </div>
 
-            <div className="landing-input">
-              <input type="date" placeholder="whene ?" />
+            <div className="landing-input calendar_check">
+              <div className="date_data">
+                <img
+                  id="dateIcon"
+                  src={CalendarIcon}
+                  alt=""
+                  onClick={handleOpenDateModal}
+                />
+                <p>Depart - </p>
+                <p>Return</p>
+              </div>
+              <div className="date_picker_modal" id={modalClass}>
+                <DatePickers handleOpenDateModal={handleOpenDateModal} />
+              </div>
             </div>
 
             <div className="landing-input">
@@ -59,9 +98,14 @@ return (
               <input type="number" placeholder="Adults" />
             </div>
             <div>
-              <button className="landing-boutton" onClick={()=>{
-                dispatch(fetchFlights({destFrom,destTo,dateFrom}))
-              }}>search</button>
+              <button
+                className="landing-boutton"
+                onClick={() => {
+                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }));
+                }}
+              >
+                search
+              </button>
             </div>
           </div>
         </div>
