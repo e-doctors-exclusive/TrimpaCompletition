@@ -5,7 +5,6 @@ import Avatar from "../Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { CloudinaryContext, Image } from "cloudinary-react";
 
 const ProfileUser = () => {
   const { user } = useSelector((state) => state.user);
@@ -53,7 +52,7 @@ const ProfileUser = () => {
               <p className="account_seeting_title">Account Setting</p>
               <p className="account_seeting_desc">
                 Details about your Personal information
-              </p>
+              </p> 
             </div>
             <div className="side_nav_card">
               <p className="account_seeting_title">User checkout</p>
@@ -69,10 +68,9 @@ const ProfileUser = () => {
             </div>
           </div>
           <div className="profile_container">
-            <CloudinaryContext cloudName="dh8ogvcuy" apiKey="668422817968224">
               <div className="profile_img">
                 <div className="avatar_container">
-                  <Image id="avatar" publicId={form.image || Avatar} />
+                <img src={Avatar} id="avatar" />
                   <div className="avatar_info">
                     <p id="avatar_title">Upload a New Photo</p>
                     <p id="avatar_file_source">Profile-pic.jpg</p>
@@ -85,7 +83,6 @@ const ProfileUser = () => {
                   placeholder="Update"
                 />
               </div>
-            </CloudinaryContext>
             <div className="profile_information">
               <p>Change User Information here</p>
               <div className="username_email">
