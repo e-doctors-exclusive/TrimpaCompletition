@@ -109,6 +109,9 @@ function LandingPage() {
                 placeholder="where are you going"
               >
                 <option value="">where are you comming</option>
+                {flight.destination.map((e) => (
+                  <option value={e}>{e}</option>
+                ))}
               </select>
             </div>
 
