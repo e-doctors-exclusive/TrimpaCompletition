@@ -20,13 +20,11 @@ export const userSlicer = createSlice({
         setUser:  (state , action)=>{
             const {user} = action.payload;
             state.user = user
-            localStorage.setItem('user', JSON.stringify(user))
         },
         logout: (state)=>{
             state.user = "" 
             state.loggedIn = false
             localStorage.removeItem('userToken')
-            localStorage.removeItem('user')
         },
         setLoggedIn: (state, action)=>{
             const {token , loggedIn} = action.payload

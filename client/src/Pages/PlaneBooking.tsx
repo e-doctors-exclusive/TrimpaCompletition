@@ -1,130 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/PlaneBooking.css"
-
 import point from "../Assets/tripmaBooking/point heavy.png"
 import check from "../Assets/tripmaBooking/check heavy.png"
-import vector17 from "../Assets/tripmaBooking/Vector 17.png"
-import vector18 from "../Assets/tripmaBooking/Vector 18.png"
-import rectangle15 from "../Assets/tripmaBooking/Rectangle 15.png"
-import rectangle9 from "../Assets/tripmaBooking/Rectangle 9.png"
-import seatBussines from "../Assets/tripmaBooking/seatBusiness.png"
-import seatEmptyBussines from "../Assets/tripmaBooking/seatEmptyBussines.png"
-import seatEco from "../Assets/tripmaBooking/seatEco.png"
-import seatEcoEmpty from "../Assets/tripmaBooking/emptyEconomy.png"
-import info from "../Assets/tripmaBooking/information.png"
 import wordmark from "../Assets/tripmaBooking/Wordmark.png"
 import arrowRight from "../Assets/tripmaBooking/arrowRight.png"
 import ecoSeats from "../Assets/tripmaBooking/Economy Seats.png"
 import bussinesSeats from "../Assets/tripmaBooking/Business Seats.png"
-
+import {useSelector } from "react-redux";
+import { fillForm } from "../store/flights";
+import { AppDispatch, RootState } from "../store";
+import plane from "../Assets/plane.svg"
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 const PlaneBooking = () => {
+  const [selectedSeat,setCurrentSeat] = useState<number>(0)
+  const [seatNumber,setSeatNumbert] = useState<string>("")
+  const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
+  const currentReservation:any= useSelector((state: RootState) => state.flights.currentReservation);
+const dispatsh = useDispatch()
+const navigate = useNavigate()
   return (
     <div className='tripma_container'>
       <div className="tripma">
-        <div className="plane-seat-selection">
-          {/* <img
-            className="plane-seat-selection-child"
-            alt=""
-            src="/rectangle-10.svg"
-          />
-          <img
-            className="plane-seat-selection-item"
-            alt=""
-            src="/rectangle-10.svg"
-          /> */}
-          <img
-            className="plane-seat-selection-inner"
-            alt=""
-            src={rectangle9}
-          />
-          <img className="vector-icon" alt="" src={vector17} />
-          <img
-            className="plane-seat-selection-child1"
-            alt=""
-            src={vector18}
-          />
-          <img className="rectangle-icon" alt="" src={rectangle15} />
-          <div className="business">
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">1</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">2</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">3</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">4</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">5</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-          </div>
-          <div className="economy">
-            <div className="seat-row-exit-row">
-              <div className="exit-row">Exit row</div>
-              <img
-                className="information-icon"
-                alt=""
-                src={info}
-              />
-            </div>
-            <div className="seat-row-economy">
-              <img className="seat-icon20" alt="" src={seatEco} />
-              <img className="seat-icon20" alt="" src={seatEco} />
-              {/* <img className="seat-icon20" alt="" src={seatEco} /> */}
-              <div>
-                <input className='inputTest1'
-                  type="checkbox"
-                  id="seat1"
-                  name="seat-eco"
-                  value="A1" />
-              </div>
-              <div className="row-number">
-                <div className="div">6</div>
-              </div>
-              <img className="seat-icon20" alt="" src={seatEcoEmpty} />
-              <img className="seat-icon20" alt="" src={seatEco} />
-              <img className="seat-icon20" alt="" src={seatEcoEmpty} />
-            </div>
-          
+        <div className="the-plane">
+
+        <div className='plane_svg'>
+          <img src={plane} alt='' />
+          <div className='plane_seats'>
+            {
+              currentFlight.Seats.map((oneSeat:any)=>{
+                   return <button disabled={!oneSeat.availble} style={oneSeat.availble ? {background:"green"}: {background:"red"}} className='seat' onClick={()=>{setCurrentSeat(oneSeat.id);setSeatNumbert(oneSeat.name);dispatsh(fillForm({...currentReservation,seatNumber:seatNumber}))}}>{oneSeat.name}</button>
+              })
+            }
           </div>
         </div>
-        <div>
-          {/* <div>sqjk,nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnl</div>
-          <div>sqjkl</div> */}
         </div>
+
         <div className="seat-selector">
           <div className="border" />
           <div className="content">
@@ -349,15 +260,12 @@ const PlaneBooking = () => {
                   </div>
                   <div className="passenger-data1">
                     <div className="label3">Seat number</div>
-                    <div className="name">--</div>
+                    <div className="name">{seatNumber}</div>
                   </div>
                 </div>
                 <div className="button-row">
                   <div className="button">
-                    <div className="label3">Save and close</div>
-                  </div>
-                  <div className="button1">
-                    <div className="label3">Next flight</div>
+                    <div className="label3" onClick={()=>{navigate("/PassengerInfo")}}>Save and close</div>
                   </div>
                 </div>
               </div>

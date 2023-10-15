@@ -1,21 +1,12 @@
-import "../styles/FlightFinder.css";
-import React, { useEffect ,useState} from "react";
-import ArrowDownIcon from "../Assets/icons/chevron down.svg";
-import DatePickers from "../Components/DatePickers";
-import DepartIcon from "../Assets/icons/departure.svg";
-import ArrivalIcon from "../Assets/icons/arrival.svg";
-import CalendarIcon from "../Assets/icons/calendar.svg";
-import PersonIcon from "../Assets/icons/person solid.svg";
-import FlightData from "../Components/FlightData";
-import Navbar from "../Components/Navbar";
-import SearchBar from "../Components/SearchBaR";
+import "../styles/landing.css";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
+import DatePickers from "./DatePickers";
+import CalendarIcon from "../Assets/icons/calendar.svg";
 import { fetchAllFlights, fetchFlights } from "../store/flights";
 import { useNavigate } from "react-router-dom";
-
-const FlightFinder: React.FC = () => {
-  
+function SearchBar() {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value, "this is date");
 
@@ -51,7 +42,6 @@ const navigate = useNavigate()
     dateFrom: Date;
     dateTo: Date;
     price: number;
-    brand:any
   }
 
   const dispatch: AppDispatch = useDispatch();
@@ -65,44 +55,17 @@ const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(fetchAllFlights());
-    console.log(flights)
   }, []);
 
   let a = allFlight.map((e: objTypeAll) => e.destFrom);
   let b = allFlight.map((e: objTypeAll) => e.destTo);
-  let prices = allFlight.map((e: objTypeAll) => e.price);
-  let airlines = flights.map((e: objTypeAll) => e.brand.name);
-  let times = flights.map((e: objTypeAll) => e.dateTo);
-  let flight = { origin: [...new Set(a)], destination: [...new Set(b)], price:[...new Set(prices)], airlines:[...new Set(airlines)],times:[...new Set(times)]};
+  let flight = { origin: [...new Set(a)], destination: [...new Set(b)] };
   // console.log(flight.origin)
 
-  interface flightDatas{
-    Reservations: any[];
-    Seats: any[];
-    Users: any[];
-    arrivalTime: string;
-    brand: any;
-    brandId: any;
-    createdAt: string;
-    dateFrom: string;
-    dateTo: string;
-    departureTime: string;
-    destFrom: string;
-    destTo: string;
-    id: number;
-    price: number;
-    updatedAt: string;
-  };
-
-  useEffect(()=>{
-    console.log(flights)
-  },[])
   return (
-    <>
-  <Navbar/>
-      <div className="flighFinder_main_container">
-        <div className="flighFinder_container">
-        <div className="landing-inputs"  id="flightfinder-search">
+
+
+          <div className="landing-inputs">
             <div className="landing-input">
               <i className="fa-solid fa-plane-departure"></i>
               <select
@@ -176,86 +139,14 @@ const navigate = useNavigate()
                             .replace(/\//g, "-") ?? "",
                       })
                     )
+                    navigate("/FlightFinder")
                 }}
               >
                 search
               </button>
             </div>
-            
             </div>
-            <div className="filter">
-               <div className="oneselect">
-                <select name="" id="">
-                <option>Price</option>
-                  {
-                    flight.price.map((e)=>{
-                      return <option>{e}</option>
-                    })
-                  }
-                </select>
-               </div> 
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Duration</option>
-                  {
-                    flight.airlines.map((e)=>{
-                      return <option>{e}</option>
-                    })
-                  }
-                </select>
-               </div>
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Times</option>
-                  {
-                    flight.times.map((e)=>{
-                      return <option>{e.toString().slice(0,10)}</option>
-                    })
-                  }
-                </select>
-               </div>
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Seat class</option>
-                <option>Business class  </option>
-                <option>Economy</option>
-                </select>
-               </div>
-               <div className="oneselect">
-               <select name="" id="">
-                <option>Stop</option>
-                  {
-                    
-                  }
-                </select>
-               </div>
-            </div>
-          <div className="flighFinded">
-            <div className="flighs_finded_data">
-              <p>
-                Choose a <span>departing</span> flight
-              </p>
-              <div className="flight_data_container">
-                {/* data li bech tmapi aliha */
-                flights.map((oneFlight: flightDatas)=>{
-                  return <FlightData oneFlight={oneFlight} />
-                })
-                }
-                {/* data li bech tmapi aliha */}
-              </div>
-              {/* <button className="show_flights">Show all flights</button> */}
-              <div className="trip_direction_map"></div>
-            </div>
-            <div className="flighs_finded_pricing"></div>
-          </div>
-        </div>
-        <div className="flight_suggestion">
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </>
   );
-};
+}
 
-export default FlightFinder;
+export default SearchBar;

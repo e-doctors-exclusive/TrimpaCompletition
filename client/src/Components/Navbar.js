@@ -12,13 +12,13 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, logout, setLoggedIn } from "../store/userSlicer";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isSignInModalOpen, setSignInModalOpen] = useState(false);
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
   const dispatch = useDispatch();
-  const  {loggedIn }  = useSelector(state => state.user );
+  const  {user , loggedIn }  = useSelector(state => state.user );
   // console.log(loggedIn);
   const navigate = useNavigate()
   const [form, setForm] = useState({
@@ -113,7 +113,7 @@ const Navbar = () => {
         .catch((e) => console.log(e));
     }
   };
-  // console.log(JSON.parse(localStorage.getItem("user")).image);
+  // console.log(.image);
   return (
     <div className="navbar">
       <div className="logo">
@@ -124,7 +124,7 @@ const Navbar = () => {
           <li>Flights</li>
           <li>Hotels</li>
           <li>Packages</li>
-          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{navigate("/my-profile")}}><img id="user-avatar" src={JSON.parse(localStorage.getItem("user")).image}/></li>}
+          {!loggedIn ? <li onClick={openSignInModal}>Sign in</li> : <li onClick={()=>{navigate("/my-profile")}}><img id="user-avatar" src={user.image}/></li>}
         </ul>
         {!loggedIn ? <button className="Sign-up" onClick={openSignUpModal}>
           Sign up

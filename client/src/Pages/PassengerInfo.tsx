@@ -4,7 +4,10 @@ import BagIllustration from "../Assets/Illustration.png";
 import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import { useNavigate } from "react-router-dom";
+import { fillForm } from "../store/flights";
 interface FormData {
   firstName: string;
   middleName: string;
@@ -16,21 +19,46 @@ interface FormData {
   redressNumber: string;
   knownTravelerNumber: string;
   sameAsPassenger1: boolean;
+  seatNumber:string
 }
-
+interface OneFlightData {
+  Reservations: any[];
+  Seats: any[];
+  Users: any[];
+  arrivalTime: string;
+  brand:any;
+  createdAt: string;
+  dateFrom: string;
+  dateTo: string;
+  departureTime: string;
+  destFrom: string;
+  destTo: string;
+  id: number;
+  price: number;
+  updatedAt: string;
+}
+interface fightType{
+  oneFlight:OneFlightData 
+}
 const PassengerInfo: React.FC = () => {
+  const dispatsh = useDispatch()
+  const navigate = useNavigate()
+  const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
+  const currentReservation:any= useSelector((state: RootState) => state.flights.currentReservation);
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    suffix: "",
-    date: "",
-    email: "",
-    phoneNumber: "",
-    redressNumber: "",
+    firstName: currentReservation.firstName,
+    middleName:  currentReservation.middleName,
+    lastName: currentReservation.middleName,
+    suffix:  currentReservation.suffix,
+    date:currentReservation.date,
+    email:currentReservation.email,
+    phoneNumber:currentReservation.phoneNumber,
+    redressNumber:currentReservation.phoneNumber,
     knownTravelerNumber: "",
     sameAsPassenger1: false,
+    seatNumber:currentReservation.seatNumber,
   });
+
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -86,6 +114,7 @@ const PassengerInfo: React.FC = () => {
                   type="text"
                   placeholder="First name*"
                   name="firstName"
+                  defaultValue={currentReservation.firstName}
                   value={formData.firstName}
                   onChange={handleInputChange}
                 />
@@ -93,6 +122,7 @@ const PassengerInfo: React.FC = () => {
                   type="text"
                   placeholder="Middle"
                   name="middleName"
+                  defaultValue={currentReservation.middleName}
                   value={formData.middleName}
                   onChange={handleInputChange}
                 />
@@ -100,6 +130,7 @@ const PassengerInfo: React.FC = () => {
                   type="text"
                   placeholder="Last name*"
                   name="lastName"
+                  defaultValue={currentReservation.lastName}
                   value={formData.lastName}
                   onChange={handleInputChange}
                 />
@@ -107,6 +138,7 @@ const PassengerInfo: React.FC = () => {
                   type="text"
                   placeholder="Suffix"
                   name="suffix"
+                  defaultValue={currentReservation.suffix}
                   value={formData.suffix}
                   onChange={handleInputChange}
                 />
@@ -115,6 +147,7 @@ const PassengerInfo: React.FC = () => {
                   type="date"
                   placeholder="Date of birth"
                   name="date"
+                  defaultValue={currentReservation.date}
                   value={formData.date}
                   onChange={handleInputChange}
                 />
@@ -125,6 +158,7 @@ const PassengerInfo: React.FC = () => {
                 type="text"
                 placeholder="Email address*"
                 name="email"
+                defaultValue={currentReservation.email}
                 value={formData.email}
                 onChange={handleInputChange}
               />
@@ -132,6 +166,7 @@ const PassengerInfo: React.FC = () => {
                 type="text"
                 placeholder="Phone number*"
                 name="phoneNumber"
+                defaultValue={currentReservation.phoneNumber}
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
               />
@@ -139,6 +174,7 @@ const PassengerInfo: React.FC = () => {
                 type="text"
                 placeholder="Redress number"
                 name="redressNumber"
+                defaultValue={currentReservation.redressNumber}
                 value={formData.redressNumber}
                 onChange={handleInputChange}
               />
@@ -146,6 +182,7 @@ const PassengerInfo: React.FC = () => {
                 type="text"
                 placeholder="Known traveller number*"
                 name="knownTravelerNumber"
+                defaultValue={currentReservation.knownTravelerNumber}
                 value={formData.knownTravelerNumber}
                 onChange={handleInputChange}
               />
@@ -220,8 +257,8 @@ const PassengerInfo: React.FC = () => {
               </div>
             </div>
             <div className="choice-btns">
-              <button>Save and close</button>
-              <button id="larger" onClick={handleLogState}>Select seats</button>
+              <button >Save and close</button>
+              <button onClick={()=>{dispatsh(fillForm(formData)) ;navigate("/planebooking")}} id="larger">Select seats</button>
             </div>
           </div>
           <div className="trips">
@@ -229,31 +266,20 @@ const PassengerInfo: React.FC = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <img src={logoIllustration} alt="" />
+                    <img src={currentFlight.brand.image} alt="" />
                     <div className="img_title">
-                      <p>Hawaiian Airlines</p>
+                      <p>{currentFlight.brand.name}</p>
                       <p className="ref">FIG4312</p>
                     </div>
                   </div>
                   <div className="time">
-                    <p>16h 45m (+1d)</p>
-                    <p>7:00 AM - 4:15 PM</p>
-                    <p className="ref">2h 45m in HNL</p>
+                    <p>{}</p>
+                    <p>{currentFlight.departureTime} - {currentFlight.arrivalTime}</p>
+                    <p className="ref">{currentFlight.destFrom} - {currentFlight.destTo}</p>
                   </div>
                 </div>
                 <div className="retour">
-                  <div className="retour_container">
-                    <img src={logoIllustration} alt="" />
-                    <div className="img_title">
-                      <p>Hawaiian Airlines</p>
-                      <p className="ref">FIG4312</p>
-                    </div>
-                  </div>
-                  <div className="time">
-                    <p>16h 45m (+1d)</p>
-                    <p>7:00 AM - 4:15 PM</p>
-                    <p className="ref">2h 45m in HNL</p>
-                  </div>
+                
                 </div>
               </div>
               <div className="trip_fees">

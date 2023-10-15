@@ -1,31 +1,29 @@
 import "../styles/landing.css";
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
-import { useDispatch,useSelector } from "react-redux";
-import { fetchFlights } from "../store/flights";
-import {AppDispatch, RootState} from "../store"
-
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import DatePickers from "../Components/DatePickers";
+import CalendarIcon from "../Assets/icons/calendar.svg";
+import { fetchAllFlights, fetchFlights } from "../store/flights";
+import { useNavigate } from "react-router-dom";
+import SearchBar from "../Components/SearchBaR";
 function LandingPage() {
-const [destFrom,setDestFrom] = useState("TUN")
-const [destTo,setDestTo] = useState("FR")
-const [dateFrom,setDateFrom] = useState("")
-const dispatch:AppDispatch = useDispatch()
-const flights = useSelector((state:RootState)=>state.flights)
-console.log(flights);
 
-const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  console.log(e.target.value,'this is date')
+  const [modalVisible, setModalVisible] = useState(false);
+  const [dateModalVisible, setDateModalVisible] = useState(false);
+  const [dateFrom, setDateFrom] = useState<string>("");
+  const dispatch: AppDispatch = useDispatch();
 
-  setDateFrom(e.target.value);
-};
-  
-useEffect(()=>{
 
-},[])
+  useEffect(() => {
+    dispatch(fetchAllFlights());
+  }, []);
 
-return (
+
+  return (
     <div>
       <TopHeader />
       <Navbar />
@@ -34,36 +32,7 @@ return (
           <div className="landing-title">
             <h1>It's more than just a trip</h1>
           </div>
-
-          <div className="landing-inputs">
-            <div className="landing-input">
-              <i className="fa-solid fa-plane-departure"></i>
-              <select onChange={(e)=>setDestFrom(e.target.value)} name="from" id="" placeholder="where are you going">
-                <option value="">where are you going</option>
-              </select>
-            </div>
-
-            <div className="landing-input">
-              <i className="fa-solid fa-plane-arrival"></i>
-              <select onChange={(e)=>setDestTo(e.target.value)} name="from" id="" placeholder="where are you going">
-                <option   value="">where are you comming</option>
-              </select>
-            </div>
-
-            <div className="landing-input">
-              <input type="date" placeholder="whene ?" />
-            </div>
-
-            <div className="landing-input">
-              <i className="fa-solid fa-user"></i>
-              <input type="number" placeholder="Adults" />
-            </div>
-            <div>
-              <button className="landing-boutton" onClick={()=>{
-                dispatch(fetchFlights({destFrom,destTo,dateFrom}))
-              }}>search</button>
-            </div>
-          </div>
+          <SearchBar />
         </div>
       </div>
       <div className="section-one">
