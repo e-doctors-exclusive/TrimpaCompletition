@@ -33,13 +33,28 @@ const FlightsSlice=createSlice({
         Flights:[],
         allFlights:[],
         currentFlight:{},
+        currentReservation:{
+            firstName: "",
+            middleName: "",
+            lastName: "",
+            suffix: "",
+            date: "",
+            email: "ffd",
+            phoneNumber: "",
+            redressNumber: "",
+            seatNumber:""
+        },
         error:null,
         loading:false
     },
     reducers:{
-        selected:(state,action)=>{
+        selected:(state:any,action)=>{
             state.currentFlight = action.payload
+        },
+        fillForm:(state:any,action)=>{
+            state.currentReservation = action.payload
         }
+
 
     },
     extraReducers(builder){
@@ -52,5 +67,5 @@ const FlightsSlice=createSlice({
         })
     }
 })
-export const {selected} = FlightsSlice.actions
+export const {selected,fillForm} = FlightsSlice.actions
 export default FlightsSlice.reducer
