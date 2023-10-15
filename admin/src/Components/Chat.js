@@ -1,34 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SideBar from "./SideBar";
 import "../styles/Chat.css";
-import io from "socket.io-client";
 
 function ChatRoom() {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState(""); // Rename to newMessage
+  const [adminMessages, setAdminMessages] = useState([]);
+  const [clientMessages, setClientMessages] = useState([]);
+  const [adminMessage, setAdminMessage] = useState(""); // State for admin message input
+  const [clientMessage, setClientMessage] = useState(""); // State for client message input
   const [clicked, setClicked] = useState(true);
-  const socket = io("http://localhost:1128");
 
-
-  socket.on("connect_error", (error) => {
-    console.error("Socket.IO connection error:", error);
-  });
-
-  useEffect(() => {
-    socket.on("chat message", (msg) => {
-      console.log("Received message:", msg);
-      setMessages((prevMessages) => [...prevMessages, msg]);
-    });
-  }, [socket]);
-
-  const handleSendMessage = (e) => {
-    e.preventDefault();
-    socket.emit("chat message", newMessage);
-    setNewMessage(""); // Clear the input field after sending the message
+  const handleAdminMessageChange = (e) => {
+    setAdminMessage(e.target.value);
   };
 
-  const handleMessageChange = (e) => {
-    setNewMessage(e.target.value); // Update newMessage, not messagess
+  const handleClientMessageChange = (e) => {
+    setClientMessage(e.target.value);
+  };
+
+  const handleAdminMessageSubmit = (e) => {
+    e.preventDefault();
+    setAdminMessages([...adminMessages, adminMessage]);
+    setAdminMessage(""); // Clear the input
+  };
+
+  const handleClientMessageSubmit = (e) => {
+    e.preventDefault();
+    setClientMessages([...clientMessages, clientMessage]);
+    setClientMessage(""); // Clear the input
   };
 
   return (
@@ -46,24 +44,35 @@ function ChatRoom() {
           <div className="chat-room-header">
             <h2>Chat Room</h2>
           </div>
-          <div className="chat-room-messages">
-            <ul>
-              {messages.map((message, index) => (
-                <li key={index} className="chat-room-message">
-                  {message}
-                </li>
-              ))}
-            </ul>
+          <div className="chat_box">
+            <div className="admin_chat">
+              <ul>
+                {adminMessages.map((message, index) => (
+                  <li key={index} className="admin-chat-message">
+                    {message}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="client_chat">
+              <ul>
+                {clientMessages.map((message, index) => (
+                  <li key={index} className="client-chat-message">
+                    {message}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="chat-room-input">
-            <form onSubmit={handleSendMessage}>
+            <form onSubmit={handleAdminMessageSubmit}>
               <input
                 type="text"
-                placeholder="Type your message here"
-                value={newMessage}
-                onChange={handleMessageChange}
+                placeholder="Type your admin message here"
+                value={adminMessage}
+                onChange={handleAdminMessageChange}
               />
-              <button type="submit">Send</button>
+              <button type="submit">Send Admin</button>
             </form>
           </div>
         </div>
