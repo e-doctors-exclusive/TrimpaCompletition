@@ -13,14 +13,15 @@ import plane from "../Assets/plane.svg";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const PlaneBooking = () => {
-  const [selectedSeat, setCurrentSeat] = useState<number>(0);
-  const [seatNumber, setSeatNumbert] = useState<string>("");
-  const currentFlight: any = useSelector(
-    (state: RootState) => state.flights.currentFlight
-  );
   const currentReservation: any = useSelector(
     (state: RootState) => state.flights.currentReservation
   );
+  const [selectedSeat, setCurrentSeat] = useState<number>(0);
+  const [seatNumber, setSeatNumbert] = useState<string>(currentReservation.seatNumber || "");
+  const currentFlight: any = useSelector(
+    (state: RootState) => state.flights.currentFlight
+  );
+ 
   const dispatsh = useDispatch();
   const navigate = useNavigate();
   return (
@@ -47,6 +48,7 @@ const PlaneBooking = () => {
                         fillForm({
                           ...currentReservation,
                           seatNumber: seatNumber,
+                          seatid:selectedSeat
                         })
                       );
                     }}
@@ -230,8 +232,8 @@ const PlaneBooking = () => {
               <div className="content1">
                 <div className="user-selections">
                   <div className="passenger-data">
-                    <div className="label2">Passenger 1</div>
-                    <div className="name">Sofia Knowles</div>
+                    <div className="label2">Passenger</div>
+                    <div className="name">{currentReservation.firstName}</div>
                   </div>
                   <div className="passenger-data1">
                     <div className="label3">Seat number</div>

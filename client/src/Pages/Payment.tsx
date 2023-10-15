@@ -3,20 +3,35 @@ import React from "react";
 import icon1 from "../Assets/icons/PaymentPage-icons/credit card.svg";
 import icon5 from "../Assets/icons/PaymentPage-icons/flousi.svg";
 import information from "../Assets/icons/PaymentPage-icons/information.svg";
-import googleIcon from "../Assets/icons/thirdPartyIcons/color.svg";
-import appleIcon from "../Assets/icons/thirdPartyIcons/appleMac.svg";
-import facebookIcon from "../Assets/icons/thirdPartyIcons/facebook.svg";
-import BagIllustration from "../Assets/Illustration.png";
-import logoIllustration from "../Assets/logoIllustration.png";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 interface PaymentProps {}
 
 const Payment: React.FC<PaymentProps> = () => {
+  const dispatsh = useDispatch();
+  const navigate = useNavigate();
+  const currentFlight: any = useSelector(
+    (state: RootState) => state.flights.currentFlight
+  );
+  const currentReservation: any = useSelector(
+    (state: RootState) => state.flights.currentReservation
+  );
+   const takeAseat = async(id:number)=>{
+    try {
+      const res = await axios.put(`http://localhost:1128/seats/update/${id}`,{availble:false})
+      return res.data
+    } catch (error) {
+      throw error
+    }
+    
+}
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="payment_main_container">
         <div className="payment_container">
           <div className="payment_methods">
@@ -58,44 +73,7 @@ const Payment: React.FC<PaymentProps> = () => {
                 </div>
               </div>
             </div>
-            <div className="payment_methods_createAccount">
-              <div className="payment_methods_createAccount_inputs">
-                <p>Create an account</p>
-                <p>
-                  Tripma is free to use as a guest, but if you create an account
-                  today, you can save and view flights, manage your trips, earn
-                  rewards, and more.
-                </p>
-                <div className="payment_methods_createAccount_check">
-                  <input type="checkbox" />
-                  <p>Save card and create account for later</p>
-                </div>
-                <input
-                  type="text"
-                  placeholder="Email address or phone number"
-                />
-                <input type="text" placeholder="Password" />
-              </div>
-              <div className="payment_methods_createAccount_dividers">
-                <div className="divider_lines" />
-                <p>or</p>
-                <div className="divider_lines" />
-              </div>
-              <div className="payment_methods_createAccount_third_party_auth">
-                <div className="payment_third_party_btn">
-                  <img id="firstImg" src={googleIcon} alt="" />
-                  <p>Continue with Google</p>
-                </div>
-                <div className="payment_third_party_btn">
-                  <img id="secondtImg" src={appleIcon} alt="" />
-                  <p>Continue with Apple</p>
-                </div>
-                <div className="payment_third_party_btn">
-                  <img id="thirdtImg" src={facebookIcon} alt="" />
-                  <p>Continue with Facebook</p>
-                </div>
-              </div>
-            </div>
+            <div className="payment_methods_createAccount"></div>
             <div className="payment_methods_privacyPolicy">
               <div className="cancellation_policy">
                 <p>Cancellation policy</p>
@@ -109,8 +87,14 @@ const Payment: React.FC<PaymentProps> = () => {
                 </p>
               </div>
               <div className="payment_methods_privacyPolicy_btns">
-                <button>Back to seat select</button>
-                <button>Confirm and pay</button>
+                <button
+                  onClick={() => {
+                    navigate("/PlaneBooking");
+                  }}
+                >
+                  Back to seat select
+                </button>
+                <button onClick={()=>{takeAseat(currentReservation.seatid)}}>Confirm and pay</button>
               </div>
             </div>
           </div>
@@ -119,48 +103,38 @@ const Payment: React.FC<PaymentProps> = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <img src={logoIllustration} alt="" />
+                    <img src={currentFlight.brand.image} alt="" />
                     <div className="img_title">
-                      <p>Hawaiian Airlines</p>
+                      <p>{currentFlight.brand.name}</p>
                       <p className="ref">FIG4312</p>
                     </div>
                   </div>
                   <div className="time">
-                    <p>16h 45m (+1d)</p>
-                    <p>7:00 AM - 4:15 PM</p>
-                    <p className="ref">2h 45m in HNL</p>
-                  </div>
-                </div>
-                <div className="retour">
-                  <div className="retour_container">
-                    <img src={logoIllustration} alt="" />
-                    <div className="img_title">
-                      <p>Hawaiian Airlines</p>
-                      <p className="ref">FIG4312</p>
-                    </div>
-                  </div>
-                  <div className="time">
-                    <p>16h 45m (+1d)</p>
-                    <p>7:00 AM - 4:15 PM</p>
-                    <p className="ref">2h 45m in HNL</p>
+                    <p>{}</p>
+                    <p>
+                      {currentFlight.departureTime} -{" "}
+                      {currentFlight.arrivalTime}
+                    </p>
+                    <p className="ref">
+                      {currentFlight.destFrom} - {currentFlight.destTo}
+                    </p>
                   </div>
                 </div>
               </div>
               <div className="trip_fees">
                 <div className="total-cost">
-                  <p className="trip_seatPricing">Seat upgrade</p>
+                  <p>Seat</p>
                   <p>Subtotal</p>
                   <p>Taxes and Fees</p>
                   <p>Total</p>
                 </div>
                 <div className="prices">
-                  <p className="trip_seatPricing">$199</p>
-                  <p>$702</p>
+                  <p>{currentReservation.seatNumber}</p>
+                  <p>${currentFlight.price}</p>
                   <p>$66</p>
-                  <p>$768</p>
+                  <p>${currentFlight.price + 66}</p>
                 </div>
               </div>
-              <button>Select seats</button>
             </div>
           </div>
         </div>

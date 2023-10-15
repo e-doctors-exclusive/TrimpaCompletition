@@ -257,7 +257,7 @@ const PassengerInfo: React.FC = () => {
               </div>
             </div>
             <div className="choice-btns">
-              <button >Save and close</button>
+              <button onClick={()=>{navigate("/Payment")}} >Save and close</button>
               <button onClick={()=>{dispatsh(fillForm(formData)) ;navigate("/planebooking")}} id="larger">Select seats</button>
             </div>
           </div>

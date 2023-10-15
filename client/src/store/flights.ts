@@ -26,7 +26,6 @@ export const fetchAllFlights = createAsyncThunk("/flights/getAll",async()=>{
 })
 
 
-
 const FlightsSlice=createSlice({
     name:"Flights",
     initialState:{

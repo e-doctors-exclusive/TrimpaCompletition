@@ -633,8 +633,5 @@
 }
 
 .seat:focus{
-  background-color:red;
-}
-.the-plane{
-
+  background-color:yellow;
 }
