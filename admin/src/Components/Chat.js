@@ -46,6 +46,7 @@ const Chat = () => {
                             <div class="status"> <i class="fa fa-circle online"></i> online </div>
                         </div>
                     </li>
+                    
                     <li class="clearfix">
                         <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="avatar"/>
                         <div class="about">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
@@ -8,12 +8,19 @@ import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { Link } from 'react-router-dom'
+import { Link,useNavigate  } from 'react-router-dom'
 import '../styles/SideBar.css'
+
+
+
+
 const SideBar = ({clicked,setClicked}) => {
-
-
+   
+  
     const { collapseSidebar } = useProSidebar();
+
+const navigate = useNavigate()
+
     return (
       <div id="app" style={({ height: "100vh" }, { display: "flex" }, { position:'fixed' })}>
        
@@ -51,7 +58,7 @@ const SideBar = ({clicked,setClicked}) => {
           <Link to="/inbox">
           <MenuItem icon={<InboxOutlinedIcon />}>Inbox</MenuItem>
           </Link>
-          <MenuItem icon={<LogoutIcon />}>Logout</MenuItem>
+          <MenuItem icon={<LogoutIcon />} onClick={()=>{navigate('/')}}>Logout</MenuItem>
         </Menu>
       </Sidebar>
       </div>
