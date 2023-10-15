@@ -32,7 +32,7 @@ function App() {
       <Route path="/airlines" element={<Airlines/>}></Route>
       <Route path="/addairline" element={<AddBrand />}></Route>
       <Route path="/addflight" element={<AddFlight />}></Route>
-      <Route path="/inbox" element={<Chat />}></Route>
+      <Route path="/chat" element={<Chat />}></Route>
       </Routes>
     </BrowserRouter>
     </ProSidebarProvider>

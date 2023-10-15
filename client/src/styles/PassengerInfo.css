@@ -367,7 +367,6 @@ input:focus {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  top: 10rem;
   gap: 8.5rem;
 }
 
@@ -376,7 +375,6 @@ input:focus {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  top: 10rem;
   gap: 0.5rem;
 }
 
@@ -403,7 +401,7 @@ input:focus {
 
 .aller_container {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
 }
@@ -411,28 +409,6 @@ input:focus {
 .aller .aller_container img {
   height: 50px;
   width: 60px;
-}
-
-.retour {
-  display: flex;
-  width: 368px;
-  height: 200px;
-  padding: 8px;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 3rem;
-}
-
-.retour_container {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.retour .retour_container > img {
-  height: 40px;
-  width: 50px;
 }
 
 .time p {

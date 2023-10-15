@@ -449,3 +449,10 @@
     transform: translate(-1.24rem);
   }
 }
+#alert{
+  color: #605dec;
+}
+#goout{
+  color: white;
+  background-color:#605dec ;
+}

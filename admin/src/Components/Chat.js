@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import SideBar from "./SideBar";
 import "../styles/Chat.css";
@@ -76,9 +77,46 @@ function ChatRoom() {
             </form>
           </div>
         </div>
+=======
+import React, { useEffect, useState } from 'react';
+import io from 'socket.io-client';
+
+function App() {
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+  const socket = io('http://localhost:3000'); // Connect to the backend server
+
+  useEffect(() => {
+    socket.on('message', (data) => {
+      setMessages([...messages, data]);
+    });
+  }, [messages]);
+
+  const sendMessage = () => {
+    socket.emit('message', message);
+    setMessage('');
+  };
+
+  return (
+    <div>
+      <div>
+        {messages.map((msg, index) => (
+          <div key={index}>{msg}</div>
+        ))}
+>>>>>>> 667c33fbe4d86f7e1e95559bda511f65111a1a7b
       </div>
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button onClick={sendMessage}>Send</button>
     </div>
   );
 }
 
+<<<<<<< HEAD
 export default ChatRoom;
+=======
+export default App;
+>>>>>>> 667c33fbe4d86f7e1e95559bda511f65111a1a7b

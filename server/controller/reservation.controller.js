@@ -12,7 +12,7 @@ module.exports = {
     try {
       const all = await Reservation.findAll({
         where: {
-          userId: req.params.userid,
+          userId: req.params.userId,
         },
       });
       res.json(all);
