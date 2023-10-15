@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface init {
-    user: string,
+    user: any,
     userToken : string,
     loggedIn: boolean
 }
 
 const initialState = {
-    user: "",
+    user: {},
     userToken :"" ,
     loggedIn: false,
 }

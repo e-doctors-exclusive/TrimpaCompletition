@@ -3,25 +3,17 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import DatePickers from "../Components/DatePickers";
-import CalendarIcon from "../Assets/icons/calendar.svg";
-import { fetchAllFlights, fetchFlights } from "../store/flights";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
+import { fetchAllFlights } from "../store/flights";
+
 import SearchBar from "../Components/SearchBaR";
 function LandingPage() {
 
-  const [modalVisible, setModalVisible] = useState(false);
-  const [dateModalVisible, setDateModalVisible] = useState(false);
-  const [dateFrom, setDateFrom] = useState<string>("");
   const dispatch: AppDispatch = useDispatch();
-
-
   useEffect(() => {
     dispatch(fetchAllFlights());
   }, []);
-
 
   return (
     <div>

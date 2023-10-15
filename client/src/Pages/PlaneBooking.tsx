@@ -37,10 +37,11 @@ const PlaneBooking = () => {
                     disabled={!oneSeat.availble}
                     style={
                       oneSeat.availble
-                        ? { background: "green" }
-                        : { background: "red" }
+                        ? {}
+                        :{ background: "#ec5986" }
                     }
                     className="seat"
+                    id="forclik"
                     onClick={() => {
                       setCurrentSeat(oneSeat.id);
                       setSeatNumbert(oneSeat.name);
@@ -53,7 +54,7 @@ const PlaneBooking = () => {
                       );
                     }}
                   >
-                    {oneSeat.name}
+                   
                   </button>
                 );
               })}

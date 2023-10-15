@@ -38,7 +38,7 @@ const FlightsSlice=createSlice({
             lastName: "",
             suffix: "",
             date: "",
-            email: "ffd",
+            email: "",
             phoneNumber: "",
             redressNumber: "",
             seatNumber:""
