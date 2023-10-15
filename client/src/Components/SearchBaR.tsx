@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import DatePickers from "./DatePickers";
 import CalendarIcon from "../Assets/icons/calendar.svg";
-import { fetchAllFlights, fetchFlights } from "../store/flights";
+import { fetchAllFlights, fetchFlights,selected} from "../store/flights";
 import { useNavigate } from "react-router-dom";
+
 function SearchBar() {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value, "this is date");
@@ -124,6 +125,7 @@ const navigate = useNavigate()
               <button
                 className="landing-boutton"
                 onClick={() => {
+                  dispatch(selected({}));
                
                     dispatch(
                       fetchFlights({
