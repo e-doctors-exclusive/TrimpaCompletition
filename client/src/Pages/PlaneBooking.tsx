@@ -1,117 +1,79 @@
-import React from 'react'
-import "../styles/PlaneBooking.css"
-
-import point from "../Assets/tripmaBooking/point heavy.png"
-import check from "../Assets/tripmaBooking/check heavy.png"
-import vector17 from "../Assets/tripmaBooking/Vector 17.png"
-import vector18 from "../Assets/tripmaBooking/Vector 18.png"
-import rectangle15 from "../Assets/tripmaBooking/Rectangle 15.png"
-import rectangle9 from "../Assets/tripmaBooking/Rectangle 9.png"
-import seatBussines from "../Assets/tripmaBooking/seatBusiness.png"
-import seatEmptyBussines from "../Assets/tripmaBooking/seatEmptyBussines.png"
-import seatEco from "../Assets/tripmaBooking/seatEco.png"
-import seatEcoEmpty from "../Assets/tripmaBooking/emptyEconomy.png"
-import info from "../Assets/tripmaBooking/information.png"
-import wordmark from "../Assets/tripmaBooking/Wordmark.png"
-import arrowRight from "../Assets/tripmaBooking/arrowRight.png"
-import ecoSeats from "../Assets/tripmaBooking/Economy Seats.png"
-import bussinesSeats from "../Assets/tripmaBooking/Business Seats.png"
-import plane from "../Assets/plane.svg"
+import React, { useState } from "react";
+import "../styles/PlaneBooking.css";
+import point from "../Assets/tripmaBooking/point heavy.png";
+import check from "../Assets/tripmaBooking/check heavy.png";
+import wordmark from "../Assets/tripmaBooking/Wordmark.png";
+import arrowRight from "../Assets/tripmaBooking/arrowRight.png";
+import ecoSeats from "../Assets/tripmaBooking/Economy Seats.png";
+import bussinesSeats from "../Assets/tripmaBooking/Business Seats.png";
+import { useSelector } from "react-redux";
+import { fillForm } from "../store/flights";
+import { AppDispatch, RootState } from "../store";
+import plane from "../Assets/plane.svg";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const PlaneBooking = () => {
+  const [selectedSeat, setCurrentSeat] = useState<number>(0);
+  const [seatNumber, setSeatNumbert] = useState<string>("");
+  const currentFlight: any = useSelector(
+    (state: RootState) => state.flights.currentFlight
+  );
+  const currentReservation: any = useSelector(
+    (state: RootState) => state.flights.currentReservation
+  );
+  const dispatsh = useDispatch();
+  const navigate = useNavigate();
   return (
-    <div className='tripma_container'>
+    <div className="tripma_container">
       <div className="tripma">
-        <div className='plane_svg'>
-          <img src={plane} alt='' />
-          <div className='plane_seats'>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div className="the-plane">
+          <div className="plane_svg">
+            <img src={plane} alt="" />
+            <div className="plane_seats">
+              {currentFlight.Seats.map((oneSeat: any) => {
+                return (
+                  <button
+                    disabled={!oneSeat.availble}
+                    style={
+                      oneSeat.availble
+                        ? { background: "green" }
+                        : { background: "red" }
+                    }
+                    className="seat"
+                    onClick={() => {
+                      setCurrentSeat(oneSeat.id);
+                      setSeatNumbert(oneSeat.name);
+                      dispatsh(
+                        fillForm({
+                          ...currentReservation,
+                          seatNumber: seatNumber,
+                        })
+                      );
+                    }}
+                  >
+                    {oneSeat.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
+
         <div className="seat-selector">
           <div className="border" />
           <div className="content">
             <div className="progress-step-header-default">
               <div className="flight-information">
                 <div className="flight-info-information-da">
-                  <div className="code">SFO</div>
-                  <div className="location">California, US</div>
+                  <div className="code">{currentFlight.destFrom}</div>
+                  <div className="location"></div>
                 </div>
-                <img
-                  className="arrowright-icon"
-                  alt=""
-                  src={arrowRight}
-                />
+                <img className="arrowright-icon" alt="" src={arrowRight} />
                 <div className="flight-info-information-da">
-                  <div className="code">NRT</div>
-                  <div className="location">Tokyo, Japan</div>
+                  <div className="code">{currentFlight.destTo}</div>
+                  <div className="location"></div>
                 </div>
-                <img
-                  className="arrowright-icon1"
-                  alt=""
-                  src={wordmark}
-                />
+                <img className="arrowright-icon1" alt="" src={wordmark} />
                 <div className="flight-info-information-da2">
                   <div className="code">Code</div>
                   <div className="location">City, Country</div>
@@ -124,22 +86,22 @@ const PlaneBooking = () => {
                 <div className="flight-info">
                   <div className="flight-info-inactive">
                     <div className="time-data">
-                      <span>Feb 25</span>
+                      <span></span>
                       <span className="span">{` | `}</span>
-                      <span>7:00AM</span>
+                      <span>{currentFlight.departureTime}</span>
                     </div>
                     <div className="direction">Departing</div>
                   </div>
-                  {/* <img className="chevron-icon" alt="" src="/chevron.svg" /> */}
+           
                 </div>
                 <div className="flight-info-divider-dark">
                   <div className="divider" />
                 </div>
                 <div className="flight-info1">
                   <div className="time-data">
-                    <span>Mar 21</span>
+                    <span></span>
                     <span className="span">{` | `}</span>
-                    <span>12:15PM</span>
+                    <span>{currentFlight.arrivalTime}</span>
                   </div>
                   <div className="direction">Arriving</div>
                 </div>
@@ -147,11 +109,7 @@ const PlaneBooking = () => {
             </div>
             <div className="feature-lists">
               <div className="feature-list-economy">
-                <img
-                  className="economy-seats-icon"
-                  alt=""
-                  src={ecoSeats}
-                />
+                <img className="economy-seats-icon" alt="" src={ecoSeats} />
                 <div className="feature-list">
                   <div className="header-and-badge">
                     <div className="header">Economy</div>
@@ -165,31 +123,19 @@ const PlaneBooking = () => {
                   </div>
                   <div className="divider-thick" />
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={point}
-                    />
+                    <img className="point-heavy-icon" alt="" src={point} />
                     <div className="bullets-of-key">
                       Built-in entertainment system
                     </div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={point}
-                    />
+                    <img className="point-heavy-icon" alt="" src={point} />
                     <div className="bullets-of-key">
                       Complimentary snacks and drinks
                     </div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={point}
-                    />
+                    <img className="point-heavy-icon" alt="" src={point} />
                     <div className="bullets-of-key">
                       One free carry-on and personal item
                     </div>
@@ -245,55 +191,31 @@ const PlaneBooking = () => {
                   </div>
                   <div className="divider-thick1" />
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={check}
-                    />
+                    <img className="point-heavy-icon" alt="" src={check} />
                     <div className="bullets-of-key">Extended leg room</div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={check}
-                    />
+                    <img className="point-heavy-icon" alt="" src={check} />
                     <div className="bullets-of-key">
                       First two checked bags free
                     </div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={check}
-                    />
+                    <img className="point-heavy-icon" alt="" src={check} />
                     <div className="bullets-of-key">Priority boarding</div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={check}
-                    />
+                    <img className="point-heavy-icon" alt="" src={check} />
                     <div className="bullets-of-key">Personalized service</div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={check}
-                    />
+                    <img className="point-heavy-icon" alt="" src={check} />
                     <div className="bullets-of-key">
                       Enhanced food and drink service
                     </div>
                   </div>
                   <div className="feature-list-bullet">
-                    <img
-                      className="point-heavy-icon"
-                      alt=""
-                      src={check}
-                    />
+                    <img className="point-heavy-icon" alt="" src={check} />
                     <div className="bullets-of-key">
                       Seats that recline 40% more than economy
                     </div>
@@ -313,24 +235,27 @@ const PlaneBooking = () => {
                   </div>
                   <div className="passenger-data1">
                     <div className="label3">Seat number</div>
-                    <div className="name">--</div>
+                    <div className="name">{seatNumber}</div>
                   </div>
                 </div>
                 <div className="button-row">
                   <div className="button">
-                    <div className="label3">Save and close</div>
-                  </div>
-                  <div className="button1">
-                    <div className="label3">Next flight</div>
+                    <div
+                      className="label3"
+                      onClick={() => {
+                        navigate("/PassengerInfo");
+                      }}
+                    >
+                      Save and close
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <img className="desktop-basic-icon" alt="" src="/desktop-basic.svg" /> */}
       </div>
     </div>
-  )
-}
-export default PlaneBooking
+  );
+};
+export default PlaneBooking;

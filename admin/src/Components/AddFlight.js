@@ -40,12 +40,15 @@ const AddFlight = () => {
         destFrom,
         destTo,
         dateFrom: formattedDepartureDate,
-        timeFrom: departureTime,
+        departureTime: departureTime,
         dateTo: formattedArrivalDate,
-        timeTo: arrivalTime,
+        arrivalTime: arrivalTime,
         price,
-        brand,
-        numberOfSeats,
+        brandId:brand,
+      });
+      const seats = await axios.post("http://localhost:1128/seats/addSeats", {
+        FlightId:response.data,
+        numberOfSeats:numberOfSeats
       });
       toast.success("Flight added successfully");
       console.log(response.data);
@@ -137,7 +140,7 @@ const AddFlight = () => {
               >
                 <option>Select a brand</option>
                 {brands.map((brand) => (
-                  <option key={brand.id} value={brand.name}>
+                  <option key={brand.id} value={brand.id}>
                     {brand.name}
                   </option>
                 ))}

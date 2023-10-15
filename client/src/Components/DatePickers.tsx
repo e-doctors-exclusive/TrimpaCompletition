@@ -6,12 +6,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface DatePickersProps {
-  handleOpenDateModal: () => void; // Define the type of the function
-}
+  handleOpenDateModal: () => void;
+  setDepartDate: (date: Date | null) => void;
+  setArriveDate: (date: Date | null) => void;
+  // ... other properties
+};
 
-const DatePickers: React.FC<DatePickersProps> = ({
-  handleOpenDateModal,
-}: DatePickersProps) => {
+const DatePickers: React.FC<DatePickersProps> = (props: DatePickersProps) => {
 
   const [selectedOption, setSelectedOption] = useState("roundTrip");
 
@@ -21,16 +22,15 @@ const DatePickers: React.FC<DatePickersProps> = ({
 
   /***************************Round trip************************************************/ 
 
-  const [departDate, setDepartDate] = React.useState<Date | null>(null);
-  const [arriveDate, setArriveDate] = React.useState<Date | null>(null);
+  
   const handleDepartDateChange = (date: Date | null) => {
-    setDepartDate(date);
+    props.setDepartDate(date);
   };
 
   const handleArriveDateChange = (date: Date | null) => {
-    setArriveDate(date);
+    props.setArriveDate(date);
   };
-  console.log(`depart:${departDate} arrive:${arriveDate}`);
+
   
   /******************************One way********************************************/
  
@@ -72,7 +72,7 @@ const DatePickers: React.FC<DatePickersProps> = ({
               {/* <p>Return</p> */}
             </div>
           </div>
-          <button onClick={handleOpenDateModal} className="aa">
+          <button onClick={props.handleOpenDateModal} className="aa">
             Done
           </button>
         </div>
@@ -81,15 +81,15 @@ const DatePickers: React.FC<DatePickersProps> = ({
       {selectedOption === "roundTrip" ? (
           <>
             <DatePicker
-              selected={departDate}
+            
               onChange={handleDepartDateChange}
-              dateFormat="MMMM/dd"
+              dateFormat="dd/MM/YYYY"
               inline
             />
             <DatePicker
-              selected={arriveDate}
+          
               onChange={handleArriveDateChange}
-              dateFormat="MMMM/dd"
+              dateFormat="dd/MM/YYYY"
               inline
             />
           </>
