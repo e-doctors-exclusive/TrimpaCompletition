@@ -52,10 +52,10 @@ db.Payments = Payments
 db.Seats = Seats
 db.Brands = Brands
 
-// connection
-//   .sync({force: true , alter : true })
-//   .then(() => console.log("tables created"))
-//   .catch((error) => {throw error;});
+  // connection
+  //   .sync({force: true , alter : true })
+  //   .then(() => console.log("tables created"))
+  //   .catch((error) => {throw error;});
 
 module.exports = db
 

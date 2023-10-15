@@ -23,7 +23,7 @@ module.exports = {
 
   updateById: async (req, res) => {
     try {
-      await Product.update(req.body, { where: { id: req.params.reser } });
+      await Reservation.update(req.body, { where: { id: req.params.reser } });
       res.json({
         status: "success",
         message: "Reservation updated successfully!!!",
@@ -36,7 +36,7 @@ module.exports = {
 
   deleteById: async (req, res, next) => {
     try {
-      await Product.destroy({ where: { id: req.params.reser } });
+      await Reservation.destroy({ where: { id: req.params.reser } });
       res.json({
         status: "success",
         message: "Reservation deleted successfully!!!",
@@ -48,7 +48,7 @@ module.exports = {
   },
   add: async (req, res) => {
     try {
-      await Product.create(req.body);
+      await Reservation.create(req.body);
       res.json({
         status: "success",
         message: "Reservation added successfully!!!",

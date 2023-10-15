@@ -25,13 +25,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      numberOfBags: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
     }
 );

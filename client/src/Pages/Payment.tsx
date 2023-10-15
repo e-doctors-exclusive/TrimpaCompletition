@@ -34,7 +34,7 @@ const Payment: React.FC<PaymentProps> = () => {
 const addReservation = async(obj:object)=>{
   try {
     const res = await axios.post(`http://localhost:1128/reservation/add`,obj)
-    return res.data
+    console.log("done")
   } catch (error) {
     throw error
   }
@@ -105,9 +105,9 @@ const addReservation = async(obj:object)=>{
                   Back to seat select
                 </button>
                 {
-                  user.user? <button  id="goout" onClick={()=>{takeAseat(currentReservation.seatid);addReservation({...currentReservation,userId:userid})}}>Confirm and pay</button>:<p id="alert">to make your checkout you need to connect</p>
+                  user.user.id? <button  id="goout" onClick={()=>{takeAseat(currentReservation.seatid) ;addReservation({firstName:currentReservation.firstName,lastName:currentReservation.lastName,birthDate:currentReservation.date,phone:currentReservation.phoneNumber,email:currentReservation.email,userId:currentReservation.userid});console.log({firstName:currentReservation.firstName,lastName:currentReservation.lastName,birthDate:currentReservation.date,phone:currentReservation.phoneNumber,email:currentReservation.email,userId:currentReservation.userid})}}>Confirm and pay</button>:<p id="alert">to make your checkout you need to connect</p>
                 }
-               addReservation
+         
               </div>
             </div>
           </div>
