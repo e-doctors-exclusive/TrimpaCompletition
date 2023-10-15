@@ -11,6 +11,10 @@ function LandingPage() {
   const [destFrom, setDestFrom] = useState("");
   const [destTo, setDestTo] = useState("");
   const [dateFrom, setDateFrom] = useState("");
+  //////////////////////////////////////////////////////////////////////////
+  
+  const [filter, setFilter] = useState<objTypeAll[]>([]);
+  const [maxPrice,setMaxPrice] = useState(0)
   // const [fromArr, setFrom] = useState<string[]>([]);
   // // const [flights,setFlights] = useState<object>([]);
 
@@ -24,29 +28,29 @@ function LandingPage() {
 
   const dispatch: AppDispatch = useDispatch();
 
-  const flights = useSelector((state: RootState) => state.flights.Flights);
-// console.log(fligh  ts,"this is flights");
-
+  const flights:objTypeAll[] = useSelector((state: RootState) => state.flights.Flights);
+  let filterMaxPrice = ()=>{
+   if(!filter){
+    const prices = flights.filter((e)=> e.price <=  maxPrice)   
+  setFilter(prices)
+   }else{
+    const prices = filter.filter((e)=> e.price <=  maxPrice)   
+  setFilter(prices)
+   }
+  }
 
   const allFlight: objTypeAll[] = useSelector(
     (state: RootState) => state.flights.allFlights
   );
 
-
   useEffect(() => {
     dispatch(fetchAllFlights());
   }, []);
-  
-  let a = allFlight.map((e:objTypeAll)=>(
-    e.destFrom
-    ))
-    let b = allFlight.map((e:objTypeAll)=>(
-      e.destTo
-      ))
-  let flight ={origin:[...new Set(a)],destination:[...new Set(b)]}
-  // console.log(flight.origin)
-      
 
+  let a = allFlight.map((e: objTypeAll) => e.destFrom);
+  let b = allFlight.map((e: objTypeAll) => e.destTo);
+  let flight = { origin: [...new Set(a)], destination: [...new Set(b)] };
+  // console.log(flight.origin)
 
   return (
     <div>
@@ -83,7 +87,7 @@ function LandingPage() {
                 placeholder="where are you going"
               >
                 <option>where are you going</option>
-                {flight.destination.map((e:any) => (
+                {flight.destination.map((e: string) => (
                   <option value={e}>{e}</option>
                 ))}
               </select>
