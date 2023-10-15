@@ -1,31 +1,45 @@
-import React, { useState } from 'react';
-import SideBar from './SideBar';
-import '../styles/Chat.css';
+import React, { useState, useEffect } from "react";
+import SideBar from "./SideBar";
+import "../styles/Chat.css";
+import io from "socket.io-client";
 
 function ChatRoom() {
   const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState('');
+  const [newMessage, setNewMessage] = useState(""); // Rename to newMessage
   const [clicked, setClicked] = useState(true);
+  const socket = io("http://localhost:1128");
 
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
+
+  socket.on("connect_error", (error) => {
+    console.error("Socket.IO connection error:", error);
+  });
+
+  useEffect(() => {
+    socket.on("chat message", (msg) => {
+      console.log("Received message:", msg);
+      setMessages((prevMessages) => [...prevMessages, msg]);
+    });
+  }, [socket]);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    socket.emit("chat message", newMessage);
+    setNewMessage(""); // Clear the input field after sending the message
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setMessages([...messages, message]);
-    setMessage('');
+  const handleMessageChange = (e) => {
+    setNewMessage(e.target.value); // Update newMessage, not messagess
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: "flex" }}>
       <SideBar setClicked={setClicked} clicked={clicked} />
       <div
         style={{
-          display: 'flex',
-          flexWrap: 'wrap',
+          display: "flex",
+          flexWrap: "wrap",
           flex: 1,
-          marginLeft: clicked ? '250px' : '70px',
+          marginLeft: clicked ? "250px" : "70px",
         }}
       >
         <div className="chat-room">
@@ -42,11 +56,11 @@ function ChatRoom() {
             </ul>
           </div>
           <div className="chat-room-input">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSendMessage}>
               <input
                 type="text"
                 placeholder="Type your message here"
-                value={message}
+                value={newMessage}
                 onChange={handleMessageChange}
               />
               <button type="submit">Send</button>

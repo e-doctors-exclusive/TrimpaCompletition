@@ -20,7 +20,7 @@ const Payments = require("../model/payment.model")(connection,DataTypes)
 const Seats = require("../model/seats.model")(connection,DataTypes)
 const UserFligths = require("../model/UserFligths.modal")(connection)
 const Brands = require("../model/brands.model")(connection,DataTypes)
-
+const CreditCard = require("../model/creditCardDetails.model")(connection, DataTypes)
 
 
 User.belongsToMany(Flights, { through: UserFligths });
@@ -51,6 +51,7 @@ db.Reservation  = Reservation
 db.Payments = Payments
 db.Seats = Seats
 db.Brands = Brands
+db.CreditCard = CreditCard
 
 // connection
 //   .sync({force: true , alter : true })

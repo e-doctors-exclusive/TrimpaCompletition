@@ -1,4 +1,3 @@
-
 const User = require("../database/index");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
