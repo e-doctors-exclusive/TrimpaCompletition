@@ -317,3 +317,39 @@
 /* * {
   outline: 1px red solid;
 } */
+
+.flight-data:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+#flightfinder-search{
+  width: 79%;
+}
+.filter{
+  display: flex;
+  margin-top: -3rem;
+}
+.filter select{
+  margin-left: 16px;
+  text-align: center;
+  padding: 2px 10px;
+  border: none;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+.filter select:focus{
+outline: none;
+}
+
+.filter select option{
+  width: 100px;
+  text-align: center;
+  padding: 2px 10px;
+  border: none;
+
+}
+.filter select:focus{
+outline: none;
+}

@@ -4,7 +4,9 @@ import BagIllustration from "../Assets/Illustration.png";
 import logoIllustration from "../Assets/logoIllustration.png";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import { useNavigate } from "react-router-dom";
 interface FormData {
   firstName: string;
   middleName: string;
@@ -17,8 +19,28 @@ interface FormData {
   knownTravelerNumber: string;
   sameAsPassenger1: boolean;
 }
-
+interface OneFlightData {
+  Reservations: any[];
+  Seats: any[];
+  Users: any[];
+  arrivalTime: string;
+  brand:any;
+  createdAt: string;
+  dateFrom: string;
+  dateTo: string;
+  departureTime: string;
+  destFrom: string;
+  destTo: string;
+  id: number;
+  price: number;
+  updatedAt: string;
+}
+interface fightType{
+  oneFlight:OneFlightData 
+}
 const PassengerInfo: React.FC = () => {
+  const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
+  console.log(currentFlight)
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     middleName: "",
@@ -32,7 +54,9 @@ const PassengerInfo: React.FC = () => {
     sameAsPassenger1: false,
   });
 
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(formData)
     const { name, value } = e.target;
     setFormData({
       ...formData, 
@@ -229,31 +253,20 @@ const PassengerInfo: React.FC = () => {
               <div className="trip-info">
                 <div className="aller">
                   <div className="aller_container">
-                    <img src={logoIllustration} alt="" />
+                    <img src={currentFlight.brand.image} alt="" />
                     <div className="img_title">
-                      <p>Hawaiian Airlines</p>
+                      <p>{currentFlight.brand.name}</p>
                       <p className="ref">FIG4312</p>
                     </div>
                   </div>
                   <div className="time">
-                    <p>16h 45m (+1d)</p>
-                    <p>7:00 AM - 4:15 PM</p>
-                    <p className="ref">2h 45m in HNL</p>
+                    <p>{}</p>
+                    <p>{currentFlight.departureTime} - {currentFlight.arrivalTime}</p>
+                    <p className="ref">{currentFlight.destFrom} - {currentFlight.destTo}</p>
                   </div>
                 </div>
                 <div className="retour">
-                  <div className="retour_container">
-                    <img src={logoIllustration} alt="" />
-                    <div className="img_title">
-                      <p>Hawaiian Airlines</p>
-                      <p className="ref">FIG4312</p>
-                    </div>
-                  </div>
-                  <div className="time">
-                    <p>16h 45m (+1d)</p>
-                    <p>7:00 AM - 4:15 PM</p>
-                    <p className="ref">2h 45m in HNL</p>
-                  </div>
+                
                 </div>
               </div>
               <div className="trip_fees">

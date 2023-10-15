@@ -5,10 +5,11 @@ const { Op } = require("sequelize")
 module.exports.getFlights = async (req, res) => {
     try {
         const getAll = await Flights.findAll(({ 
-            
+           include:{all:true},
             where: { destFrom: {[Op.like]:req.params.destFrom},
             destTo: {[Op.like]:req.params.destTo}  }, 
-            dateFrom: {[Op.like]:req.params.dateFrom}})) 
+            dateFrom: {[Op.like]:req.params.dateFrom}}
+            )) 
         res.status(200).send(getAll)
     } catch (error) {
         throw new Error(error)
@@ -44,31 +45,12 @@ module.exports.findOneFlight = async (req, res) => {
 };
 
 module.exports.addFlight = async (req, res) => {
-  const {
-    destFrom,
-    destTo,
-    dateFrom,
-    timeFrom,
-    dateTo,
-    timeTo,
-    price,
-    brand,
-    numberOfSeats,
-  } = req.body;
 
   try {
-    const flight = await Flights.create({
-      destFrom,
-      destTo,
-      dateFrom,
-      departureTime: timeFrom,
-      dateTo,
-      arrivalTime: timeTo,
-      price,
-      brand,
-      numberOfSeats,
-    });
-    res.status(201).json(flight);
+    const flight = await Flights.create(
+      req.body
+    );
+    res.status(201).json(flight.id);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error adding flight' });

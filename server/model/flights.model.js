@@ -31,6 +31,5 @@ module.exports = (sequelize) => {
       allowNull: false
     }
   });
-
   return Flights;
 };

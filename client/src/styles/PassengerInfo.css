@@ -416,6 +416,7 @@ input:focus {
 .retour {
   display: flex;
   width: 368px;
+  height: 200px;
   padding: 8px;
   align-items: flex-start;
   justify-content: center;
