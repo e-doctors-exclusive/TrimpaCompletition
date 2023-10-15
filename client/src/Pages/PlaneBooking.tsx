@@ -16,114 +16,78 @@ import wordmark from "../Assets/tripmaBooking/Wordmark.png"
 import arrowRight from "../Assets/tripmaBooking/arrowRight.png"
 import ecoSeats from "../Assets/tripmaBooking/Economy Seats.png"
 import bussinesSeats from "../Assets/tripmaBooking/Business Seats.png"
-
+import plane from "../Assets/plane.svg"
 const PlaneBooking = () => {
   return (
     <div className='tripma_container'>
       <div className="tripma">
-        <div className="plane-seat-selection">
-          {/* <img
-            className="plane-seat-selection-child"
-            alt=""
-            src="/rectangle-10.svg"
-          />
-          <img
-            className="plane-seat-selection-item"
-            alt=""
-            src="/rectangle-10.svg"
-          /> */}
-          <img
-            className="plane-seat-selection-inner"
-            alt=""
-            src={rectangle9}
-          />
-          <img className="vector-icon" alt="" src={vector17} />
-          <img
-            className="plane-seat-selection-child1"
-            alt=""
-            src={vector18}
-          />
-          <img className="rectangle-icon" alt="" src={rectangle15} />
-          <div className="business">
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">1</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">2</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">3</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">4</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
-            <div className="seat-row-business">
-              <img className="seat-icon" alt="" src={seatBussines} />
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <div className="row-number">
-                <div className="div">5</div>
-              </div>
-              <img className="seat-icon" alt="" src={seatEmptyBussines} />
-              <img className="seat-icon" alt="" src={seatBussines} />
-            </div>
+        <div className='plane_svg'>
+          <img src={plane} alt='' />
+          <div className='plane_seats'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-          <div className="economy">
-            <div className="seat-row-exit-row">
-              <div className="exit-row">Exit row</div>
-              <img
-                className="information-icon"
-                alt=""
-                src={info}
-              />
-            </div>
-            <div className="seat-row-economy">
-              <img className="seat-icon20" alt="" src={seatEco} />
-              <img className="seat-icon20" alt="" src={seatEco} />
-              {/* <img className="seat-icon20" alt="" src={seatEco} /> */}
-              <div>
-                <input className='inputTest1'
-                  type="checkbox"
-                  id="seat1"
-                  name="seat-eco"
-                  value="A1" />
-              </div>
-              <div className="row-number">
-                <div className="div">6</div>
-              </div>
-              <img className="seat-icon20" alt="" src={seatEcoEmpty} />
-              <img className="seat-icon20" alt="" src={seatEco} />
-              <img className="seat-icon20" alt="" src={seatEcoEmpty} />
-            </div>
-          
-          </div>
-        </div>
-        <div>
-          {/* <div>sqjk,nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnl</div>
-          <div>sqjkl</div> */}
         </div>
         <div className="seat-selector">
           <div className="border" />

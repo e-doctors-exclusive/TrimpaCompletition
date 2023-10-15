@@ -1,4 +1,4 @@
-/* .plane-seat-selection-child,
+.plane-seat-selection-child,
 .plane-seat-selection-item {
   position: absolute;
   top: calc(50% - 302.5px);
@@ -577,4 +577,41 @@
 }
 .tripma_container{
   position: relative;
-} */
+}
+
+.plane_svg {
+  position: relative;
+  width: 57.6vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  overflow-x: hidden;
+}
+
+.plane_svg > img {
+  width: 350vw;
+  height: 250vw;
+  z-index: 0;
+}
+
+.plane_seats {
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 5;
+  bottom: 500px;
+  height: 320vh;
+  width: 41vh;
+  bottom: 100vh;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.plane_seats > div {
+  background-color: #27273f;
+  height: 2rem;
+  width: 2rem;
+}
