@@ -3,54 +3,17 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import TopHeader from "../Components/TopHeader";
 import Footer from "../Components/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllFlights, fetchFlights } from "../store/flights";
-import { AppDispatch, RootState } from "../store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
+import { fetchAllFlights } from "../store/flights";
 
+import SearchBar from "../Components/SearchBaR";
 function LandingPage() {
-  const [destFrom, setDestFrom] = useState("");
-  const [destTo, setDestTo] = useState("");
-  const [dateFrom, setDateFrom] = useState("");
-  //////////////////////////////////////////////////////////////////////////
-  
-  const [filter, setFilter] = useState<objTypeAll[]>([]);
-  const [maxPrice,setMaxPrice] = useState(0)
-  // const [fromArr, setFrom] = useState<string[]>([]);
-  // // const [flights,setFlights] = useState<object>([]);
-
-  interface objTypeAll {
-    destFrom: string;
-    destTo: string;
-    dateFrom: Date;
-    dateTo: Date;
-    price: number;
-  }
 
   const dispatch: AppDispatch = useDispatch();
-
-  const flights:objTypeAll[] = useSelector((state: RootState) => state.flights.Flights);
-  let filterMaxPrice = ()=>{
-   if(!filter){
-    const prices = flights.filter((e)=> e.price <=  maxPrice)   
-  setFilter(prices)
-   }else{
-    const prices = filter.filter((e)=> e.price <=  maxPrice)   
-  setFilter(prices)
-   }
-  }
-
-  const allFlight: objTypeAll[] = useSelector(
-    (state: RootState) => state.flights.allFlights
-  );
-
   useEffect(() => {
     dispatch(fetchAllFlights());
   }, []);
-
-  let a = allFlight.map((e: objTypeAll) => e.destFrom);
-  let b = allFlight.map((e: objTypeAll) => e.destTo);
-  let flight = { origin: [...new Set(a)], destination: [...new Set(b)] };
-  // console.log(flight.origin)
 
   return (
     <div>
@@ -61,61 +24,7 @@ function LandingPage() {
           <div className="landing-title">
             <h1>It's more than just a trip</h1>
           </div>
-
-          <div className="landing-inputs">
-            <div className="landing-input">
-              <i className="fa-solid fa-plane-departure"></i>
-              <select
-                onChange={(e) => setDestFrom(e.target.value)}
-                name="from"
-                id=""
-                placeholder="where are you going"
-              >
-                <option>where are you going</option>
-                {flight.origin.map((e) => (
-                  <option value={e}>{e}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="landing-input">
-              <i className="fa-solid fa-plane-arrival"></i>
-              <select
-                onChange={(e) => setDestTo(e.target.value)}
-                name="from"
-                id=""
-                placeholder="where are you going"
-              >
-                <option>where are you going</option>
-                {flight.destination.map((e: string) => (
-                  <option value={e}>{e}</option>
-                ))}
-              </select>
-            </div>
-
-            <div className="landing-input">
-              <input
-                onChange={(e) => setDateFrom(e.target.value)}
-                type="date"
-                placeholder="whene ?"
-              />
-            </div>
-
-            <div className="landing-input">
-              <i className="fa-solid fa-user"></i>
-              <input type="number" placeholder="Adults" />
-            </div>
-            <div>
-              <button
-                className="landing-boutton"
-                onClick={() =>
-                  dispatch(fetchFlights({ destFrom, destTo, dateFrom }))
-                }
-              >
-                search
-              </button>
-            </div>
-          </div>
+          <SearchBar />
         </div>
       </div>
       <div className="section-one">

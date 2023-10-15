@@ -10,13 +10,12 @@ interface objType{
 interface objTypeAll{
     destFrom:string
     destTo:string
-    dateFrom:Date
-    dateTo:Date
-    price:number
+    departDate:string
+    arriveDate:string
 }
 
-export const fetchFlights = createAsyncThunk("/flights/destFrom/destTo/dateFrom",async(obj:objType)=>{
-    const res = await axios.get(`http://localhost:1128/flights/getAll/${obj.destFrom}/${obj.destTo}/${obj.dateFrom}`)
+export const fetchFlights = createAsyncThunk("/flights/destFrom/destTo/dateFrom",async(obj:objTypeAll)=>{
+    const res = await axios.get(`http://localhost:1128/flights/getAll/${obj.destFrom}/${obj.destTo}/${obj.departDate}`)
     return res.data
 })
 
@@ -26,16 +25,34 @@ export const fetchAllFlights = createAsyncThunk("/flights/getAll",async()=>{
 })
 
 
-
 const FlightsSlice=createSlice({
     name:"Flights",
     initialState:{
         Flights:[],
         allFlights:[],
+        currentFlight:{},
+        currentReservation:{
+            firstName: "",
+            middleName: "",
+            lastName: "",
+            suffix: "",
+            date: "",
+            email: "",
+            phoneNumber: "",
+            redressNumber: "",
+            seatNumber:""
+        },
         error:null,
         loading:false
     },
     reducers:{
+        selected:(state:any,action)=>{
+            state.currentFlight = action.payload
+        },
+        fillForm:(state:any,action)=>{
+            state.currentReservation = action.payload
+        }
+
 
     },
     extraReducers(builder){
@@ -48,4 +65,5 @@ const FlightsSlice=createSlice({
         })
     }
 })
+export const {selected,fillForm} = FlightsSlice.actions
 export default FlightsSlice.reducer

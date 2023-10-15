@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface init {
-    user: string,
+    user: any,
     userToken : string,
     loggedIn: boolean
 }
 
 const initialState = {
-    user: "",
+    user: {},
     userToken :"" ,
     loggedIn: false,
 }
@@ -20,13 +20,11 @@ export const userSlicer = createSlice({
         setUser:  (state , action)=>{
             const {user} = action.payload;
             state.user = user
-            localStorage.setItem('user', JSON.stringify(user))
         },
         logout: (state)=>{
             state.user = "" 
             state.loggedIn = false
             localStorage.removeItem('userToken')
-            localStorage.removeItem('user')
         },
         setLoggedIn: (state, action)=>{
             const {token , loggedIn} = action.payload

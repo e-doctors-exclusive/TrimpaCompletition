@@ -1,4 +1,4 @@
-/* .plane-seat-selection-child,
+.plane-seat-selection-child,
 .plane-seat-selection-item {
   position: absolute;
   top: calc(50% - 302.5px);
@@ -577,4 +577,62 @@
 }
 .tripma_container{
   position: relative;
-} */
+}
+
+.plane_svg {
+  position: relative;
+  width: 67.64076rem;
+  display: flex;
+  justify-content: center;
+  align-self: start;
+  overflow-x: hidden;
+}
+
+.plane_svg img{
+  width: 411.01156249999997rem;
+  height:293.5796875rem;
+  z-index: 0; 
+}
+
+.plane_seats {
+  background-color: transparent;
+  position: absolute;
+  z-index: 5;
+  bottom: 500px;
+  height: 320vh;
+  width: 47vh;
+  bottom: 100vh;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: center ;
+  flex-wrap: wrap;
+
+  /* align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 2rem; */
+}
+
+.seat{
+ 
+  height: 6rem;
+  width: 3rem;
+  margin-top: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
+
+#forclik:focus{
+  background-color: #4ed1ba;
+}
