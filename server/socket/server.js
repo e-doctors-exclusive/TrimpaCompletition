@@ -1,42 +1,45 @@
-const {instrument} = require("@socket.io/admin-ui")
-const io = require("socket.io")(3000, {
-  cors: {
-    origin: ["http://localhost:8080","http://admin.socket.io"],
-  },
-});
+const express = require('express');
+const http = require('http');
+const socketIo = require('socket.io');
+const cors = require('cors');
 
-const userIo = io.of("/user")
-userIo.on("connection",socket =>{
-    console.log("connected to user namespace with username" + socket.username);
-})
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
 
-userIo.use((socket,next) =>{
-if(socket.handshake.auth.token){
-    socket.username = getUsernameFromToken(socket.handshake.auth.token)
-    next()
-}else{
-    next(new Error("Please send token"))
-}
-})
+const PORT = 1129;
 
-function getUsernameFromToken(token){
-    return token
-}
+app.use(cors({ origin: '*' }));
 
-io.on("connection", (socket) => {
-  console.log(socket.id);
-  socket.on("send-message", (message,room) => {
-    if(room ===""){
-    socket.broadcast.emit("recieve-message", message);
- }else{
-    socket.to(room).emit("recieve-message", message);
- } 
-});
-  socket.on("join-room", (room,cb) => {
-    socket.join(room);
-    cb(`Joined ${room}`);
+// Créez un tableau pour stocker les messages
+const messages = [];
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+
+  // Envoyez l'historique des messages au client à chaque connexion
+  socket.emit('history', messages);
+
+  // Lorsqu'un client demande l'historique des messages
+  socket.on('getHistory', () => {
+    socket.emit('history', messages);
   });
-  socket.on("ping",n => console.log(n)
+
+  socket.on('message', (data) => {
+    console.log('Received message:', data);
+    messages.push(data);
+    // Envoyez le nouveau message à tous les clients, y compris l'expéditeur
+    io.emit('message', [data]);
+
+    // Envoi à chaque envoi de message
+    socket.emit('history', messages);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+  });
 });
 
-instrument(io,{auth:false})
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

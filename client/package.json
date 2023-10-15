@@ -18,12 +18,12 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^9.1.3",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "socket.io-client": "^4.7.2",
-    "sort-by": "^1.2.0",
+    "sort-by": "^0.0.2",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "snowpackStart":"script.js"
+    "snowpackStart": "snowpack dev"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +58,6 @@
     "@types/react-dom": "^18.2.12",
     "@types/react-redux": "^7.1.27",
     "@types/redux": "^3.6.0",
-    "snowpack": "^3.8.8"
+    "snowpack": "^3.7.1"
   }
 }

@@ -9,6 +9,8 @@ import ProfileUser          from "./Pages/ProfileUser";
 import PlaneBooking         from "./Pages/PlaneBooking";
 import Payment             from "./Pages/Payment";  
 import FlightFinder from "./Pages/FlightFinder";
+import MessagesClient from "./Components/MessagesClient";
+import MessagesAdmin from "./Components/MessagesAdmsin";
 
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
@@ -23,6 +25,8 @@ function App() {
         <Route path="/PlaneBooking" element={<PlaneBooking />}></Route>
         <Route path="/Payment" element={<Payment />}></Route>
         <Route path="/FlightFinder" element={<FlightFinder />}></Route>
+        <Route path="/messageClient" element={<MessagesClient />}></Route>
+        <Route path="/messageAdmin" element={<MessagesAdmin />}></Route>
       </Routes>
       <ToastContainer />
     </div>

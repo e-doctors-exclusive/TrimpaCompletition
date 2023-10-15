@@ -4,6 +4,12 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import {store}  from "./store/index";
 import { Provider } from "react-redux";
+const { io } = require("socket.io-client")
+
+
+  
+
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
