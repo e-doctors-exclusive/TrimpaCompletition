@@ -4,7 +4,7 @@ import io from 'socket.io-client';
 function App() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const socket = io('http://localhost:3000'); // Connect to the backend server
+  const socket = io('http://localhost:3001'); // Connect to the backend server
 
   useEffect(() => {
     socket.on('message', (data) => {

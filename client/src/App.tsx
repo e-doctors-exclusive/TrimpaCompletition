@@ -12,7 +12,7 @@ import ProfileUser from "./Pages/ProfileUser";
 import PlaneBooking from "./Pages/PlaneBooking";
 import Payment from "./Pages/Payment";
 import FlightFinder from "./Pages/FlightFinder";
-
+import Chat from "./Pages/Chat"
 function App() {
 
   const location = useLocation();
@@ -38,6 +38,7 @@ function App() {
             <Route path="/PlaneBooking" element={<PlaneBooking />}></Route>
             <Route path="/Payment" element={<Payment />}></Route>
             <Route path="/FlightFinder" element={<FlightFinder />}></Route>
+            <Route path="/chat" element={<Chat />}></Route>
           </Routes>
         </CSSTransition>
       </TransitionGroup>
