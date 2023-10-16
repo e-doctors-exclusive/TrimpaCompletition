@@ -5,10 +5,12 @@ import Avatar from "../Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { logout } from "../store/userSlicer";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ProfileUser = () => {
   const { user } = useSelector((state) => state.user);
-  console.log(user)
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -23,7 +25,8 @@ const ProfileUser = () => {
   });
   const [userReservations, setReservation] = useState([]);
   const [element, setElement] = useState("userProfile");
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
@@ -104,11 +107,16 @@ const ProfileUser = () => {
               }`}
               onClick={() => setElement("userChat")}
             >
-              <p className="account_seeting_title">contact admin</p>
+              <p className="account_seeting_title">Contact admin</p>
               <p className="account_seeting_desc">
                 Details about your Personal information
               </p>
             </div>
+            <button id="logout" onClick={()=>{
+              dispatch(logout())
+              navigate("/")
+              toast.info("Goodbye!");
+            }}>Logout</button>
           </div>
           <div className="profile_container">
             {element === "userProfile" && (
