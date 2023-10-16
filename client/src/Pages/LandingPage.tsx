@@ -163,7 +163,7 @@ function LandingPage() {
             </div>
           </div>
           <div className="btn">
-            <button className="middle-btn">Explore more stays</button>
+            <button id="middle-btn">Explore more stays</button>
           </div>
           <div className="landing-header" id="ratee">
             <h5>

@@ -30,7 +30,12 @@
   border: none;
   padding: 8px 12px;
 }
-
+.landing-input select:focus{
+  outline: none;
+}
+.landing-input option{
+  font-size: 17px;
+}
 .landing-input select {
   border: none;
   padding: 8px 12px;
@@ -162,10 +167,21 @@
   font-style: normal;
   font-weight: 400;
 }
-.middle-btn {
+.btn{
+  text-align: center;
+  width: 100%;
+}
+ #middle-btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 200px;
+  padding: 5px 10px;
+  border: none;
   margin-left: auto;
   margin-right: auto;
+  background: #605dec;
+  color: white;
+
 }
 .btnnn {
   padding: 80px;
