@@ -43,9 +43,9 @@ const FlightData: React.FC <propsType>= (props:any) => {
 
   const hours = Math.floor(timeDiff / 3600);
   const minutes = Math.floor((timeDiff % 3600) / 60);
- console.log(`${hours}:${minutes}`)
+
   return (
-    <div className="flight-data" onClick={()=>{dispatch(selected(props.oneFlight));navigate("/PassengerInfo")}}>
+    <div className="flight-data" onClick={()=>{dispatch(selected(props.oneFlight));}}>
       <div className="logo-sec">
         <img id="airline_logo" src={props.oneFlight.brand.image} alt="" />
         <div className="logo-sec-desc">

@@ -26,7 +26,6 @@ export const fetchAllFlights = createAsyncThunk("/flights/getAll",async()=>{
 })
 
 
-
 const FlightsSlice=createSlice({
     name:"Flights",
     initialState:{
@@ -39,7 +38,7 @@ const FlightsSlice=createSlice({
             lastName: "",
             suffix: "",
             date: "",
-            email: "ffd",
+            email: "",
             phoneNumber: "",
             redressNumber: "",
             seatNumber:""

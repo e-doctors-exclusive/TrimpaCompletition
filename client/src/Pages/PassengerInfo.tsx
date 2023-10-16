@@ -257,7 +257,7 @@ const PassengerInfo: React.FC = () => {
               </div>
             </div>
             <div className="choice-btns">
-              <button >Save and close</button>
+              <button onClick={()=>{navigate("/Payment")}} >Save and close</button>
               <button onClick={()=>{dispatsh(fillForm(formData)) ;navigate("/planebooking")}} id="larger">Select seats</button>
             </div>
           </div>
@@ -278,9 +278,6 @@ const PassengerInfo: React.FC = () => {
                     <p className="ref">{currentFlight.destFrom} - {currentFlight.destTo}</p>
                   </div>
                 </div>
-                <div className="retour">
-                
-                </div>
               </div>
               <div className="trip_fees">
                 <div className="total-cost">
@@ -289,12 +286,11 @@ const PassengerInfo: React.FC = () => {
                   <p>Total</p>
                 </div>
                 <div className="prices">
-                  <p>$503</p>
+                  <p>${currentFlight.price}</p>
                   <p>$121</p>
-                  <p>$624</p>
+                  <p>${currentFlight.price + 121}</p>
                 </div>
               </div>
-              <button>Select seats</button>
             </div>
             <img id="illustration" src={BagIllustration} alt="" />
           </div>

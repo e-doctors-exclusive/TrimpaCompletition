@@ -20,27 +20,39 @@ const ProfileUser = () => {
     zip: user.zip,
     image: user.image,
   });
-  // console.log(user);
+
+  const [element, setElement] = useState("userProfile");
+
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
-    console.log(formData);
     formData.append("upload_preset", "vhhtdlm3");
-    const response = await axios
-      .post("https://api.cloudinary.com/dh8ogvcuy/image/upload", formData)
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(response);
-    setForm({ ...form, image: response.data.secure_url });
+
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/dh8ogvcuy/image/upload",
+        formData
+      );
+      setForm({ ...form, image: response.data.secure_url });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleUpdate = async (form) => {
-    await axios
-      .put(`http://localhost:1128/users/update/${user.id}`, form)
-      .then((response) => console.log(response));
+  const handleUpdate = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:1128/users/update/${user.id}`,
+        form
+      );
+      console.log(response);
+      toast.success("Update Successfully");
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <>
       <Navbar />
@@ -48,112 +60,134 @@ const ProfileUser = () => {
       <div className="userProfile_main_container">
         <div className="userProfile_container">
           <div className="profile_side_nav">
-            <div className="side_nav_card">
+            <div
+              className={`side_nav_card ${
+                element === "userProfile" ? "active" : ""
+              }`}
+              onClick={() => setElement("userProfile")}
+            >
               <p className="account_seeting_title">Account Setting</p>
               <p className="account_seeting_desc">
                 Details about your Personal information
-              </p> 
+              </p>
             </div>
-            <div className="side_nav_card">
+            <div
+              className={`side_nav_card ${
+                element === "userCheckout" ? "active" : ""
+              }`}
+              onClick={() => setElement("userCheckout")}
+            >
               <p className="account_seeting_title">User checkout</p>
               <p className="account_seeting_desc">
                 Details about your Payment transactions
               </p>
             </div>
-            <div className="side_nav_card">
-              <p className="account_seeting_title">Password & Security</p>
+            <div
+              className={`side_nav_card ${
+                element === "userChat" ? "active" : ""
+              }`}
+              onClick={() => setElement("userChat")}
+            >
+              <p className="account_seeting_title">contact admin</p>
               <p className="account_seeting_desc">
                 Details about your Personal information
               </p>
             </div>
           </div>
           <div className="profile_container">
-              <div className="profile_img">
-                <div className="avatar_container">
-                <img src={Avatar} id="avatar" />
-                  <div className="avatar_info">
-                    <p id="avatar_title">Upload a New Photo</p>
-                    <p id="avatar_file_source">Profile-pic.jpg</p>
+            {element === "userProfile" && (
+              <>
+                <div className="profile_img">
+                  <div className="avatar_container">
+                    <img src={Avatar} id="avatar" />
+                    <div className="avatar_info">
+                      <p id="avatar_title">Upload a New Photo</p>
+                      <p id="avatar_file_source">Profile-pic.jpg</p>
+                    </div>
                   </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileUpload}
+                    placeholder="Update"
+                  />
                 </div>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileUpload}
-                  placeholder="Update"
-                />
+                <div className="profile_information">
+                  <p>Change User Information here</p>
+                  <div className="username_email">
+                    <input
+                      type="text"
+                      placeholder="username"
+                      defaultValue={user.name}
+                      onChange={(e) => {
+                        setForm({ ...form, name: e.target.value });
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="email"
+                      defaultValue={user.email}
+                      onChange={(e) => {
+                        setForm({ ...form, email: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Address*"
+                    defaultValue={user.adress}
+                    onChange={(e) => {
+                      setForm({ ...form, adress: e.target.value });
+                    }}
+                  />
+                  <div className="user_info">
+                    <input
+                      type="text"
+                      placeholder="City"
+                      defaultValue={user.city}
+                      onChange={(e) => {
+                        setForm({ ...form, city: e.target.value });
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="State/Province"
+                      defaultValue={user.state}
+                      onChange={(e) => {
+                        setForm({ ...form, state: e.target.value });
+                      }}
+                    />
+                    <input
+                      type="number"
+                      placeholder="Zip Code"
+                      defaultValue={user.zip}
+                      onChange={(e) => {
+                        setForm({ ...form, zip: parseInt(e.target.value) });
+                      }}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Country"
+                      defaultValue={user.country}
+                      onChange={(e) => {
+                        setForm({ ...form, country: e.target.value });
+                      }}
+                    />
+                  </div>
+                  <button onClick={handleUpdate}>Update Information</button>
+                </div>
+              </>
+            )}
+            {element === "userChat" && (
+              <div className="chat">
+                <h1>chat</h1>
               </div>
-            <div className="profile_information">
-              <p>Change User Information here</p>
-              <div className="username_email">
-                <input
-                  type="text"
-                  placeholder="username"
-                  defaultValue={user.name}
-                  onChange={(e) => {
-                    setForm({ ...form, name: e.target.value });
-                  }}
-                />
-                <input
-                  type="text"
-                  placeholder="email"
-                  defaultValue={user.email}
-                  onChange={(e) => {
-                    setForm({ ...form, email: e.target.value });
-                  }}
-                />
+            )}
+            {element === "userCheckout" && (
+              <div className="checkoutt">
+                <h1>user checkout</h1>
               </div>
-              <input
-                type="text"
-                placeholder="Adress*"
-                defaultValue={user.adress}
-                onChange={(e) => {
-                  setForm({ ...form, adress: e.target.value });
-                }}
-              />
-              <div className="user_info">
-                <input
-                  type="text"
-                  placeholder="City"
-                  defaultValue={user.city}
-                  onChange={(e) => {
-                    setForm({ ...form, city: e.target.value });
-                  }}
-                />
-                <input
-                  type="text"
-                  placeholder="State/Province"
-                  defaultValue={user.state}
-                  onChange={(e) => {
-                    setForm({ ...form, state: e.target.value });
-                  }}
-                />
-                <input
-                  type="number"
-                  placeholder="Zip Code"
-                  defaultValue={user.zip}
-                  onChange={(e) => {
-                    setForm({ ...form, zip: parseInt(e.target.value) });
-                  }}
-                />
-                <input
-                  type="text"
-                  placeholder="Country"
-                  defaultValue={user.country}
-                  onChange={(e) => {
-                    setForm({ ...form, country: e.target.value });
-                  }}
-                />
-              </div>
-              <button
-                onClick={() => {
-                  handleUpdate(form);
-                  toast.success("Update Successfully");
-                }}
-              >
-                Update Information
-              </button>
-            </div>
+            )}
           </div>
         </div>
       </div>

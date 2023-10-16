@@ -581,21 +581,21 @@
 
 .plane_svg {
   position: relative;
-  width: 57.6vw;
+  width: 67.64076rem;
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
+  align-self: start;
   overflow-x: hidden;
 }
 
-.plane_svg > img {
-  width: 350vw;
-  height: 250vw;
-  z-index: 0;
+.plane_svg img{
+  width: 411.01156249999997rem;
+  height:293.5796875rem;
+  z-index: 0; 
 }
 
 .plane_seats {
-  background-color: #ffffff;
+  background-color: transparent;
   position: absolute;
   z-index: 5;
   bottom: 500px;
@@ -609,6 +609,7 @@
   justify-content: center;
   align-items: center ;
   flex-wrap: wrap;
+
   /* align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -619,21 +620,19 @@
   gap: 2rem; */
 }
 
-.seat  {
-  background-color: #27273f;
+.seat{
+ 
   height: 6rem;
-  width: 4rem;
+  width: 3rem;
   margin-top: 30px;
   margin-left: 5px;
   margin-right: 5px;
   font-size: 20px;
   color: white;
   border-radius: 8px;
+  border: none;
 }
 
-.seat:focus{
-  background-color:red;
-}
-.the-plane{
- 
+#forclik:focus{
+  background-color: #4ed1ba;
 }
