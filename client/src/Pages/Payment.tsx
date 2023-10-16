@@ -14,31 +14,36 @@ interface PaymentProps {}
 const Payment: React.FC<PaymentProps> = () => {
   const dispatsh = useDispatch();
   const navigate = useNavigate();
-  const user:any = useSelector((state: RootState) => state.user);
- const userid = user.user.id
+  const user: any = useSelector((state: RootState) => state.user);
+  const userid = user.user.id;
   const currentFlight: any = useSelector(
     (state: RootState) => state.flights.currentFlight
   );
   const currentReservation: any = useSelector(
     (state: RootState) => state.flights.currentReservation
   );
-  console.log(currentFlight)
-   const takeAseat = async(id:number)=>{
+  console.log(currentFlight);
+  const takeAseat = async (id: number) => {
     try {
-      const res = await axios.put(`http://localhost:1128/seats/update/${id}`,{availble:false})
-      return res.data
+      const res = await axios.put(`http://localhost:1128/seats/update/${id}`, {
+        availble: false,
+      });
+      return res.data;
     } catch (error) {
-      throw error
+      throw error;
     }
-}
-const addReservation = async(obj:object)=>{
-  try {
-    const res = await axios.post(`http://localhost:1128/reservation/add`,obj)
-    return res.data
-  } catch (error) {
-    throw error
-  }
-}
+  };
+  const addReservation = async (obj: object) => {
+    try {
+      const res = await axios.post(
+        `http://localhost:1128/reservation/add`,
+        obj
+      );
+      console.log("done");
+    } catch (error) {
+      throw error;
+    }
+  };
   return (
     <>
       <Navbar />
@@ -104,10 +109,27 @@ const addReservation = async(obj:object)=>{
                 >
                   Back to seat select
                 </button>
-                {
-                  user.user? <button  id="goout" onClick={()=>{takeAseat(currentReservation.seatid);addReservation({...currentReservation,userId:userid})}}>Confirm and pay</button>:<p id="alert">to make your checkout you need to connect</p>
-                }
-               addReservation
+                {user.user.id ? (
+                  <button
+                    id="goout"
+                    onClick={() => {
+                      takeAseat(currentReservation.seatid);
+                      addReservation({
+                        firstName: currentReservation.firstName,
+                        lastName: currentReservation.lastName,
+                        birthDate: currentReservation.date,
+                        phone: currentReservation.phoneNumber,
+                        email: currentReservation.email,
+                        userId: userid,
+                        FlightId:currentFlight.id
+                      });
+                    }}
+                  >
+                    Confirm and pay
+                  </button>
+                ) : (
+                  <p id="alert">to make your checkout you need to connect</p>
+                )}
               </div>
             </div>
           </div>

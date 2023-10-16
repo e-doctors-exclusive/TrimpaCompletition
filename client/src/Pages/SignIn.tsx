@@ -20,7 +20,8 @@ const SignInModal: React.FC<SignInModalProps> = ({
   const [password, setPassword] = useState("");
 
   const handleSignIn = () => {
-    onSignIn(email,password)  };
+    onSignIn(email, password);
+  };
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -32,11 +33,9 @@ const SignInModal: React.FC<SignInModalProps> = ({
     e.stopPropagation();
   };
 
-
   // useEffect(()=>{
-    
-  //   },[])
 
+  //   },[])
 
   return (
     <div
@@ -60,10 +59,15 @@ const SignInModal: React.FC<SignInModalProps> = ({
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="signInbtn" onClick={()=>{
-          handleSignIn()
-          onClose()
-        }}>Sign In</button>
+        <button
+          className="signInbtn"
+          onClick={() => {
+            handleSignIn();
+            onClose();
+          }}
+        >
+          Sign In
+        </button>
       </div>
     </div>
   );

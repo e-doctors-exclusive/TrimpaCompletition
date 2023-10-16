@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     socket.on('message', (data) => {
-      setMessages([...messages, data]);
+      setMessages([...messages,data]);
     });
   }, [messages]);
 
