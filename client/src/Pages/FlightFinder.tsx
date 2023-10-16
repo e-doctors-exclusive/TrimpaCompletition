@@ -97,8 +97,8 @@ const navigate = useNavigate()
                 placeholder="where are you going"
               >
                 <option>where are you going</option>
-                {flight.origin.map((e) => (
-                  <option value={e}>{e}</option>
+                {flight.origin.map((e,key) => (
+                  <option value={e} key={key}>{e}</option>
                 ))}
               </select>
             </div>

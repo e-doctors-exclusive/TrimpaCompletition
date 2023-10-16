@@ -62,6 +62,7 @@ const ProfileUser = () => {
         `http://localhost:1128/reservation/getFor/${id}`
       );
       setReservation(response.data);
+      console.log(response.data)
     } catch (error) {
       console.error(error);
     }
