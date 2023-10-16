@@ -1,5 +1,5 @@
 import "../styles/Payment.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import icon1 from "../Assets/icons/PaymentPage-icons/credit card.svg";
 import icon5 from "../Assets/icons/PaymentPage-icons/flousi.svg";
 import information from "../Assets/icons/PaymentPage-icons/information.svg";
@@ -12,8 +12,8 @@ import axios from "axios";
 interface PaymentProps {}
 
 const Payment: React.FC<PaymentProps> = () => {
-  const dispatsh = useDispatch();
   const navigate = useNavigate();
+  const [can, setCan] = useState(true);
   const user: any = useSelector((state: RootState) => state.user);
   const userid = user.user.id;
   const currentFlight: any = useSelector(
@@ -22,7 +22,7 @@ const Payment: React.FC<PaymentProps> = () => {
   const currentReservation: any = useSelector(
     (state: RootState) => state.flights.currentReservation
   );
-  console.log(currentFlight);
+
   const takeAseat = async (id: number) => {
     try {
       const res = await axios.put(`http://localhost:1128/seats/update/${id}`, {
@@ -39,11 +39,13 @@ const Payment: React.FC<PaymentProps> = () => {
         `http://localhost:1128/reservation/add`,
         obj
       );
-      console.log("done");
     } catch (error) {
       throw error;
     }
   };
+  useEffect(() => {
+    setCan(true)
+  }, []);
   return (
     <>
       <Navbar />
@@ -101,7 +103,9 @@ const Payment: React.FC<PaymentProps> = () => {
                   <span>full cancellation policy</span> for this flight.
                 </p>
               </div>
-              <div className="payment_methods_privacyPolicy_btns">
+
+              {
+                can ?  <div className="payment_methods_privacyPolicy_btns">
                 <button
                   onClick={() => {
                     navigate("/PlaneBooking");
@@ -113,6 +117,7 @@ const Payment: React.FC<PaymentProps> = () => {
                   <button
                     id="goout"
                     onClick={() => {
+                      setCan(false)
                       takeAseat(currentReservation.seatid);
                       addReservation({
                         firstName: currentReservation.firstName,
@@ -121,7 +126,7 @@ const Payment: React.FC<PaymentProps> = () => {
                         phone: currentReservation.phoneNumber,
                         email: currentReservation.email,
                         userId: userid,
-                        FlightId:currentFlight.id
+                        FlightId: currentFlight.id,
                       });
                     }}
                   >
@@ -130,7 +135,11 @@ const Payment: React.FC<PaymentProps> = () => {
                 ) : (
                   <p id="alert">to make your checkout you need to connect</p>
                 )}
-              </div>
+              </div> : null
+              }
+             
+
+
             </div>
           </div>
           <div className="bills-trips">

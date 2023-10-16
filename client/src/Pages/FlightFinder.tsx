@@ -46,7 +46,6 @@ const navigate = useNavigate()
   const dispatch: AppDispatch = useDispatch();
 
   const flights = useSelector((state: RootState) => state.flights.Flights);
-  // console.log(fligh  ts,"this is flights");
 
   const allFlight: objTypeAll[] = useSelector(
     (state: RootState) => state.flights.allFlights
@@ -97,8 +96,8 @@ const navigate = useNavigate()
                 placeholder="where are you going"
               >
                 <option>where are you going</option>
-                {flight.origin.map((e) => (
-                  <option value={e}>{e}</option>
+                {flight.origin.map((e,key) => (
+                  <option value={e} key={key}>{e}</option>
                 ))}
               </select>
             </div>
