@@ -1,5 +1,5 @@
 import "../styles/ClientProfil.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import Avatar from "../Assets/avatar.jpeg";
 import { useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 const ProfileUser = () => {
   const { user } = useSelector((state) => state.user);
+  console.log(user)
   const [form, setForm] = useState({
     name: user.name,
     email: user.email,
@@ -20,7 +21,7 @@ const ProfileUser = () => {
     zip: user.zip,
     image: user.image,
   });
-
+  const [userReservations, setReservation] = useState([]);
   const [element, setElement] = useState("userProfile");
 
   const handleFileUpload = async (e) => {
@@ -40,19 +41,31 @@ const ProfileUser = () => {
     }
   };
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (obj) => {
     try {
       const response = await axios.put(
         `http://localhost:1128/users/update/${user.id}`,
-        form
+        obj
       );
-      console.log(response);
       toast.success("Update Successfully");
     } catch (error) {
       console.error(error);
     }
   };
 
+  const takeReservation = async (id) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:1128/reservation/getFor/${id}`
+      );
+      setReservation(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    takeReservation(user.id);
+  }, []);
   return (
     <>
       <Navbar />
@@ -75,7 +88,10 @@ const ProfileUser = () => {
               className={`side_nav_card ${
                 element === "userCheckout" ? "active" : ""
               }`}
-              onClick={() => setElement("userCheckout")}
+              onClick={() => {
+                setElement("userCheckout");
+                takeReservation(user.id);
+              }}
             >
               <p className="account_seeting_title">User checkout</p>
               <p className="account_seeting_desc">
@@ -174,7 +190,7 @@ const ProfileUser = () => {
                       }}
                     />
                   </div>
-                  <button onClick={handleUpdate}>Update Information</button>
+                  <button onClick={()=>{handleUpdate(form)}}>Update Information</button>
                 </div>
               </>
             )}
@@ -185,7 +201,34 @@ const ProfileUser = () => {
             )}
             {element === "userCheckout" && (
               <div className="checkoutt">
-                <h1>user checkout</h1>
+                {userReservations.map((r) => {
+                  return (
+                    <div className="oneChekout">
+                      <div className="flight-data">
+                        <div className="logo-sec">
+                          <img
+                            id="airline_logo"
+                            src={r.Flight.brand.image}
+                            alt=""
+                          />
+                          <div className="logo-sec-desc">
+                            <p>{r.createdAt}</p>
+                            <p>{r.Flight.brand.name}</p>
+                          </div>
+                        </div>
+                        <div>
+                          <p>
+                            {r.Flight.departureTime}- {r.Flight.arrivalTime}
+                          </p>
+                        </div>
+                        <div>
+                          <p>${r.Flight.price}</p>
+                          <p>round trip</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>

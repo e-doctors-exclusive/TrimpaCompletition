@@ -13,34 +13,11 @@ const seatsRoutes = require("./router/seats.routes.js")
 const ReservationRoutes = require("./router/reservation.routes.js")
 const brandsRoutes = require("./router/brandes.routes.js")
 const paymentRoutes = require("./router/payment.routes.js")
-<<<<<<< HEAD
 const creditCard = require("./router/creditCard.router.js")
 
 
 app.use(cors())
 // Define a route
-=======
-require("./database/index.js")
-const http = require('http');
-const socketIo = require('socket.io');
-app.use(express.json());
-app.use(cors())
-// Define a route
-const server = http.createServer(app);
-const io = socketIo(server);
-io.on('connection', (socket) => {
-  console.log('A user connected');
-  
-  socket.on('message', (data) => {
-    // Broadcast the received message to all connected clients (admin and user)
-    io.emit('message', data);
-  });
-
-  socket.on('disconnect', () => {
-    console.log('A user disconnected');
-  });
-});
->>>>>>> 667c33fbe4d86f7e1e95559bda511f65111a1a7b
 app.use("/users", userRoutes)
 app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)

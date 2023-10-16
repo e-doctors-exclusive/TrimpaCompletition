@@ -11,6 +11,7 @@ module.exports = {
   getById: async (req, res) => {
     try {
       const all = await Reservation.findAll({
+        include:{all:true , nested:true},
         where: {
           userId: req.params.userId,
         },
