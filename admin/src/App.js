@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ProSidebarProvider } from "react-pro-sidebar";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from "./Components/LandingPage";
-import SideBar from "./Components/SideBar"
+// import SideBar from "./Components/SideBar"
 import Home from "./Components/Home";
 import Users from "./Components/Users"; 
 import Flights from "./Components/Flights";
@@ -22,7 +22,7 @@ function App() {
 
 
   return (
-    <ProSidebarProvider>
+    // <ProSidebarProvider>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingPage/>}></Route>
@@ -35,7 +35,7 @@ function App() {
       <Route path="/chat" element={<Chat />}></Route>
       </Routes>
     </BrowserRouter>
-    </ProSidebarProvider>
+    // </ProSidebarProvider>
   );
 }
 

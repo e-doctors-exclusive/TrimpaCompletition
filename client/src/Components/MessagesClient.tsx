@@ -8,18 +8,15 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Demandez à recevoir l'historique des messages lors de la connexion
     socket.emit('getHistory');
 
-    // Gérez l'état initial des messages lorsque le composant est monté
-    socket.on('message', (data) => {
+    socket.on('message', (data:any) => {
       setMessages(data);
     });
   }, []);
 
   useEffect(() => {
-    // Gérez l'historique des messages en réponse à l'événement "history"
-    socket.on('history', (data) => {
+    socket.on('history', (data:any) => {
       setMessages(data);
     });
   }, []);
@@ -48,6 +45,7 @@ function App() {
         />
         <button onClick={sendMessage}>Send</button>
       </div>
+      
     </div>
   );
 }
