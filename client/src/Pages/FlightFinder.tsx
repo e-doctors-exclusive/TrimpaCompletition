@@ -16,24 +16,14 @@ import { useNavigate } from "react-router-dom";
 
 const FlightFinder: React.FC = () => {
   const currentFlight:any= useSelector((state: RootState) => state.flights.currentFlight);
-  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value, "this is date");
 
-    setDateFrom(e.target.value);
-  };
 
   const [modalVisible, setModalVisible] = useState(false);
   const [dateModalVisible, setDateModalVisible] = useState(false);
   const [departDate, setDepartDate] = React.useState<Date | null>(null);
   const [arriveDate, setArriveDate] = React.useState<Date | null>(null);
 const navigate = useNavigate()
-  const handleOpenModal = () => {
-    setModalVisible(true);
-  };
 
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
 
   const handleOpenDateModal = () => {
     setDateModalVisible(!dateModalVisible);
@@ -43,8 +33,7 @@ const navigate = useNavigate()
 
   const [destFrom, setDestFrom] = useState("");
   const [destTo, setDestTo] = useState<string>("");
-  const [dateFrom, setDateFrom] = useState<string>("");
-  const [clicked, setClicked] = useState<object>({});
+
   interface objTypeAll {
     destFrom: string;
     destTo: string;
@@ -65,7 +54,6 @@ const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(fetchAllFlights());
-    console.log(flights)
   }, []);
 
   let a = allFlight.map((e: objTypeAll) => e.destFrom);
@@ -93,9 +81,7 @@ const navigate = useNavigate()
     updatedAt: string;
   };
 
-  useEffect(()=>{
-    console.log(flights)
-  },[])
+  
   return (
     <>
   <Navbar/>

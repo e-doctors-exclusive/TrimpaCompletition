@@ -13,6 +13,11 @@ const seatsRoutes = require("./router/seats.routes.js")
 const ReservationRoutes = require("./router/reservation.routes.js")
 const brandsRoutes = require("./router/brandes.routes.js")
 const paymentRoutes = require("./router/payment.routes.js")
+const creditCard = require("./router/creditCard.router.js")
+
+
+app.use(cors())
+// Define a route
 const creditCard = require("./router/creditCard.router")
 require("./database/index.js")
 const http = require('http');

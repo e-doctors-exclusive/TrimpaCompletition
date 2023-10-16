@@ -49,7 +49,7 @@ const PlaneBooking = () => {
                         fillForm({
                           ...currentReservation,
                           seatNumber: seatNumber,
-                          seatid:selectedSeat
+                          seatid:oneSeat.id
                         })
                       );
                     }}

@@ -332,6 +332,27 @@
   }
 }
 
+#logout{
+  width: 80%;
+  border: none;
+  height: 5rem;
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  font-size: 22px;
+  /* display: flex;
+  align-items: center;
+  padding-left: 2rem; */
+  transition: 0.3s;
+}
+
+
+#logout:hover{
+  color: red;
+  background-color: white;
+  border: red 2px solid;
+}
 
 
 /* {

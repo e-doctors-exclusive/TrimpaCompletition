@@ -27,7 +27,6 @@ interface propsType{
 const FlightData: React.FC <propsType>= (props:any) => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate()
- console.log(props.oneFlight)
  let startTime:any = props.oneFlight.departureTime.split(':').map(Number);
  let endTime:any = props.oneFlight.arrivalTime.split(':').map(Number);
  const hours1 = startTime[0];
