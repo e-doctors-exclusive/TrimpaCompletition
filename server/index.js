@@ -18,6 +18,27 @@ const creditCard = require("./router/creditCard.router.js")
 
 app.use(cors())
 // Define a route
+const creditCard = require("./router/creditCard.router")
+require("./database/index.js")
+const http = require('http');
+const socketIo = require('socket.io');
+app.use(express.json());
+app.use(cors())
+// Define a route
+const server = http.createServer(app);
+const io = socketIo(server);
+io.on('connection', (socket) => {
+  console.log('A user connected');
+  
+  socket.on('message', (data) => {
+    // Broadcast the received message to all connected clients (admin and user)
+    io.emit('message', data);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
+});
 app.use("/users", userRoutes)
 app.use("/admin", adminRoutes)
 app.use("/reservation",ReservationRoutes)

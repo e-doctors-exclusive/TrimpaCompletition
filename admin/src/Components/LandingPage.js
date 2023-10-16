@@ -38,26 +38,26 @@ function LandingPage() {
 
     return (
         <div className='Landing'>
+          
         <MDBContainer fluid>
       <MDBRow>
 
-        <MDBCol sm='6'>
+        <MDBCol sm='6' className='login'>
 
-          <div className='d-flex flex-row ps-5 pt-5'>
+          <div className='d-flex flex-row ps-5 pt-5' style={{color:'white'}}>
           <MDBIcon fas icon="plane" />
-            <span className="h1 fw-bold mb-0">Tripma</span>
+            <span className="h1 fw-bold mb-0" style={{color:'white'}}>Tripma</span>
           </div>
 
           <div className='d-flex flex-column justify-content-center h-custom-2 w-75 pt-4'>
 
-            <h3 className="fw-normal mb-3 ps-5 pb-3" style={{letterSpacing: '1px'}}>Log in</h3>
-
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" onChange={((e)=>{
-              console.log("this is email",e.target.value);
-              setEmail(e.target.value)})}/>
+            <h3 className="fw-normal mb-3 ps-5 pb-3" style={{letterSpacing: '1px', color:'white'}}>Log in</h3>
+                   
+                   
+            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg" onChange={((e)=>{ setEmail(e.target.value)})}/>
             <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg" onChange={((e)=>{setPassword(e.target.value)})}/>
 
-            <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg' onClick={(()=>{handleLogin( {email,password})})}>Login</MDBBtn>
+            <MDBBtn id='logg' className="mb-4 px-5 mx-5 w-100" color='info' size='lg' onClick={(()=>{handleLogin( {email,password})})}>Login</MDBBtn>
             <p style={{color:"red", fontSize:"20px", display:"flex", justifyContent:"center"}}>{alert}</p>
           </div>
 

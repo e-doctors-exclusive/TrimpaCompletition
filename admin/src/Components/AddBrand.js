@@ -51,6 +51,7 @@ console.log(response.data.secure_url);
           flexWrap: "wrap",
           flex: 1,
           marginLeft: clicked ? "250px" : "70px",
+          width: "50%"
         }}
       >
         <CloudinaryContext cloudName="ddsp5aq1k" apiKey="337975874429965">
@@ -104,7 +105,7 @@ console.log(response.data.secure_url);
                 setDescription(e.target.value);
               }}
             ></textarea>
-            <button
+            <button className="btnadd"
               onClick={(e) => {
                 e.preventDefault();
                 addBrands({

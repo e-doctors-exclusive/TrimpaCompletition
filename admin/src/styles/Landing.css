@@ -12,6 +12,16 @@
         object-position: center top;
     
       } 
+  .Landing{
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(83,83,238,1) 74%, rgba(100,45,253,1) 100%);
+  }
 
-
+  .fw-normal{
+    font-size: 40px;
+  }
+ 
+#logg{
+  border-radius: 5rem;
+}
   
