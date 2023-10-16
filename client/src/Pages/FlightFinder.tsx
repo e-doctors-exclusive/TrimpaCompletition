@@ -46,7 +46,6 @@ const navigate = useNavigate()
   const dispatch: AppDispatch = useDispatch();
 
   const flights = useSelector((state: RootState) => state.flights.Flights);
-  // console.log(fligh  ts,"this is flights");
 
   const allFlight: objTypeAll[] = useSelector(
     (state: RootState) => state.flights.allFlights

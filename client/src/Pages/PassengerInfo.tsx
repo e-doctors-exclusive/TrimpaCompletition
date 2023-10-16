@@ -87,11 +87,6 @@ const PassengerInfo: React.FC = () => {
       setCount(count - 1);
     }
   };
-
-  const handleLogState = () => {
-    console.log('handleLogState called');
-    console.log(formData);
-  };
   
   return (
     <div>

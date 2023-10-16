@@ -19,7 +19,6 @@ const Navbar = () => {
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false);
   const dispatch = useDispatch();
   const  {user , loggedIn }  = useSelector(state => state.user );
-  // console.log(loggedIn);
   const navigate = useNavigate()
   const [form, setForm] = useState({
     phomail: "",
@@ -32,7 +31,6 @@ const Navbar = () => {
       await axios
       .post("http://localhost:1128/users/signup", form)
       .then((result) => {
-        console.log(result);
         toast.success("Account created successfully", {
           position: "bottom-right",
           autoClose: 5000,
@@ -113,7 +111,6 @@ const Navbar = () => {
         .catch((e) => console.log(e));
     }
   };
-  // console.log(.image);
   return (
     <div className="navbar">
       <div className="logo">

@@ -25,7 +25,6 @@ const SignInModal: React.FC<SignInModalProps> = ({
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
-      // console.log(email);
     }
   };
 
@@ -33,9 +32,6 @@ const SignInModal: React.FC<SignInModalProps> = ({
     e.stopPropagation();
   };
 
-  // useEffect(()=>{
-
-  //   },[])
 
   return (
     <div

@@ -23,7 +23,6 @@ const Payment: React.FC<PaymentProps> = () => {
     (state: RootState) => state.flights.currentReservation
   );
 
-  console.log(currentFlight);
   const takeAseat = async (id: number) => {
     try {
       const res = await axios.put(`http://localhost:1128/seats/update/${id}`, {
@@ -40,7 +39,6 @@ const Payment: React.FC<PaymentProps> = () => {
         `http://localhost:1128/reservation/add`,
         obj
       );
-      console.log("done");
     } catch (error) {
       throw error;
     }
